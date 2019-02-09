@@ -1,34 +1,34 @@
 import React, {useState} from 'react'
-import {OutlinedInput} from '@material-ui/core';
 // import {connect} from 'react-redux'
-// import {login} from '../../ducks/reducer'
+// import {Link} from 'react-router-dom'
+// import {handleLogin} from '../../ducks/reducer'
+import './home.css'
 
 const UserLogin = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
     return (
-        <div>
-            <OutlinedInput
-                id='usernameInput'
-                autoFocus={true}
-                notched={true}
-                labelWidth={30}
-                placeholder='Username'
-                margin='dense'
-                onChange={(e) => setUsername(e.target.value)}
+        <div className='homeCont'>
+            <img src='' className='home-logo' alt='logo'/>
+            <input className='username-login' onChange={(e) => setUsername(e.target.value)} placeholder='Username'
             />
+            <input className='pass-login' onChange={(e) => setPassword(e.target.value)} placeholder='Password'
+            />
+            {/* <div>
+                <button className='login-button onClick={() => props.handleLogin(username,password)}>Login</button>
+                <Link to='/register'><button className='register-button'>Register</button></Link>
+            </div> */}
 
-            <OutlinedInput
-                id='passwordInput'
-                autoFocus={true}
-                notched={true}
-                labelWidth={30}
-                placeholder='Password'
-                margin='dense'
-                type='password'
-                onChange={(e) => setPassword(e.target.value)}
-            />
+            {username ? <span className='username-label'>Username</span>
+            :
+            null
+            }
+
+            {password ? <span className='password-label'>Password</span>
+            :
+            null
+            }   
         </div>
     )
 }
@@ -38,4 +38,4 @@ const UserLogin = () => {
 export default UserLogin
 
 
-// export default connect(mapStateToProps, {login})(UserLogin)
+// export default connect(mapStateToProps, {handleLogin})(UserLogin)

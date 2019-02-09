@@ -1,0 +1,75 @@
+.homeCont {
+    display: grid;
+    grid-template-columns: 90vw;
+    grid-template-rows: 20vw 5vw 5vw 5vw;
+    margin-top: 15vh;
+}
+
+.home-logo, .username-login, .pass-login {
+    left: 0;
+    right: 0;
+    margin: auto;
+    position: relative;
+}
+
+.home-logo {
+    grid-row-start: 1;
+    grid-row-end: 2;
+    height: 15vh;
+    width: 15vh;
+}
+
+.username-login {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    margin-top: 7vh;
+    border-radius: 5px;
+    padding: 5px;
+    width: 80vw;
+    margin-left: 7.5vw;
+}
+
+.username-label {
+    position: absolute;
+    top: 31vh;
+    left: 8vw;
+    width: 12vw;
+    height: 2vh;
+    padding: 2px;
+    font-size: .6em;
+}
+
+.password-label {
+    position: absolute;
+    top: 39vh;
+    left: 8vw;
+    width: 12vw;
+    height: 2vh;
+    padding: 2px;
+    font-size: .6em;
+}
+
+.pass-login {
+    grid-row-start: 3;
+    grid-row-end: 4;
+    margin-top: 12vh;
+    border-radius: 5px;
+    padding: 5px;
+    width: 80vw;
+    margin-left: 7.5vw;
+}
+
+.login-button, .register-button {
+    grid-row-start: 4;
+    grid-row-end: 5;
+    width: 15vw;
+    padding: 5px;
+}
+
+.login-button {
+
+}
+
+.register-button {
+    margin-right: 1vw;
+}
