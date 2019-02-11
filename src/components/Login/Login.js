@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import logo from '../../images/fno.png'
-// import {connect} from 'react-redux'
+import {connect} from 'react-redux'
 // import {Link} from 'react-router-dom'
-// import {handleLogin} from '../../ducks/reducer'
+import {login} from '../../ducks/reducer'
 import './login.css'
 
 
@@ -19,9 +19,9 @@ const UserLogin = () => {
         }
     }
 
-    // const handleLogin = (username,password) => {
-
-    // }
+    const handleLogin = (username,password) => {
+        this.props.login(username,password)
+    }
 
     return (
         <div className='loginCont'>
@@ -35,7 +35,7 @@ const UserLogin = () => {
                 />
             </div>
             <div className='buttonCont'>
-                    <button className='login-button'> {/*onClick={this.handleLogin(username,password)}*/}Login</button>
+                    <button className='login-button'> onClick={this.handleLogin(username,password)}Login</button>
                     <button className='register-button'>Register</button>
                 {/* <Link to='/register'></Link> */}
             </div>
@@ -58,8 +58,6 @@ const UserLogin = () => {
     )
 }
 
-{/* const mapStateToProps = state => state */}
+const mapStateToProps = state => state
 
-export default UserLogin
-
-{/* export default connect(mapStateToProps, {handleLogin})(Login) */}
+export default connect(mapStateToProps, {login})(UserLogin)

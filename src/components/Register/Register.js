@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import logo from '../../images/fno.png'
-// import {connect} from 'react-redux'
+import {connect} from 'react-redux'
 // import {Link} from 'react-router-dom'
-// import {handleRegister} from '../../ducks/reducer'
+import {register} from '../../ducks/reducer'
 import './register.css'
 
 const RegisterUser = () => {
@@ -46,7 +46,7 @@ const RegisterUser = () => {
         }
     }
 
-    // handleRegister(firstName,lastName,username,password,address,city,state,zip,profilePic) {
+    handleRegister(firstName,lastName,username,password,address,city,state,zip,profilePic) {
 
     // }
 
@@ -71,9 +71,6 @@ const RegisterUser = () => {
     )
 }
 
-// const mapStateToProps = state => state
+const mapStateToProps = state => state
 
-export default RegisterUser
-
-
-// export default connect(mapStateToProps, {handleRegister})(RegisterUser)
+export default connect(mapStateToProps, {register})(RegisterUser)

@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import './App.css';
-import Login from './components/Login/Login'
-import Register from './components/Register/Register'
+import {BrowserRouter as Router} from 'react-router-dom'
+import {Provider} from 'react-redux'
+import store from './ducks/store'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-      <Register/>
-      </div>
+      <Provider store={store}>
+        <Router>
+          <div>
+
+          </div>
+        </Router>
+      </Provider>
     );
   }
 }
