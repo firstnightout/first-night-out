@@ -1,7 +1,8 @@
 require('dotenv').config();
 const express = require('express');
 const {json} = require('body-parser');
-const {findStuffNearLocation, searchForLocation} = require('./controllers/firebaseControllers');
+const {} = require('./controllers/firebaseControllers');
+const {findStuffNearLocation, searchForLocation} = require('./controllers/mapsController')
 
 const app = express();
 
