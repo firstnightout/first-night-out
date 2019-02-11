@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-// import axios from 'axios';
-
-const Register = () => {
-    return (
-        <div>
-            Register
-=======
 import React, {useState} from 'react'
 // import {connect} from 'react-redux'
 // import {Link} from 'react-router-dom'
@@ -30,18 +21,13 @@ const RegisterUser = () => {
                 <input onChange={(e) => setPassword(e.target.value)} placeholder='Password' className='reg-password'/>
                 {/* <button onClick={() => props.handleRegister(firstName,lastName,username,homeAddress,password)}>Sign up</button> */}
             </div>
->>>>>>> master
         </div>
     )
 }
 
-<<<<<<< HEAD
-export default Register;
-=======
 // const mapStateToProps = state => state
 
 export default RegisterUser
 
 
 // export default connect(mapStateToProps, {handleRegister})(RegisterUser)
->>>>>>> master
