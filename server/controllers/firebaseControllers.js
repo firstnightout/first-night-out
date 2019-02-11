@@ -91,8 +91,13 @@ const register = (req, res) =>{
     }).catch(err => console.log( err ));
 }
 
+const signOut = (req, res) => {
+    req.session.destry();
+    res.status(200).json('SESSION TERMINATED...BUT HE WILL BE BACK..');
+}
 
 module.exports = {
     login,
-    register
+    register,
+    signOut
 }

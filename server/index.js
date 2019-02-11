@@ -4,7 +4,7 @@ const { json } = require("body-parser");
 const session = require("express-session");
 // const bcrypt = require('bcryptjs');
 const PORT = 3005;
-const { register, login } = require('./controllers/firebaseControllers');
+const { register, login, signout } = require('./controllers/firebaseControllers');
 
 const app = express();
 app.use(json());
@@ -22,6 +22,7 @@ app.use(
 //ENDPOINTS: 
 app.post('/api/auth/login', login);
 app.post('/api/auth/register', register);
+app.delete('/api/auth/signout', signout);
 
 
 
