@@ -5,6 +5,7 @@ const session = require("express-session");
 // const bcrypt = require('bcryptjs');
 const authCon = require('./controllers/auth_controller');
 const PORT = 3005;
+const {} = require('./controllers/firebaseControllers');
 
 const app = express();
 app.use(json());
@@ -32,3 +33,6 @@ app.post('/api/auth/register', authCon.register);
 
 
 app.listen(PORT, () => console.log(`Listenting on port ${PORT}...`));
+
+
+
