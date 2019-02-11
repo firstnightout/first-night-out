@@ -46,7 +46,7 @@ const RegisterUser = () => {
         }
     }
 
-    handleRegister(firstName,lastName,username,password,address,city,state,zip,profilePic) {
+    // handleRegister(firstName,lastName,username,password,address,city,state,zip,profilePic) {
 
     // }
 
