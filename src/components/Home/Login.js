@@ -2,15 +2,15 @@ import React, {useState} from 'react'
 // import {connect} from 'react-redux'
 // import {Link} from 'react-router-dom'
 // import {handleLogin} from '../../ducks/reducer'
-import './home.css'
+import './login.css'
 
 const UserLogin = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
     return (
-        <div className='homeCont'>
-            <img src='' className='home-logo' alt='logo'/>
+        <div className='loginCont'>
+            <img src='' className='login-logo' alt='logo'/>
             <input className='username-login' onChange={(e) => setUsername(e.target.value)} placeholder='Username'
             />
             <input className='pass-login' onChange={(e) => setPassword(e.target.value)} placeholder='Password'

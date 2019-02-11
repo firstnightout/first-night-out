@@ -1,18 +1,18 @@
-.homeCont {
+.loginCont {
     display: grid;
     grid-template-columns: 90vw;
     grid-template-rows: 20vw 5vw 5vw 5vw;
     margin-top: 15vh;
 }
 
-.home-logo, .username-login, .pass-login {
+.login-logo, .username-login, .pass-login {
     left: 0;
     right: 0;
     margin: auto;
     position: relative;
 }
 
-.home-logo {
+.login-logo {
     grid-row-start: 1;
     grid-row-end: 2;
     height: 15vh;
