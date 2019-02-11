@@ -92,7 +92,7 @@ const register = (req, res) =>{
 }
 
 const signOut = (req, res) => {
-    req.session.destry();
+    req.session.destroy();
     res.status(200).json('SESSION TERMINATED...BUT HE WILL BE BACK..');
 }
 
