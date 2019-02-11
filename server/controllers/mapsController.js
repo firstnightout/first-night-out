@@ -5,6 +5,7 @@ const textSearchURL = 'https://maps.googleapis.com/maps/api/place/textsearch/jso
 function searchForLocation(req, res, next) {
     const {query, location, radius, minPrice, maxPrice, type} = req.body;
     const key = process.env.GCLOUD_PLACES_API;
+    //QUERY AND KEY ARE REQUIRED
     if(!(query && key)) {
         res.status(412).json({error: "INVALID_REQUEST"})
     } else {
@@ -34,6 +35,7 @@ function findStuffNearLocation(req, res, next) {
     const {location, radius, keyword, minPrice, maxPrice, name, openNow, type} = req.body;
     const key = process.env.GCLOUD_PLACES_API;
     console.log(key)
+    //LOCATION, RADIUS, AND KEY ARE ALL REQUIRED
     if(!(location && radius && key)) {
         res.status(412).json({error: "INVALID_REQUEST"});
     } else {
