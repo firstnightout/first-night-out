@@ -9,6 +9,7 @@ const PORT = 3005;
 const app = express();
 app.use(json());
 
+// SESSION: 
 app.use(
   session({
     name: 'First Night Out',
