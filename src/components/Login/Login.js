@@ -6,7 +6,7 @@ import {login} from '../../ducks/reducer'
 import './login.css'
 
 
-const UserLogin = (props) => {
+const Login = (props) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     
@@ -59,4 +59,4 @@ const UserLogin = (props) => {
 
 const mapStateToProps = state => state
 
-export default connect(mapStateToProps, {login})(UserLogin)
+export default connect(mapStateToProps, {login})(Login)

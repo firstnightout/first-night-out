@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import {register} from '../../ducks/reducer'
 import './register.css'
 
-const RegisterUser = (props) => {
+const Register = (props) => {
     const [firstName, setFirstName] = useState()
     const [lastName, setLastName] = useState()
     const [username, setUsername] = useState()
@@ -73,4 +73,4 @@ const RegisterUser = (props) => {
 
 const mapStateToProps = state => state
 
-export default connect(mapStateToProps, {register})(RegisterUser)
+export default connect(mapStateToProps, {register})(Register)
