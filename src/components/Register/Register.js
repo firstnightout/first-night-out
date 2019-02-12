@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import {register} from '../../ducks/reducer'
 import './register.css'
 
-const RegisterUser = () => {
+const RegisterUser = (props) => {
     const [firstName, setFirstName] = useState()
     const [lastName, setLastName] = useState()
     const [username, setUsername] = useState()
@@ -46,9 +46,9 @@ const RegisterUser = () => {
         }
     }
 
-    // handleRegister(firstName,lastName,username,password,address,city,state,zip,profilePic) {
-
-    // }
+    const handleRegister = (firstName,lastName,username,password,address,city,state,zip,profilePic) => {
+        props.register(firstName,lastName,username,password,address,city,state,zip,profilePic)
+    }
 
     return (
         <div className='mainCont'>
@@ -64,8 +64,8 @@ const RegisterUser = () => {
                 <input name='zip' onChange={handleUpdate} placeholder='Zip' className='reg-zip'/>
                 <label className='label'>Select image for profile pic:</label>
                 <input name='profilePic' onChange={handleUpdate} placeholder='Profile Picture' type='file' className='profile-pic'/>
-                <button className='sign-up'>Sign up</button>
-    {/* onClick={handleRegister(firstName,lastName,username,password,address,city,state,zip,profilePic)} */}
+                <button onClick={() => handleRegister(firstName,lastName,username,password,address,city,state,zip,profilePic)} 
+                    className='sign-up'>Sign up</button>
             </div>
         </div>
     )

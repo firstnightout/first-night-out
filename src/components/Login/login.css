@@ -32,6 +32,11 @@
     margin-top: 4vh;
 }
 
+.inputCont {
+    display: flex;
+    flex-direction: column;
+}
+
 .username-label {
     position: absolute;
     top: 48vh;
@@ -59,13 +64,13 @@
     border-radius: 5px;
     padding: 5px;
     width: 80vw;
-
 }
 
 .buttonCont {
     display: flex;
     justify-content: center;
     width: 80vw;
+    
 }
 
 .login-button, .register-button {
@@ -76,6 +81,7 @@
     color: white;
     border: none;
     font-size: 1em;
+    transform: translateY(2px)
 }
 
 .register-button {

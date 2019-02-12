@@ -1,26 +1,26 @@
 import React, {useState} from 'react'
 import logo from '../../images/fno.png'
 import {connect} from 'react-redux'
-// import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {login} from '../../ducks/reducer'
 import './login.css'
 
 
-const UserLogin = () => {
+const UserLogin = (props) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     
     const handleUpdates = (e) => {
-        if(username) {
+        if(e.target.name === 'username') {
             setUsername(e.target.value)
         }
-        else if(password) {
+        else if(e.target.name === 'password') {
             setPassword(e.target.value)
         }
     }
 
     const handleLogin = (username,password) => {
-        this.props.login(username,password)
+        props.login(username,password)
     }
 
     return (
@@ -29,15 +29,14 @@ const UserLogin = () => {
                 <img src={logo} className='login-logo' alt='logo'/>
             </div>
             <div className='inputCont'>
-                <input className='username-login' onChange={handleUpdates} placeholder='Username'
+                <input className='username-login' onChange={handleUpdates} placeholder='Username' name='username'
                 />
-                <input className='pass-login' onChange={handleUpdates} placeholder='Password'
+                <input className='pass-login' onChange={handleUpdates} placeholder='Password' type='password' name='password'
                 />
             </div>
             <div className='buttonCont'>
-                    <button className='login-button'> onClick={this.handleLogin(username,password)}Login</button>
-                    <button className='register-button'>Register</button>
-                {/* <Link to='/register'></Link> */}
+                    <button className='login-button' onClick={() => handleLogin(username,password)}>Login</button>
+                    <Link to='/auth/register'><button className='register-button'>Register</button></Link> 
             </div>
             <div className='buttonCont2'>
                 <button className='passportButton'>Login with Passport</button>
