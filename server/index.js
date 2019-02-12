@@ -5,7 +5,6 @@ const {} = require('./controllers/firebaseControllers');
 const {findStuffNearLocation, searchForLocation} = require('./controllers/mapsController')
 const session = require("express-session");
 // const bcrypt = require('bcryptjs');
-const PORT = 3005;
 const { register, login, signOut } = require('./controllers/firebaseControllers');
 
 const app = express();

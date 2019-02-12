@@ -19,7 +19,7 @@ const Login = (props) => {
         }
     }
 
-    const handleLogin = (username,password) => {
+    const handleLogin = () => {
         props.login(username,password)
     }
 
@@ -35,7 +35,7 @@ const Login = (props) => {
                 />
             </div>
             <div className='buttonCont'>
-                    <button className='login-button' onClick={() => handleLogin(username,password)}>Login</button>
+                    <button className='login-button' onClick={handleLogin}>Login</button>
                     <Link to='/auth/register'><button className='register-button'>Register</button></Link> 
             </div>
             <div className='buttonCont2'>

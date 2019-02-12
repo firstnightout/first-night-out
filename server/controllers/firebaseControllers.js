@@ -88,7 +88,7 @@ const register = (req, res) =>{
     }).catch(err => console.log( err ));
 }
 
-const signout = (req, res) => {
+const signOut = (req, res) => {
     req.session.destroy();
     res.status(200).json('SESSION TERMINATED...BUT HE WILL BE BACK..');
 }
@@ -96,5 +96,5 @@ const signout = (req, res) => {
 module.exports = {
     login,
     register,
-    signout
+    signOut
 }
