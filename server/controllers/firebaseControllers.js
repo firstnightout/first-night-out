@@ -40,7 +40,6 @@ const login = (req, res) =>{
 const register = (req, res) =>{
     // connect to the database
     let db = firebase.database();
-
     db.ref('users').once('value').then(response => {
         let user = response.val();
         for(let i = 0; i < user.length; i++){
@@ -70,7 +69,8 @@ const register = (req, res) =>{
                 profilePic: req.body.profilePic,
                 city: req.body.city,
                 state: req.body.state,
-                zip: req.body.zip
+                zip: req.body.zip,
+                address: req.body.address
         });
             req.session.user = {
                 username: req.body.username

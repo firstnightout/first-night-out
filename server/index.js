@@ -24,8 +24,6 @@ app.use(
 app.post('/api/auth/login', login);
 app.post('/api/auth/register', register);
 app.delete('/api/auth/signout', signout);
-app.post('/api/places/near', findStuffNearLocation)
-app.post('/api/places/search', searchForLocation)
 
 const PORT = process.env.SERVER_PORT || 4000;
 // app.get('/api/seed', seed)
