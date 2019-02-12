@@ -1,9 +1,10 @@
 const bcrypt = require('bcryptjs');
 const firebase = require('firebase');
+//INITIALIZING FIREBASE
 let hidden = process.env;
 
 var config = {
-    apiKey: hidden.API_KEY,
+    apiKey: hidden.REACT_APP_API_KEY,
     authDomain: hidden.REACT_APP_AUTH_DOMAIN,
     databaseURL: hidden.REACT_APP_DATABASE_URL,
     projectId: hidden.REACT_APP_PROJECT_ID,
@@ -91,7 +92,7 @@ const register = (req, res) =>{
     }).catch(err => console.log( err ));
 }
 
-const signOut = (req, res) => {
+const signout = (req, res) => {
     req.session.destroy();
     res.status(200).json('SESSION TERMINATED...BUT HE WILL BE BACK..');
 }
@@ -99,5 +100,5 @@ const signOut = (req, res) => {
 module.exports = {
     login,
     register,
-    signOut
+    signout
 }
