@@ -52,7 +52,7 @@ const Register = (props) => {
     }
 
     return (
-        <div className='mainCont'>
+        <div className='registerMainCont'>
             <div className='registerCont'>
                 <span className='reg-title'>Account Registration</span>
                 <input name='firstName' onChange={handleUpdate} placeholder='First Name' className='first-name'/>

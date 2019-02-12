@@ -1,11 +1,97 @@
-.mainCont {
+.categoriesCont {
     display: flex;
 }
 
 .categoriesWrapper {
     display: flex;
-    width: 90vw;
+    width: 100vw;
+    height: 90vh;
+    position: relative;
+    right: 0;
+    left: 0;
+    margin: auto;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: space-evenly;
+    background: #d9d9d9;
+}
+
+.foodPic, .familyFunPic, .shopping, .spaPic, .nightLifePic, .ePic {
+    min-width: 44vw;
+    min-height: 26vh;
+    margin-top: 2vh;
+    border-radius: 6px;
+}
+
+.foodPic {
+    background-image: url('https://d3h1lg3ksw6i6b.cloudfront.net/media/image/2017/11/11/72460404bfe145ceb178970613db89e0_sea-768x576.jpg')
+}
+
+.familyFunPic {
+    background-image: url('https://static1.squarespace.com/static/59d7cb7b90badecf6400216f/t/5a9887b324a694fe7eb29e83/1519945659744/%234.PNG?format=500w')
+}
+
+.shopping {
+    background-image: url('https://www.neimanmarcus.com/content/dam/neiman-marcus/homepage/row_2/Row2b_UC_Ippolita_020519.jpg')
+}
+
+.spaPic {
+    background-image: url('https://www.lakeaustin.com/content/uploads/2018/12/group-experiences-3-720x524.jpg')
+}
+
+.nightLifePic {
+    background-image: url('https://dkr2rmsityotp.cloudfront.net/wp-content/uploads/2018/09/cgw-180820-gamingoverview-rv11-17-cgw-259-thumbnail-768x432.jpg')
+}
+
+.ePic {
+    background-image: url('https://twistedsifter.files.wordpress.com/2011/01/cute-baby-lion.jpg?w=786&h=504')
+}
+
+.foodLabel  {
+    position: absolute;
+    top: 21vh;
+    left: 10vh;
+}
+
+.foodLabel, .ffLabel, .sLabel, .spaLabel, .nlLabel, .eLabel {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+}
+
+.ffLabel {
+    position: absolute;
+    top: 21vh;
+    right: 3vh;
+}
+
+.sLabel {
+    position: absolute;
+    top: 51vh;
+    left: 5vh;
+}
+
+.spaLabel {
+    position: absolute;
+    top: 51vh;
+    right: 11vh;
+}
+
+.nlLabel {
+    position: absolute;
+    top: 81vh;
+    left: 5vh;
+}
+
+.eLabel {
+    position: absolute;
+    top: 81vh;
+    right: 3.5vh;
+}
+
+.catHeader {
+    width: 100vw;
+    height: 10vh;
+    background: #4527a0;
 
 }
+
