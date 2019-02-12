@@ -14,16 +14,11 @@ var config = {
 
 firebase.initializeApp(config);
 
-
-
-
-
 const login = (req, res) =>{
     //connect to the database
     let db = firebase.database();
         db.ref('users').once('value').then( response => {
             let user = response.val().find(user => user.username === req.body.username)
-            console.log(user);
             if(!user){
                 res.status(401).json("USER NOT FOUND")
             }
@@ -34,7 +29,6 @@ const login = (req, res) =>{
                 req.session.user = {
                     username: req.body.username
                 }
-                console.log(req.session.user);
                 res.status(200).json(req.session.user);
             }
         }).catch( err => console.log( err ));
@@ -48,7 +42,6 @@ const register = (req, res) =>{
     let db = firebase.database();
 
     db.ref('users').once('value').then(response => {
-        console.log('hit')
         let user = response.val();
         for(let i = 0; i < user.length; i++){
             if(user[i].username === req.body.username){
@@ -58,16 +51,13 @@ const register = (req, res) =>{
         
         let max = -1;
         let users = response.val();
-        console.log(users);
         
         for(let i = 0; i < users.length; i++){
             if(users[i].userId > max){
-                console.log('the user id',user[i].userId)
                 max = users[i].userId
             }
         }
         let id = max + 1;
-        console.log('the max',max)
         const salt = bcrypt.genSaltSync(12);
         const hash = bcrypt.hashSync(req.body.password, salt);
 
@@ -85,8 +75,6 @@ const register = (req, res) =>{
             req.session.user = {
                 username: req.body.username
             }
-
-            console.log(req.session.user);
             res.status(200).json(req.session.user);
             
     }).catch(err => console.log( err ));
