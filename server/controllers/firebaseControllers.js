@@ -1,9 +1,10 @@
 const bcrypt = require('bcryptjs');
 const firebase = require('firebase');
+//INITIALIZING FIREBASE
 let hidden = process.env;
 
 var config = {
-    apiKey: hidden.API_KEY,
+    apiKey: hidden.REACT_APP_API_KEY,
     authDomain: hidden.REACT_APP_AUTH_DOMAIN,
     databaseURL: hidden.REACT_APP_DATABASE_URL,
     projectId: hidden.REACT_APP_PROJECT_ID,
@@ -12,7 +13,6 @@ var config = {
 };
 
 firebase.initializeApp(config);
-
 
 const login = (req, res) =>{
     let db = firebase.database();
@@ -39,7 +39,6 @@ const login = (req, res) =>{
 const register = (req, res) =>{
     // connect to the database
     let db = firebase.database();
-
     db.ref('users').once('value').then(response => {
         let user = response.val();
         for(let i = 0; i < user.length; i++){
@@ -69,7 +68,8 @@ const register = (req, res) =>{
                 profilePic: req.body.profilePic,
                 city: req.body.city,
                 state: req.body.state,
-                zip: req.body.zip
+                zip: req.body.zip,
+                address: req.body.address
         });
             req.session.user = {
                 username: req.body.username
@@ -78,7 +78,7 @@ const register = (req, res) =>{
     }).catch(err => console.log( err ));
 }
 
-const signOut = (req, res) => {
+const signout = (req, res) => {
     req.session.destroy();
     res.status(200).json('SESSION TERMINATED...BUT HE WILL BE BACK..');
 }
@@ -86,6 +86,6 @@ const signOut = (req, res) => {
 module.exports = {
     login,
     register,
-    signOut
+    signout
 }
 

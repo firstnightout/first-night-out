@@ -1,25 +1,49 @@
 import React, {useState} from 'react'
-// import {connect} from 'react-redux'
-// import {Link} from 'react-router-dom'
-// import {handleLogin} from '../../ducks/reducer'
+import logo from '../../images/fno.png'
+import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
+import {login} from '../../ducks/reducer'
 import './login.css'
 
-const UserLogin = () => {
+
+const Login = (props) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    
+    const handleUpdates = (e) => {
+        if(e.target.name === 'username') {
+            setUsername(e.target.value)
+        }
+        else if(e.target.name === 'password') {
+            setPassword(e.target.value)
+        }
+    }
+
+    const handleLogin = (username,password) => {
+        props.login(username,password)
+    }
 
     return (
-        <div className='login-container'>
-            <img src='https://s3.us-east-2.amazonaws.com/first-night-out/FNO-main-logo.png' className='login-logo' alt='first night out logo'/>
-            <input className='username-login' onChange={(e) => setUsername(e.target.value)} placeholder='Username'
-            />
-            <input className='pass-login' onChange={(e) => setPassword(e.target.value)} placeholder='Password'
-            />
-            {/* <div>
-                <button className='login-button onClick={() => props.handleLogin(username,password)}>Login</button>
-                <Link to='/register'><button className='register-button'>Register</button></Link>
-            </div> */}
+        <div className='loginCont'>
+            <div className='imageCont'>
+                <img src={logo} className='login-logo' alt='logo'/>
+            </div>
+            <div className='inputCont'>
+                <input className='username-login' onChange={handleUpdates} placeholder='Username' name='username'
+                />
+                <input className='pass-login' onChange={handleUpdates} placeholder='Password' type='password' name='password'
+                />
+            </div>
+            <div className='buttonCont'>
+                    <button className='login-button' onClick={() => handleLogin(username,password)}>Login</button>
+                    <Link to='/auth/register'><button className='register-button'>Register</button></Link> 
+            </div>
+            <div className='buttonCont2'>
+                <button className='passportButton'>Login with Passport</button>
+                <button className='googleButton'>Login with Google</button>
 
+            </div>
+            
             {username ? <span className='username-label'>Username</span>
             :
             null
@@ -33,9 +57,6 @@ const UserLogin = () => {
     )
 }
 
-// const mapStateToProps = state => state
+const mapStateToProps = state => state
 
-export default UserLogin
-
-
-// export default connect(mapStateToProps, {handleLogin})(UserLogin)
+export default connect(mapStateToProps, {login})(Login)

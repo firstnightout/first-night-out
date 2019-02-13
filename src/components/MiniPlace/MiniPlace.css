@@ -1,0 +1,21 @@
+.mini-place {
+    display: flex;
+    border: 1px solid red;
+    align-items: center;
+    height: 25vh;
+}
+.mini-place-photo {
+    width: 35vw;
+    height: 35vw;
+    border-radius: 50%;
+    margin-left: 5vw;
+}
+.mini-place-info {
+    border: 1px solid purple;
+    height: 100%;
+    width: 59%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
