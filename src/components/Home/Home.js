@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import MiniPlace from './../MiniPlace/MiniPlace'
+import MiniRoute from './../MiniRoute/MiniRoute'
 
 const Home = (props) => {
     //REMEMBER TO HIDE API KEY LATER
@@ -20,7 +20,9 @@ const Home = (props) => {
     }, []);
     return(
         <div>
-            <MiniPlace />
+            <MiniRoute />
+            <MiniRoute />
+            <MiniRoute />
         </div>
     )
 }
