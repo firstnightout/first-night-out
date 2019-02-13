@@ -6,6 +6,7 @@ const session = require("express-session");
 const { findStuffNearLocation, searchForLocation, getPlaceDetails } = require('./controllers/mapsController')
 const { register, login, signout } = require('./controllers/firebaseControllers');
 
+
 const app = express();
 app.use(json());
 

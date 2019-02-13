@@ -9,6 +9,9 @@ import Entertainment from './components/Entertainment/Entertainment';
 import NightLife from './components/NightLife/NightLife';
 import Spa from './components/Spa/Spa';
 import FamilyFun from './components/FamilyFun/FamilyFun';
+import Categories from './components/Categories/Categories'
+import Details from './components/Details/Details'
+
 
 export default (
     <Switch>
@@ -21,6 +24,8 @@ export default (
         <Route path="/night-life" component={ NightLife }/>
         <Route path="/spa" component={ Spa }/>
         <Route path="/family-fun" component={ FamilyFun }/>
+        <Route path="/categories" component={ Categories }/>
+        <Route path='/details/:id' component={ Details }/>
         {/* <Route /> */}
     </Switch>
 )
