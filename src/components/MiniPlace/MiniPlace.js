@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
+import './MiniPlace.css'
 
 const MiniPlace = (props) => {
     const [ref, setRef] = useState(0);
@@ -49,10 +50,12 @@ const MiniPlace = (props) => {
         //     })
         // }, [])
     return(
-        <>
-            <img src={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${testPlace.photos[0].photo_reference}&maxheight=100&key=AIzaSyB3hkAtDj8ZZK9ptagSp_YqQouPEMcuaCo`} />
-            <h1>{testPlace.name}</h1>
-        </>
+        <div className='mini-place'>
+            <img className='mini-place-photo' src={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${testPlace.photos[0].photo_reference}&maxheight=100&key=AIzaSyB3hkAtDj8ZZK9ptagSp_YqQouPEMcuaCo`} />
+            <div className='mini-place-info'>
+                <h1>{testPlace.name}</h1>
+            </div>
+        </div>
     );
 }
 export default MiniPlace;
