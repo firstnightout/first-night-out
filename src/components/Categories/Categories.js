@@ -9,7 +9,6 @@ const Categories = () => {
 
     return (
         <div className='CategoriesCont'>
-        <Nav/>
             <div className='categoriesWrapper'>
                 <Link to='/food'><div title='Food' className='foodPic'/></Link>
                 <Link to='/family-fun'><div title='Family Fun' className='familyFunPic'/></Link>

@@ -29,7 +29,6 @@ const Nav = (props) => {
             {toggle ? 
                 <nav className='navDropDownMenu'>
                     {toggleLinks &&
-                    <div>
                         <div className='navDropDownMenuText'>
                             <div className='navPopOutHeader'>
                                 <button onClick={handleToggle} className='exitButton'>X</button>
@@ -52,8 +51,7 @@ const Nav = (props) => {
                                 <Link to='home' className='homeLink'>Home</Link>
                             </div>
                             <Link to='/'><button className='logoutButton'>logout</button></Link>
-                        </div>
-                        <div className='opacBar'></div>
+                            {/* <div className='opacBar'></div> */}
                         </div>
                     }
                 </nav>
