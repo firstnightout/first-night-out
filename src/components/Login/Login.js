@@ -9,8 +9,8 @@ const UserLogin = () => {
     const [password, setPassword] = useState('')
 
     return (
-        <div className='loginCont'>
-            <img src='' className='login-logo' alt='logo'/>
+        <div className='login-container'>
+            <img src='https://s3.us-east-2.amazonaws.com/first-night-out/FNO-main-logo.png' className='login-logo' alt='first night out logo'/>
             <input className='username-login' onChange={(e) => setUsername(e.target.value)} placeholder='Username'
             />
             <input className='pass-login' onChange={(e) => setPassword(e.target.value)} placeholder='Password'
