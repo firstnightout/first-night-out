@@ -2,10 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const {json} = require('body-parser');
 const session = require("express-session");
-// const bcrypt = require('bcryptjs');
-const {findStuffNearLocation, searchForLocation} = require('./controllers/mapsController')
 const { register, login, signout } = require('./controllers/firebaseControllers');
-
+const {findStuffNearLocation, searchForLocation} = require('./controllers/mapsController')
 const app = express();
 app.use(json());
 
