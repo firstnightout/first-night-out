@@ -1,17 +1,15 @@
 require('dotenv').config();
 const express = require('express');
 const {json} = require('body-parser');
-const {} = require('./controllers/firebaseControllers');
-const {findStuffNearLocation, searchForLocation} = require('./controllers/mapsController')
 const session = require("express-session");
 // const bcrypt = require('bcryptjs');
-const PORT = 3005;
-const { register, login, signOut } = require('./controllers/firebaseControllers');
+const {findStuffNearLocation, searchForLocation} = require('./controllers/mapsController')
+const { register, login, signout } = require('./controllers/firebaseControllers');
 
 const app = express();
 app.use(json());
 
-// SESSION: 
+// SESSION:
 app.use(
     session({
         name: 'First Night Out',
@@ -24,10 +22,12 @@ app.use(
 //ENDPOINTS: 
 app.post('/api/auth/login', login);
 app.post('/api/auth/register', register);
-app.delete('/api/auth/signout', signOut);
+app.delete('/api/auth/signout', signout);
+app.post('/api/places/near', findStuffNearLocation);
+app.post('/api/places/search', searchForLocation);
+
 
 const PORT = process.env.SERVER_PORT || 4000;
-
 // app.get('/api/seed', seed)
 
 app.listen(PORT, () => console.log(`Listening on Port ${PORT}`));
