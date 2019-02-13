@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import logo from '../../images/fno.png'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {login} from '../../ducks/reducer'
@@ -19,14 +18,14 @@ const Login = (props) => {
         }
     }
 
-    const handleLogin = (username,password) => {
+    const handleLogin = () => {
         props.login(username,password)
     }
 
     return (
         <div className='loginCont'>
             <div className='imageCont'>
-                <img src={logo} className='login-logo' alt='logo'/>
+                
             </div>
             <div className='inputCont'>
                 <input className='username-login' onChange={handleUpdates} placeholder='Username' name='username'
@@ -35,7 +34,7 @@ const Login = (props) => {
                 />
             </div>
             <div className='buttonCont'>
-                    <button className='login-button' onClick={() => handleLogin(username,password)}>Login</button>
+                    <button className='login-button' onClick={handleLogin}>Login</button>
                     <Link to='/auth/register'><button className='register-button'>Register</button></Link> 
             </div>
             <div className='buttonCont2'>
