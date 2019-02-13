@@ -1,0 +1,8 @@
+.carousel-img {
+    width: 100vw;
+    height: 30vh;
+}
+.home {
+    z-index: -100;
+    /* background: rgba(167, 167, 167, .6); */
+}

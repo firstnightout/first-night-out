@@ -2,8 +2,9 @@ require('dotenv').config();
 const express = require('express');
 const {json} = require('body-parser');
 const session = require("express-session");
+// const bcrypt = require('bcryptjs');
+const { findStuffNearLocation, searchForLocation, getPlaceDetails } = require('./controllers/mapsController')
 const { register, login, signout } = require('./controllers/firebaseControllers');
-const {findStuffNearLocation, searchForLocation} = require('./controllers/mapsController')
 
 
 const app = express();
@@ -25,7 +26,7 @@ app.post('/api/auth/register', register);
 app.delete('/api/auth/signout', signout);
 app.post('/api/places/near', findStuffNearLocation);
 app.post('/api/places/search', searchForLocation);
-
+app.post('/api/places/details', getPlaceDetails);
 
 const PORT = process.env.SERVER_PORT || 4000;
 // app.get('/api/seed', seed)
