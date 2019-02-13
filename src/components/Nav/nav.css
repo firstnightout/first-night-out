@@ -2,6 +2,8 @@
     width: 100vw;
     height: 7vh;
     background: #4527a0;
+    display: flex;
+    flex-direction: column;
 }
 
 .fa-bars {
@@ -16,14 +18,16 @@
 
 .fa-search, .fa-home {
     display: flex;
-    margin-right: 10vw;
     color: rgb(153, 152, 152);
+    margin-right: 16vw;
+    margin-left: -8vw;
 }
 
 .fa-user-alt {
     display: flex;
-    margin-right: 7vw;
     color: rgb(153, 152, 152);
+    margin-right: 15vw;
+    margin-left: -5vw;
 }
 
 .navLogo {
@@ -45,6 +49,7 @@
     border: none;
     color: white;
     background: #4527A0;
+    font-size: 1em;
 }
 
 .navDropDownMenu {
@@ -89,22 +94,18 @@
     align-items: center;
 }
 
-.accountImgDiv, .createLink, .searchImgDiv, .homeImgDiv { 
+.accountImgDiv, .searchImgDiv, .homeImgDiv, .createDiv { 
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 105vw;
-    height: 10vh;
-}
-
-.createLink {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 91vw;
+    width: 90vw;
     height: 10vh;
     border-top: 1px solid #d9d9d9; 
-    margin-right: 1vw;
+}
+
+.fa-plus {
+    display: flex;
+    color: rgb(153, 152, 152);
 }
 
 .accountLink, .homeLink, .searchLink, .createLink {
@@ -112,11 +113,21 @@
     color: black;
 }
 
-.accountImgDiv, .searchImgDiv, .homeImgDiv {
-    border-top: 1px solid #d9d9d9; 
-    margin-right: 15vw;
+.createLink {
+    margin-left: 11vw;
 }
 
 .homeImgDiv {
     border-bottom: 1px solid #d9d9d9; 
 }
+
+.opacBar {
+    top: 0;
+    right: 0;
+    position: absolute;
+    width: 10vw;
+    height: 100vh;
+    background: black;
+    opacity: .7;
+}
+

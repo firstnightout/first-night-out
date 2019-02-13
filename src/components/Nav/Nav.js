@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 // import {} from '../../ducks/reducer'
 import './nav.css'
+import Categories from '../Categories/Categories'
 
 const Nav = (props) => {
 
@@ -27,7 +28,8 @@ const Nav = (props) => {
 
             {toggle ? 
                 <nav className='navDropDownMenu'>
-                    {toggleLinks ?
+                    {toggleLinks &&
+                    <div>
                         <div className='navDropDownMenuText'>
                             <div className='navPopOutHeader'>
                                 <button onClick={handleToggle} className='exitButton'>X</button>
@@ -37,7 +39,10 @@ const Nav = (props) => {
                                 <i className="fas fa-user-alt"></i>
                                 <Link to='/account' className='accountLink'>Account</Link>
                             </div>
-                            <Link to='route' className='createLink'>Create Route</Link>
+                            <div className='createDiv'>
+                                <i class="fas fa-plus"></i>
+                                <Link to='route' className='createLink'>Create Route</Link>
+                            </div>
                             <div className='searchImgDiv'>
                                 <i className="fas fa-search"></i>
                                 <Link to='search' className='searchLink'>Search</Link>
@@ -48,7 +53,9 @@ const Nav = (props) => {
                             </div>
                             <Link to='/'><button className='logoutButton'>logout</button></Link>
                         </div>
-                    : null}
+                        <div className='opacBar'></div>
+                        </div>
+                    }
                 </nav>
                     :
                 <nav className='hideNavDropDownMenu'/>
