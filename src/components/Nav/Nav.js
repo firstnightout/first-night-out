@@ -3,12 +3,12 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 // import {} from '../../ducks/reducer'
 import './nav.css'
-import Categories from '../Categories/Categories'
 
 const Nav = (props) => {
 
     const [toggle, setToggle] = useState(false)
     const [toggleLinks, setToggleLinks] = useState(false)
+    const [toggleOpacity, setToggleOpacity] = useState(false)
 
     const handleToggle = () => {
         setToggle(!toggle)
@@ -17,6 +17,10 @@ const Nav = (props) => {
             setToggleLinks(!toggleLinks)
             
         }, 400);
+
+        setTimeout(() => {
+            setToggleOpacity(!toggleOpacity)
+        }, 500);
     }
 
     return (
@@ -28,6 +32,8 @@ const Nav = (props) => {
 
             {toggle ? 
                 <nav className='navDropDownMenu'>
+                    {toggleOpacity &&
+                        <div className='opacBar' onClick={handleToggle}></div>}
                     {toggleLinks &&
                         <div className='navDropDownMenuText'>
                             <div className='navPopOutHeader'>
@@ -51,7 +57,6 @@ const Nav = (props) => {
                                 <Link to='home' className='homeLink'>Home</Link>
                             </div>
                             <Link to='/'><button className='logoutButton'>logout</button></Link>
-                            {/* <div className='opacBar'></div> */}
                         </div>
                     }
                 </nav>
