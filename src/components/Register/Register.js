@@ -5,6 +5,12 @@ import {register} from '../../ducks/reducer'
 import './register.css'
 
 
+// register needs to be broken up into two views.
+// continue btn should navigate to the seond registraton page
+// <Route path="/auth/register-2" component={ Register2 }/>
+
+
+
 const Register = (props) => {
     const [firstName, setFirstName] = useState()
     const [lastName, setLastName] = useState()
@@ -45,6 +51,8 @@ const Register = (props) => {
             case 'profilePic':
                 setProfilePic(e.target.value)
                 break
+            default:
+                return ;
         }
     }
 
@@ -60,12 +68,19 @@ const Register = (props) => {
                 <input name='lastName' onChange={handleUpdate} placeholder='Last Name' className='last-name'/>
                 <input name='username' onChange={handleUpdate} placeholder='Username' className='user-name'/>
                 <input name='password' onChange={handleUpdate} placeholder='Password' type='password' className='reg-password'/>
+
+
+
+
                 <input name='address' onChange={handleUpdate} placeholder='Address' className='reg-address'/>
                 <input name='city' onChange={handleUpdate} placeholder='City' className='reg-city'/>
                 <input name='state' onChange={handleUpdate} placeholder='State' className='reg-state'/>
                 <input name='zip' onChange={handleUpdate} placeholder='Zip' className='reg-zip'/>
+
                 <label className='label'>Select image for profile pic:</label>
                 <input name='profilePic' onChange={handleUpdate} placeholder='Profile Picture' type='file' className='profile-pic'/>
+
+                g
                 <button onClick={handleRegister} 
                     className='sign-up'>Sign up</button>
             </div>

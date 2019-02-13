@@ -11,10 +11,10 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Router>
-          <div>
-          <Nav />
-          { routes }
-          </div>
+            <div>
+              <Nav />
+                { routes }
+            </div>
         </Router>
       </Provider>
     );
