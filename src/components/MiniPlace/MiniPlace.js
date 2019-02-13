@@ -24,7 +24,7 @@ const MiniPlace = (props) => {
             <img className='mini-place-photo' src={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${props.photo}&maxheight=100&key=AIzaSyB3hkAtDj8ZZK9ptagSp_YqQouPEMcuaCo`} />
             <div className='mini-place-info'>
                 <h1>{name}</h1>
-                <h3>{ref.formatted_address ? ref.formatted_address.substring(0, ref.formatted_address.indexOf(',', ref.formatted_address.indexOf(',') + 1)) : null }</h3>
+                <h3>{ref.formatted_address && ref.formatted_address.substring(0, ref.formatted_address.indexOf(',', ref.formatted_address.indexOf(',') + 1))}</h3>
                 <h3>{ref.rating}</h3>
             </div>
         </div>

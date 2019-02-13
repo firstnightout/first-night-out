@@ -14,7 +14,7 @@ const Home = (props) => {
         //Get the nearby places for the user
         let address = '500 S Ervay St, Dallas, TX';
         let temp = address.split(' ').join('+');
-        axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${temp}&key=AIzaSyA0dEOfis7q8Pl8_MM5uhen6ustyIGwCvQ`).then(async response => {
+        axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${temp}&key=AIzaSyA0dEOfis7q8Pl8_MM5uhen6ustyIGwCvQ`).then(response => {
             let {lat, lng} = response.data.results[0].geometry.location
             const location = `${lat},${lng}`;
             axios.post('/api/places/near', {location, radius: 500, type: 'restaurant'}).then(response2 => {
