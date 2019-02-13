@@ -7,8 +7,6 @@ import Nav from '../Nav/Nav'
 const Categories = () => {
 
 
-
-
     return (
         <div className='CategoriesCont'>
             <div className='catHeader'></div>
