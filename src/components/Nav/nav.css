@@ -1,0 +1,42 @@
+.navBarMain {
+    width: 100vw;
+    height: 7vh;
+    background: #4527a0;
+}
+
+.fa-bars {
+    font-size: 1.8em;
+    font-weight: bold;
+    width: 10vw;
+    height: 5vh;
+    margin-top: 1vh;
+    margin-left: 2vw;
+    color: white;
+}
+
+.fa-user-alt {
+    width: 10vw;
+    height: 10vh;
+    border-radius: 50%;
+}
+
+.fa-search {
+
+}
+
+.navDropDownMenu {
+    height: 100vh;
+    width: 90vw;
+    background: #d9d9d9;
+    transition: 1s;
+}
+
+.logoutButton {
+    background: #4527a0;
+    min-width: 15vw;
+    min-height: 3vh;
+}
+
+.hideNavDropDownMenu {
+    display: none;
+}

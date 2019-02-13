@@ -4,6 +4,8 @@ const {json} = require('body-parser');
 const session = require("express-session");
 const { register, login, signout } = require('./controllers/firebaseControllers');
 const {findStuffNearLocation, searchForLocation} = require('./controllers/mapsController')
+
+
 const app = express();
 app.use(json());
 

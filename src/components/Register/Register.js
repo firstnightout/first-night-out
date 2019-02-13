@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import logo from '../../images/fno.png'
 import {connect} from 'react-redux'
 // import {Link} from 'react-router-dom'
 import {register} from '../../ducks/reducer'
@@ -24,54 +23,65 @@ const Register = (props) => {
     const [profilePic, setProfilePic] = useState()
 
     const handleUpdate = (e) => {
-        if(e.target.name === 'firstName') {
-            setFirstName(e.target.value)
-        }
-        else if(e.target.name === 'lastName') {
-            setLastName(e.target.value)
-        }
-        else if(e.target.name === 'username') {
-            setUsername(e.target.value)
-        }
-        else if(e.target.name === 'password') {
-            setPassword(e.target.value)
-        }
-        else if(e.target.name === 'address') {
-            setAddress(e.target.value)
-        }
-        else if(e.target.name === 'city') {
-            setCity(e.target.value)
-        }
-        else if(e.target.name === 'state') {
-            setState(e.target.value)
-        }
-        else if(e.target.name === 'zip') {
-            setZip(e.target.value)
-        }
-        else if(e.target.name === 'profilePic') {
-            setProfilePic(e.target.value)
+        switch(e.target.name) {
+            case 'firstName': 
+                setFirstName(e.target.value)
+                break
+            case 'lastName':
+                setLastName(e.target.value)
+                break
+            case 'username':
+                setUsername(e.target.value)
+                break
+            case 'password':
+                setPassword(e.target.value)
+                break
+            case 'address':
+                setAddress(e.target.value)
+                break
+            case 'city':
+                setCity(e.target.value)
+                break
+            case 'state':
+                setState(e.target.value)
+                break
+            case 'zip':
+                setZip(e.target.value)
+                break
+            case 'profilePic':
+                setProfilePic(e.target.value)
+                break
+            default:
+                return ;
         }
     }
 
-    const handleRegister = (firstName,lastName,username,password,address,city,state,zip,profilePic) => {
+    const handleRegister = () => {
         props.register(firstName,lastName,username,password,address,city,state,zip,profilePic)
     }
 
     return (
-        <div className='mainCont'>
+        <div className='registerMainCont'>
             <div className='registerCont'>
                 <span className='reg-title'>Account Registration</span>
                 <input name='firstName' onChange={handleUpdate} placeholder='First Name' className='first-name'/>
                 <input name='lastName' onChange={handleUpdate} placeholder='Last Name' className='last-name'/>
                 <input name='username' onChange={handleUpdate} placeholder='Username' className='user-name'/>
                 <input name='password' onChange={handleUpdate} placeholder='Password' type='password' className='reg-password'/>
+
+
+
+
                 <input name='address' onChange={handleUpdate} placeholder='Address' className='reg-address'/>
                 <input name='city' onChange={handleUpdate} placeholder='City' className='reg-city'/>
                 <input name='state' onChange={handleUpdate} placeholder='State' className='reg-state'/>
                 <input name='zip' onChange={handleUpdate} placeholder='Zip' className='reg-zip'/>
+
                 <label className='label'>Select image for profile pic:</label>
                 <input name='profilePic' onChange={handleUpdate} placeholder='Profile Picture' type='file' className='profile-pic'/>
-                <button onClick={() => handleRegister(firstName,lastName,username,password,address,city,state,zip,profilePic)} 
+
+                g
+                <button onClick={handleRegister} 
                     className='sign-up'>Sign up</button>
             </div>
         </div>

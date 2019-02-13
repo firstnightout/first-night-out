@@ -11,6 +11,9 @@ import Spa from './components/Spa/Spa';
 import FamilyFun from './components/FamilyFun/FamilyFun';
 import Register2 from './components/Register/Register2';
 import VenueCard from './components/VenueCard/VenueCard';
+import Categories from './components/Categories/Categories'
+import Details from './components/Details/Details'
+
 
 export default (
     <Switch>
@@ -30,5 +33,8 @@ export default (
         <Route path="/night-life" component={ NightLife }/>
         <Route path="/spa" component={ Spa }/>
         <Route path="/family-fun" component={ FamilyFun }/>
+        <Route path="/categories" component={ Categories }/>
+        <Route path='/details/:id' component={ Details }/>
+        {/* <Route /> */}
     </Switch>
 )
