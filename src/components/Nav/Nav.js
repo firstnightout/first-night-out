@@ -4,16 +4,16 @@ import {Link} from 'react-router-dom'
 // import {} from '../../ducks/reducer'
 import './nav.css'
 
-const Nav = () => {
+const Nav = (props) => {
 
     return (
         <div>
-            <div>
+            <div className='navBarMain'>
                 <i className="fas fa-bars"></i>
-                <span>{props.users[0].username}</span>
+                {/* <span>{props.users[0].username}</span> */}
             </div>
             <div>
-                <img src={props.users[0].profilePic} className='navUserImg'/>
+                {/* <img src={props.users[0].profilePic} className='navUserImg'/> */}
             </div>
         </div>
     )

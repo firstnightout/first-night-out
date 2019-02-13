@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {register} from '../../ducks/reducer'
 import './register.css'
 
+
 const Register = (props) => {
     const [firstName, setFirstName] = useState()
     const [lastName, setLastName] = useState()

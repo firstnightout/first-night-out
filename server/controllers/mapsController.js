@@ -1,7 +1,7 @@
 const axios = require('axios');
 const nearbyBaseURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json';
 const textSearchURL = 'https://maps.googleapis.com/maps/api/place/textsearch/json'
-
+const photoRefURL = 'https://maps.googleapis.com/maps/api/place/photo'
 function searchForLocation(req, res, next) {
     const {query, location, radius, minPrice, maxPrice, type} = req.body;
     const key = process.env.GCLOUD_PLACES_API;
@@ -34,7 +34,6 @@ function searchForLocation(req, res, next) {
 function findStuffNearLocation(req, res, next) {
     const {location, radius, keyword, minPrice, maxPrice, name, openNow, type} = req.body;
     const key = process.env.GCLOUD_PLACES_API;
-    console.log(key)
     //LOCATION, RADIUS, AND KEY ARE ALL REQUIRED
     if(!(location && radius && key)) {
         res.status(412).json({error: "INVALID_REQUEST"});
@@ -64,5 +63,5 @@ function findStuffNearLocation(req, res, next) {
 
 module.exports = {
     findStuffNearLocation,
-    searchForLocation
+    searchForLocation,
 }

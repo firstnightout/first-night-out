@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import './categories.css'
+import Nav from '../Nav/Nav'
 
 const Categories = () => {
 
@@ -19,6 +20,7 @@ const Categories = () => {
                 <Link to='/night-life'><div title='Night Life' className='nightLifePic'/></Link>
                 <Link to='/entertainment'><div title='Entertainment' className='ePic'/></Link>
             </div>
+                <Nav/>
                 <span className='foodLabel'>Food</span>
                 <span className='ffLabel'>Family Fun</span>
                 <span className='sLabel'>Shopping</span>

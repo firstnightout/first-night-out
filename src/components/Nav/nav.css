@@ -1,0 +1,11 @@
+.navBarMain {
+    width: 100vw;
+    height: 10vh;
+}
+
+.fa-bars {
+    font-size: 1em;
+    font-weight: bold;
+    width: 10vw;
+    height: 5vh;
+}
