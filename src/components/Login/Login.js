@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import logo from '../../images/fno.png'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {login} from '../../ducks/reducer'
@@ -26,7 +25,7 @@ const Login = (props) => {
     return (
         <div className='loginCont'>
             <div className='imageCont'>
-                <img src={logo} className='login-logo' alt='logo'/>
+                
             </div>
             <div className='inputCont'>
                 <input className='username-login' onChange={handleUpdates} placeholder='Username' name='username'
