@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 // import {} from '../../ducks/reducer'
 import './nav.css'
-import tempimage from '../../images/fno.png'
 
 const Nav = (props) => {
 
@@ -16,7 +15,7 @@ const Nav = (props) => {
         setTimeout(() => {
             setToggleLinks(!toggleLinks)
             
-        }, 750);
+        }, 400);
     }
 
     return (
@@ -31,9 +30,9 @@ const Nav = (props) => {
                     {toggleLinks ?
                         <div className='navDropDownMenuText'>
                             <div className='navPopOutHeader'>
-                                <button className='exitButton'>x</button>
+                                <button onClick={handleToggle} className='exitButton'>X</button>
                             </div>
-                            <img src={tempimage} className='navLogo'/>
+                            <img src='https://s3.us-east-2.amazonaws.com/first-night-out/ham-logo.png' className='navLogo'/>
                             <div className='accountImgDiv'>
                                 <i className="fas fa-user-alt"></i>
                                 <Link to='/account' className='accountLink'>Account</Link>
