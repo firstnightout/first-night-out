@@ -19,12 +19,11 @@ const MiniRoute = (props) => {
             rating: 5
         }
     ]
-    let renderArr = [];
-    places.forEach((element, i) => {
-        renderArr.push(<img className={`mini-route-image-${i+1}`} src={element.image} />);
-    });
+    let renderArr = places.map((element, i) => <img className={`mini-route-image-${i+1}`} src={element.image} />);
     return(
         <div className='mini-route'>
+        <h1 className='mini-route-text mini-route-username'>Username</h1>
+        <h3 className='mini-route-text mini-route-likes'>5 Likes</h3>
             {renderArr}
         </div>
     )

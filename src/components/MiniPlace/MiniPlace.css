@@ -1,8 +1,11 @@
 .mini-place {
     display: flex;
-    border: 1px solid red;
     align-items: center;
     height: 25vh;
+    margin-bottom: 1vh;
+    width: 99vw;
+    box-shadow: 3px 3px rgba(36, 36, 36, .7);
+    background: white;
 }
 .mini-place-photo {
     width: 35vw;
@@ -11,11 +14,13 @@
     margin-left: 5vw;
 }
 .mini-place-info {
-    border: 1px solid purple;
     height: 100%;
     width: 59%;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    font-size: .6em;
+    text-align: center;
 }
 
