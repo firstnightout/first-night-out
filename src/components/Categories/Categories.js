@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import './categories.css'
-import Nav from '../Nav/Nav'
 
 const Categories = () => {
 
