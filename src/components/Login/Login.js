@@ -1,9 +1,15 @@
 import React, {useState} from 'react'
-import logo from '../../images/fno.png'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {login} from '../../ducks/reducer'
 import './login.css'
+import { login } from '../../ducks/reducer';
+
+
+
+
+
+
+//ONLY MOBILE VIEW COMPATIBLE
 
 
 const Login = (props) => {
@@ -24,35 +30,34 @@ const Login = (props) => {
     }
 
     return (
-        <div className='loginCont'>
-            <div className='imageCont'>
-                <img src={logo} className='login-logo' alt='logo'/>
-            </div>
-            <div className='inputCont'>
-                <input className='username-login' onChange={handleUpdates} placeholder='Username' name='username'
-                />
-                <input className='pass-login' onChange={handleUpdates} placeholder='Password' type='password' name='password'
-                />
-            </div>
-            <div className='buttonCont'>
-                    <button className='login-button' onClick={() => handleLogin(username,password)}>Login</button>
-                    <Link to='/auth/register'><button className='register-button'>Register</button></Link> 
-            </div>
-            <div className='buttonCont2'>
-                <button className='passportButton'>Login with Passport</button>
-                <button className='googleButton'>Login with Google</button>
+        <div className='login-container'>
 
-            </div>
+                <img 
+                    src="https://s3.us-east-2.amazonaws.com/first-night-out/FNO-main-logo.png" className='login-logo' 
+                    alt='first night out logo'
+                />
+        
             
-            {username ? <span className='username-label'>Username</span>
-            :
-            null
-            }
+                    <input  
+                        onChange={handleUpdates} 
+                        placeholder=' username' 
+                        name='username'
+                        className="login-input"
+                    />
+                    <input  
+                        onChange={handleUpdates} 
+                        placeholder=' password' 
+                        type='password' 
+                        name='password'
+                        className="login-input"
+                    />
+                    <Link to="/">
+                    <button 
+                    className="main-btn" 
+                    onClick={() => handleLogin(username,password)}>Login</button>
+                    </Link>
 
-            {password ? <span className='password-label'>Password</span>
-            :
-            null
-            }   
+                    <Link to="/auth/register-1"><button className="sign-up-btn">sign up</button></Link>
         </div>
     )
 }

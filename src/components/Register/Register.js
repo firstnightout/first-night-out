@@ -5,6 +5,13 @@ import {connect} from 'react-redux'
 import {register} from '../../ducks/reducer'
 import './register.css'
 
+
+// register needs to be broken up into two views.
+// continue btn should navigate to the seond registraton page
+// <Route path="/auth/register-2" component={ Register2 }/>
+
+
+
 const Register = (props) => {
     const [firstName, setFirstName] = useState()
     const [lastName, setLastName] = useState()

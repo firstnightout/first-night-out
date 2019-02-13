@@ -9,18 +9,26 @@ import Entertainment from './components/Entertainment/Entertainment';
 import NightLife from './components/NightLife/NightLife';
 import Spa from './components/Spa/Spa';
 import FamilyFun from './components/FamilyFun/FamilyFun';
+import Register2 from './components/Register/Register2';
+import VenueCard from './components/VenueCard/VenueCard';
 
 export default (
     <Switch>
         <Route exact path="/" component={ Login }/>
-        <Route path="/auth/register" component={ Register }/>
+        <Route path="/auth/register-1" component={ Register }/>
+        <Route path="/auth/register-2" component={ Register2 }/>
         <Route path="/home" component={Home} />
+
+        <Route path="/venue/details" component={ VenueCard } />
+
+
+
+        {/* Route creation routes */}
         <Route path="/food" component={ Food }/>
         <Route path="/shopping" component={ Shopping }/>
         <Route path="/entertainment" component={ Entertainment }/>
         <Route path="/night-life" component={ NightLife }/>
         <Route path="/spa" component={ Spa }/>
         <Route path="/family-fun" component={ FamilyFun }/>
-        {/* <Route /> */}
     </Switch>
 )
