@@ -3,8 +3,9 @@
     width: 15vh;
     border-radius: 50%;
     position: absolute;
+    border: 2px solid whitesmoke;
     display: flex;
-    border: 1px solid black;
+    margin-top: 1.5vh;
 }
 .test-username {
     display: flex;
@@ -14,15 +15,27 @@
     z-index: 100;
 }
 .mini-route-image-2 {
-    right: 12vw;
+    right: 22vw;
     z-index: 99;
 }
 .mini-route-image-3 {
-    right: 22vw
+    right: 42vw
 }
 .mini-route {
-    width: 99.5vw;
-    height: 15.5vh;
+    width: 99vw;
+    height: 18vh;
     margin-top: 2vh;
-    /* border: 1px solid red; */
+    box-shadow: 3px 3px rgba(167, 167, 167, .6);
+}
+.mini-route-text {
+    position: absolute;
+    margin-left: 2vw;
+}
+.mini-route-likes {
+    margin-top: 10vh;
+    font-size: .8em;
+}
+.mini-route-username {
+    font-size: 1em;
+    margin-top: 4vh;
 }
