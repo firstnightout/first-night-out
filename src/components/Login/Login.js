@@ -54,7 +54,7 @@ const Login = (props) => {
                     <Link to="/">
                     <button 
                     className="main-btn" 
-                    onClick={() => handleLogin(username,password)}>Login</button>
+                    onClick={ handleLogin}>Login</button>
                     </Link>
 
                     <Link to="/auth/register-1"><button className="sign-up-btn">sign up</button></Link>
