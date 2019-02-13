@@ -15,7 +15,6 @@ var config = {
 firebase.initializeApp(config);
 
 const login = (req, res) =>{
-    //connect to the database
     let db = firebase.database();
         db.ref('users').once('value').then( response => {
             let user = response.val().find(user => user.username === req.body.username)
@@ -75,8 +74,7 @@ const register = (req, res) =>{
             req.session.user = {
                 username: req.body.username
             }
-            res.status(200).json(req.session.user);
-            
+            res.status(200).json(req.session.user);  
     }).catch(err => console.log( err ));
 }
 
@@ -90,3 +88,4 @@ module.exports = {
     register,
     signout
 }
+
