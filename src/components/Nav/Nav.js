@@ -42,21 +42,21 @@ const Nav = (props) => {
                             <img src='https://s3.us-east-2.amazonaws.com/first-night-out/ham-logo.png' className='navLogo'/>
                             <div className='accountImgDiv'>
                                 <i className="fas fa-user-alt"></i>
-                                <Link to='/account' className='accountLink'>Account</Link>
+                                <Link to='/account' className='accountLink' onClick={handleToggle}>Account</Link>
                             </div>
                             <div className='createDiv'>
                                 <i class="fas fa-plus"></i>
-                                <Link to='route' className='createLink'>Create Route</Link>
+                                <Link to='route' className='createLink' onClick={handleToggle}>Create Route</Link>
                             </div>
                             <div className='searchImgDiv'>
                                 <i className="fas fa-search"></i>
-                                <Link to='search' className='searchLink'>Search</Link>
+                                <Link to='search' className='searchLink' onClick={handleToggle}>Search</Link>
                             </div>
                             <div className='homeImgDiv'>
                                 <i className="fas fa-home"></i>
-                                <Link to='home' className='homeLink'>Home</Link>
+                                <Link to='home' className='homeLink' onClick={handleToggle}>Home</Link>
                             </div>
-                            <Link to='/'><button className='logoutButton'>logout</button></Link>
+                            <Link to='/'><button className='logoutButton' onClick={handleToggle}>logout</button></Link>
                         </div>
                     }
                 </nav>
