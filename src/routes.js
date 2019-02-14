@@ -14,6 +14,7 @@ import VenueCard from './components/VenueCard/VenueCard';
 import Categories from './components/Categories/Categories'
 import Details from './components/Details/Details'
 import Map from './components/Map/Map'
+import RouteComponent from './components/Route/Route'
 
 
 export default (
@@ -35,5 +36,6 @@ export default (
         <Route path="/categories" component={ Categories }/>
         <Route path='/details/:id' component={ Details }/>
         <Route path='/map/:id' component={ Map }/>
+        <Route path='/route' component={ RouteComponent }/>
     </Switch>
 )

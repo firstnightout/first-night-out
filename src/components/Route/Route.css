@@ -1,9 +1,34 @@
 .routeMain {
     display: flex;
-    background: black;
 }
 
 .routeScreen {
     width: 100vw;
-    background: black;
+    height: 100vh;
+    background: #d9d9d9;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.mapRoute {
+    background: #69a535;
+    width: 8vh;
+    text-decoration: none;
+    height: 4vh;
+    color: white;
+    border-radius: 5px;
+    position: relative;
+    top: .5vh;
+    margin-right: 4vw;
+}
+
+.myRoute {
+    height: 5vh;
+    top: 0;
+    position: relative;
+    margin-right: 21vw;
+}
+
+.goCont {
+    margin-left: 3.25vw;
 }

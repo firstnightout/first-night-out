@@ -9,19 +9,19 @@ const Categories = () => {
     return (
         <div className='CategoriesCont'>
             <div className='categoriesWrapper'>
-                <Link to='/food'><div title='Food' className='foodPic'/></Link>
-                <Link to='/family-fun'><div title='Family Fun' className='familyFunPic'/></Link>
-                <Link to='/shopping'><div title='Shopping' className='shopping'/></Link>
-                <Link to='/spa'><div title='Spa' className='spaPic'/></Link>
-                <Link to='/night-life'><div title='Night Life' className='nightLifePic'/></Link>
-                <Link to='/entertainment'><div title='Entertainment' className='ePic'/></Link>
+                <Link to='/food'><div title='Food' className='foodPic'/>
+                    <span className='foodLabel'>Food</span></Link>
+                <Link to='/family-fun'><div title='Family Fun' className='familyFunPic'/>
+                    <span className='ffLabel'>Family Fun</span></Link>
+                <Link to='/shopping'><div title='Shopping' className='shopping'/>
+                    <span className='sLabel'>Shopping</span></Link>
+                <Link to='/spa'><div title='Spa' className='spaPic'/>
+                    <span className='spaLabel'>Spa</span></Link>
+                <Link to='/night-life'><div title='Night Life' className='nightLifePic'/>
+                    <span className='nlLabel'>Night Life</span></Link>
+                <Link to='/entertainment'><div title='Entertainment' className='ePic'/>
+                    <span className='eLabel'>Entertainment</span></Link>
             </div>
-                <span className='foodLabel'>Food</span>
-                <span className='ffLabel'>Family Fun</span>
-                <span className='sLabel'>Shopping</span>
-                <span className='spaLabel'>Spa</span>
-                <span className='nlLabel'>Night Life</span>
-                <span className='eLabel'>Entertainment</span>
         </div>
     )
 }
