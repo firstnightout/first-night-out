@@ -1,7 +1,7 @@
-import React, {useState} from 'react'
+import React  from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {register} from '../../ducks/reducer'
+import {register, updateFirstName, updateLastName, updateUsername, updatePassword } from '../../ducks/reducer'
 import './register.css'
 
 
@@ -15,33 +15,17 @@ import './register.css'
 
 
 const Register = (props) => {
-    const [firstName, setFirstName] = useState();
-    const [lastName, setLastName] = useState();
-    const [username, setUsername] = useState();
-    const [password, setPassword] = useState();
-    
-    const handleUpdate = (e) => {
-        switch(e.target.name) {
-            case 'firstName': 
-                setFirstName(e.target.value)
-                break
-            case 'lastName':
-                setLastName(e.target.value)
-                break
-            case 'username':
-                setUsername(e.target.value)
-                break
-            case 'password':
-                setPassword(e.target.value)
-                break
-            default:
-                return ;
-        }
-    }
-
+   
     // const handleRegister = () => {
     //     props.register(firstName,lastName,username,password);
     // }
+
+    // const handleFirstName = (e) => {
+    //     this.props.updateFirstName(e.target.value);
+    // }
+
+
+
 
     return (
         <div className='register-page-1'>
@@ -52,7 +36,7 @@ const Register = (props) => {
                     className="reg-logo"
                 />
 
-                <input name='firstName' onChange={handleUpdate} placeholder='First Name' className='reg-input'/>
+                <input name='firstName' onChange={handleFirstName} placeholder='First Name' className='reg-input'/>
                 <input name='lastName' onChange={handleUpdate} placeholder='Last Name' className='reg-input'/>
                 <input name='username' onChange={handleUpdate} placeholder='Username' className='reg-input'/>
                 <input name='password' onChange={handleUpdate} placeholder='Password' type='password' className='reg-input'/>
@@ -67,6 +51,39 @@ const Register = (props) => {
     )
 }
 
-const mapStateToProps = state => state;
+const mapStateToProps = (state) => {
+    const { firstName, lastName, username, password } = state;
+    return {
+        firstName,
+        lastName, 
+        username, 
+        password
+    }
+}
+export default connect(mapStateToProps, { register, updateFirstName, updateLastName, updateUsername, updatePassword })(Register);
 
-export default connect(mapStateToProps, {register})(Register);
+
+
+// const [firstName, setFirstName] = useState();
+// const [lastName, setLastName] = useState();
+// const [username, setUsername] = useState();
+// const [password, setPassword] = useState();
+
+// const handleUpdate = (e) => {
+//     switch(e.target.name) {
+//         case 'firstName': 
+//             setFirstName(e.target.value)
+//             break
+//         case 'lastName':
+//             setLastName(e.target.value)
+//             break
+//         case 'username':
+//             setUsername(e.target.value)
+//             break
+//         case 'password':
+//             setPassword(e.target.value)
+//             break
+//         default:
+//             return ;
+//     }
+// }
