@@ -2,14 +2,12 @@ import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import './categories.css'
-import Nav from '../Nav/Nav'
 
 const Categories = () => {
 
 
     return (
         <div className='CategoriesCont'>
-        <Nav/>
             <div className='categoriesWrapper'>
                 <Link to='/food'><div title='Food' className='foodPic'/></Link>
                 <Link to='/family-fun'><div title='Family Fun' className='familyFunPic'/></Link>
