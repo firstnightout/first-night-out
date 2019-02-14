@@ -1,0 +1,9 @@
+.routeMain {
+    display: flex;
+    background: black;
+}
+
+.routeScreen {
+    width: 100vw;
+    background: black;
+}
