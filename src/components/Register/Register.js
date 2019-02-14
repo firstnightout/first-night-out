@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
-// import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {register} from '../../ducks/reducer'
 import './register.css'
 
@@ -10,18 +10,16 @@ import './register.css'
 // <Route path="/auth/register-2" component={ Register2 }/>
 
 
+// all of the funtionality from the two register components needs to be strored inside of redux.
+// get rid of all of the hooks and store the user info inside of the reducer. 
+
 
 const Register = (props) => {
-    const [firstName, setFirstName] = useState()
-    const [lastName, setLastName] = useState()
-    const [username, setUsername] = useState()
-    const [password, setPassword] = useState()
-    const [address, setAddress] = useState()
-    const [city, setCity] = useState()
-    const [state, setState] = useState()
-    const [zip, setZip] = useState()
-    const [profilePic, setProfilePic] = useState()
-
+    const [firstName, setFirstName] = useState();
+    const [lastName, setLastName] = useState();
+    const [username, setUsername] = useState();
+    const [password, setPassword] = useState();
+    
     const handleUpdate = (e) => {
         switch(e.target.name) {
             case 'firstName': 
@@ -36,58 +34,39 @@ const Register = (props) => {
             case 'password':
                 setPassword(e.target.value)
                 break
-            case 'address':
-                setAddress(e.target.value)
-                break
-            case 'city':
-                setCity(e.target.value)
-                break
-            case 'state':
-                setState(e.target.value)
-                break
-            case 'zip':
-                setZip(e.target.value)
-                break
-            case 'profilePic':
-                setProfilePic(e.target.value)
-                break
             default:
                 return ;
         }
     }
 
-    const handleRegister = () => {
-        props.register(firstName,lastName,username,password,address,city,state,zip,profilePic)
-    }
+    // const handleRegister = () => {
+    //     props.register(firstName,lastName,username,password);
+    // }
 
     return (
-        <div className='registerMainCont'>
-            <div className='registerCont'>
-                <span className='reg-title'>Account Registration</span>
-                <input name='firstName' onChange={handleUpdate} placeholder='First Name' className='first-name'/>
-                <input name='lastName' onChange={handleUpdate} placeholder='Last Name' className='last-name'/>
-                <input name='username' onChange={handleUpdate} placeholder='Username' className='user-name'/>
-                <input name='password' onChange={handleUpdate} placeholder='Password' type='password' className='reg-password'/>
+        <div className='register-page-1'>
 
+                <img 
+                    src="https://s3.us-east-2.amazonaws.com/first-night-out/FNO-main-logo.png" 
+                    alt="first-night-out-logo" 
+                    className="reg-logo"
+                />
 
+                <input name='firstName' onChange={handleUpdate} placeholder='First Name' className='reg-input'/>
+                <input name='lastName' onChange={handleUpdate} placeholder='Last Name' className='reg-input'/>
+                <input name='username' onChange={handleUpdate} placeholder='Username' className='reg-input'/>
+                <input name='password' onChange={handleUpdate} placeholder='Password' type='password' className='reg-input'/>
 
+                <div>
+                    <Link to="/auth/register-2"><button className="reg-button">continue</button></Link>
+                </div>
 
-                <input name='address' onChange={handleUpdate} placeholder='Address' className='reg-address'/>
-                <input name='city' onChange={handleUpdate} placeholder='City' className='reg-city'/>
-                <input name='state' onChange={handleUpdate} placeholder='State' className='reg-state'/>
-                <input name='zip' onChange={handleUpdate} placeholder='Zip' className='reg-zip'/>
-
-                <label className='label'>Select image for profile pic:</label>
-                <input name='profilePic' onChange={handleUpdate} placeholder='Profile Picture' type='file' className='profile-pic'/>
-
-                g
-                <button onClick={handleRegister} 
-                    className='sign-up'>Sign up</button>
-            </div>
+                
+                <Link to="/"><button className="cancel-btn">cancel</button></Link>                 
         </div>
     )
 }
 
-const mapStateToProps = state => state
+const mapStateToProps = state => state;
 
-export default connect(mapStateToProps, {register})(Register)
+export default connect(mapStateToProps, {register})(Register);

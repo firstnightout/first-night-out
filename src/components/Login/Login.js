@@ -6,12 +6,7 @@ import { login } from '../../ducks/reducer';
 
 
 
-
-
-
 //ONLY MOBILE VIEW COMPATIBLE
-
-
 const Login = (props) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
