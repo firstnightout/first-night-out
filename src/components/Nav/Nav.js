@@ -3,13 +3,13 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 // import {} from '../../ducks/reducer'
 import './nav.css'
-import tempimage from '../../images/fno.png'
 
 const Nav = (props) => {
 
     const hideNavPaths = ['/account'];
     const [toggle, setToggle] = useState(false)
     const [toggleLinks, setToggleLinks] = useState(false)
+    const [toggleOpacity, setToggleOpacity] = useState(false)
 
     const handleToggle = () => {
         setToggle(!toggle)
@@ -17,7 +17,11 @@ const Nav = (props) => {
         setTimeout(() => {
             setToggleLinks(!toggleLinks)
             
-        }, 750);
+        }, 400);
+
+        setTimeout(() => {
+            setToggleOpacity(!toggleOpacity)
+        }, 500);
     }
     return (
         <div>
@@ -28,17 +32,22 @@ const Nav = (props) => {
 
             {toggle ? 
                 <nav className='navDropDownMenu'>
-                    {toggleLinks ?
+                    {toggleOpacity &&
+                        <div className='opacBar' onClick={handleToggle}></div>}
+                    {toggleLinks &&
                         <div className='navDropDownMenuText'>
                             <div className='navPopOutHeader'>
-                                <button className='exitButton'>x</button>
+                                <button onClick={handleToggle} className='exitButton'>X</button>
                             </div>
-                            <img src={tempimage} className='navLogo'/>
+                            <img src='https://s3.us-east-2.amazonaws.com/first-night-out/ham-logo.png' className='navLogo'/>
                             <div className='accountImgDiv'>
                                 <i className="fas fa-user-alt"></i>
                                 <Link to='/account' className='accountLink'>Account</Link>
                             </div>
-                            <Link to='route' className='createLink'>Create Route</Link>
+                            <div className='createDiv'>
+                                <i class="fas fa-plus"></i>
+                                <Link to='route' className='createLink'>Create Route</Link>
+                            </div>
                             <div className='searchImgDiv'>
                                 <i className="fas fa-search"></i>
                                 <Link to='search' className='searchLink'>Search</Link>
@@ -49,7 +58,7 @@ const Nav = (props) => {
                             </div>
                             <Link to='/'><button className='logoutButton'>logout</button></Link>
                         </div>
-                    : null}
+                    }
                 </nav>
                     :
                 <nav className='hideNavDropDownMenu'/>

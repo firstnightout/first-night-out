@@ -5,7 +5,7 @@
 .categoriesWrapper {
     display: flex;
     width: 100vw;
-    height: 90vh;
+    height: 93vh;
     position: relative;
     right: 0;
     left: 0;
@@ -92,6 +92,5 @@
     width: 100vw;
     height: 10vh;
     background: #4527a0;
-
 }
 
