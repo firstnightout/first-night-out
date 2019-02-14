@@ -34,8 +34,8 @@ const Login = (props) => {
                 />
             </div>
             <div className='buttonCont'>
-                    <button className='login-button' onClick={handleLogin}>Login</button>
-                    <Link to='/auth/register'><button className='register-button'>Register</button></Link> 
+                <button className='login-button' onClick={handleLogin}>Login</button>
+                <Link to='/auth/register'><button className='register-button'>Register</button></Link> 
             </div>
             <div className='buttonCont2'>
                 <button className='passportButton'>Login with Passport</button>

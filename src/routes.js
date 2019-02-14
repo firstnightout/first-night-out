@@ -11,11 +11,14 @@ import Spa from './components/Spa/Spa';
 import FamilyFun from './components/FamilyFun/FamilyFun';
 import Categories from './components/Categories/Categories'
 import Details from './components/Details/Details'
-
+import Account from './components/Account/Account';
+import AccountSettings from './components/AccountSettings/AccountSettings'
 
 export default (
     <Switch>
         <Route exact path="/" component={ Login }/>
+        <Route exact path='/account' component={ Account } />
+        <Route exact path='/account/settings' component={ AccountSettings } />
         <Route path="/auth/register" component={ Register }/>
         <Route path="/home" component={Home} />
         <Route path="/food" component={ Food }/>

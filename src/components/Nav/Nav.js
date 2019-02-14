@@ -7,6 +7,7 @@ import tempimage from '../../images/fno.png'
 
 const Nav = (props) => {
 
+    const hideNavPaths = ['/account'];
     const [toggle, setToggle] = useState(false)
     const [toggleLinks, setToggleLinks] = useState(false)
 
@@ -18,7 +19,6 @@ const Nav = (props) => {
             
         }, 750);
     }
-
     return (
         <div>
             <div className='navBarMain'>

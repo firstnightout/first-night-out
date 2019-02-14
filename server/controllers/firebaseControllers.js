@@ -22,7 +22,7 @@ const login = (req, res) =>{
                 res.status(401).json("USER NOT FOUND")
             }
             let isAuthenticated = bcrypt.compareSync(req.body.password, user.password)
-            if(!isAuthenticated){
+            if(!isAuthenticated) {
                 res.status(403).json('INCORRECT PASSWORD')
             } else {
                 req.session.user = {
