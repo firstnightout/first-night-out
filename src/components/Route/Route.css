@@ -1,25 +1,35 @@
 .routeMain {
     display: flex;
+    flex-direction: column;
 }
 
 .routeScreen {
     width: 100vw;
-    height: 100vh;
+    height: 8vh;
     background: #d9d9d9;
     display: flex;
     justify-content: flex-end;
 }
 
 .mapRoute {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: #69a535;
-    width: 8vh;
+    width: 10vh;
     text-decoration: none;
-    height: 4vh;
+    height: 5vh;
     color: white;
     border-radius: 5px;
     position: relative;
-    top: .5vh;
+    top: 1vh;
     margin-right: 4vw;
+    text-align: center;
+}
+
+.spacerRoute {
+    height: 3.5vh;
+    background: #d9d9d9;
 }
 
 .myRoute {
@@ -27,8 +37,11 @@
     top: 0;
     position: relative;
     margin-right: 21vw;
+    margin-top: 1vh;
 }
 
-.goCont {
-    margin-left: 3.25vw;
+.routeDisplay {
+    flex-direction: column;
+    width: 100vw;
+    height: auto;
 }

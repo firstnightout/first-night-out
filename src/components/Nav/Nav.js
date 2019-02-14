@@ -1,8 +1,10 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import axios from 'axios'
 // import {} from '../../ducks/reducer'
 import './nav.css'
+import Axios from 'axios';
 
 const Nav = (props) => {
 
