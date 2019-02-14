@@ -13,6 +13,7 @@ import Register2 from './components/Register/Register2';
 import VenueCard from './components/VenueCard/VenueCard';
 import Categories from './components/Categories/Categories'
 import Details from './components/Details/Details'
+import Map from './components/Map/Map'
 
 
 export default (
@@ -24,8 +25,6 @@ export default (
 
         <Route path="/venue/details" component={ VenueCard } />
 
-
-
         {/* Route creation routes */}
         <Route path="/food" component={ Food }/>
         <Route path="/shopping" component={ Shopping }/>
@@ -35,6 +34,6 @@ export default (
         <Route path="/family-fun" component={ FamilyFun }/>
         <Route path="/categories" component={ Categories }/>
         <Route path='/details/:id' component={ Details }/>
-        {/* <Route /> */}
+        <Route path='/map/:id' component={ Map }/>
     </Switch>
 )
