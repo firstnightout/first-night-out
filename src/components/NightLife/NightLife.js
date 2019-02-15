@@ -12,7 +12,7 @@ const NightLife = (props) => {
     }
 
     return (
-        <div>
+        <div className='nightLifeWrapper'>
             <select className='nightLifeDropDown' name='selected' onChange={handleChange}>
                 <option value='empty'></option>
                 <option value='Bar'>Bar</option>

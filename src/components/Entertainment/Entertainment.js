@@ -12,7 +12,7 @@ const Entertainment = (props) => {
     }
 
 return (
-    <div>
+    <div className='entertainmentWrapper'>
         <select className='entertainmentDropDown' name='selected' onChange={handleChange}>
             <option value='empty'></option>
             <option value='Amusement Park'>Amusement Park</option>

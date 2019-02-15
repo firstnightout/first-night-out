@@ -12,7 +12,7 @@ const Shopping = (props) => {
     }
 
     return (
-        <div>
+        <div className='shoppingWrapper'>
             <select className='shoppingDropDown' name='selected' onChange={handleChange}>
                 <option value='empty'></option>
                 <option value='Book_Store'>Book Store</option>

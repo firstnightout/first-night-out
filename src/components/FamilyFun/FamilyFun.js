@@ -12,7 +12,7 @@ const FamilyFun = (props) => {
     }
 
     return (
-        <div>
+        <div className='familyFunWrapper'>
             <select className='familyFunDropDown' name='selected' onChange={handleChange}>
                 <option value='empty'></option>
                 <option value='Art_Gallery'>Art Gallery</option>

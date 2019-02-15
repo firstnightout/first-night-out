@@ -12,7 +12,7 @@ const Spa = (props) => {
         setSelection(e.target.value);
     }
     return (
-        <div>
+        <div className='spaWrapper'>
             <select className='spaDropDown' name='selected' onChange={handleChange}>
                 <option value='empty'></option>
                 <option value='Spa'>Spa</option>
