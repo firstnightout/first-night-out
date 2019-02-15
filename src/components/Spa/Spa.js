@@ -7,9 +7,13 @@ import './spa.css'
 const Spa = (props) => {
     const[selection, setSelection] = useState()
 
+
+    const handleChange = (e) => {
+        setSelection(e.target.value);
+    }
     return (
         <div>
-            <select className='spaDropDown' name='selected'>
+            <select className='spaDropDown' name='selected' onChange={handleChange}>
                 <option value='empty'></option>
                 <option value='Spa'>Spa</option>
                 <option value='Beauty_Salon'>Beauty Salon</option>

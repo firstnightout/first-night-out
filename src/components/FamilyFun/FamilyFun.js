@@ -7,9 +7,13 @@ import './familyFun.css'
 const FamilyFun = (props) => {
     const[selection, setSelection] = useState()
 
+    const handleChange = (e) => {
+        setSelection(e.target.value);
+    }
+
     return (
         <div>
-            <select className='familyFunDropDown' name='selected'>
+            <select className='familyFunDropDown' name='selected' onChange={handleChange}>
                 <option value='empty'></option>
                 <option value='Art_Gallery'>Art Gallery</option>
                 <option value='Bowling_Alley'>Bowling Alley</option>

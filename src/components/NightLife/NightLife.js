@@ -7,9 +7,13 @@ import './nightLife.css'
 const NightLife = (props) => {
     const[selection, setSelection] = useState()
 
+    const handleChange = (e) => {
+        setSelection(e.target.value);
+    }
+
     return (
         <div>
-            <select className='nightLifeDropDown' name='selected'>
+            <select className='nightLifeDropDown' name='selected' onChange={handleChange}>
                 <option value='empty'></option>
                 <option value='Bar'>Bar</option>
                 <option value='Casino'>Casino</option>

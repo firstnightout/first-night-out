@@ -7,9 +7,13 @@ import './entertainment.css'
 const Entertainment = (props) => {
     const[selection, setSelection] = useState()
 
+    const handleChange = (e) => {
+        setSelection(e.target.value);
+    }
+
 return (
     <div>
-        <select className='entertainmentDropDown' name='selected'>
+        <select className='entertainmentDropDown' name='selected' onChange={handleChange}>
             <option value='empty'></option>
             <option value='Amusement Park'>Amusement Park</option>
             <option value='Aquarium'>Aquarium</option>
