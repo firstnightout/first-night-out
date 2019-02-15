@@ -21,13 +21,13 @@ const Route = (props) => {
             <div>
                 <MiniPlace
                         photo={`CmRaAAAALb8G_p8Uy0PMWKlkS7MoPpy1EcUxuJ7qUzq8bUhCJ_vZEFYRWY_gq1u2xvQ2Sf8m9zmGm3jwCWG51Jgc64HWbxCFNIwgN4tW-yOqR2dTqoQkK0LhZVxp9VztBagKuGuuEhDwjyVWnCk_R1ORGLeqD2jtGhQ-tya89r5DwS7POfbkBXYWBOtV6Q`} place_id={`ChIJ0d3gQh-ZToYRXIOa4JoP5e8`}
-                    />
+                />
             </div>
             <div className='spacerRoute'></div>
             <div>
                 <MiniPlace
                         photo={`CmRaAAAALb8G_p8Uy0PMWKlkS7MoPpy1EcUxuJ7qUzq8bUhCJ_vZEFYRWY_gq1u2xvQ2Sf8m9zmGm3jwCWG51Jgc64HWbxCFNIwgN4tW-yOqR2dTqoQkK0LhZVxp9VztBagKuGuuEhDwjyVWnCk_R1ORGLeqD2jtGhQ-tya89r5DwS7POfbkBXYWBOtV6Q`} place_id={`ChIJ0d3gQh-ZToYRXIOa4JoP5e8`}
-                    />
+                />
             </div>
 
         </div>
