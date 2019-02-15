@@ -19,7 +19,7 @@ const MiniRoute = (props) => {
             rating: 5
         }
     ]
-    let renderArr = places.map((element, i) => <img className={`mini-route-image-${i+1}`} src={element.image} />);
+    let renderArr = places.map((val, i) => <img className={`mini-route-image-${i+1}`} src={val.image} />);
     return(
         <div className='mini-route'>
         <h1 className='mini-route-text mini-route-username'>Username</h1>

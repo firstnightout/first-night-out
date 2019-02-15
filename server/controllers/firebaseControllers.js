@@ -83,9 +83,31 @@ const signout = (req, res) => {
     res.status(200).json('SESSION TERMINATED...BUT HE WILL BE BACK..');
 }
 
+const createRoute = async (req, res) => {
+    const { place1, place2, place3, userID, creationDate, isPublic } = req.body;
+    try {
+        let newRouteKey = await firebase.database().ref('/routes').push({'a': 'a'}).key
+        console.log(newRouteKey);
+        let updateObj = {
+            place1,
+            place2,
+            place3,
+            userID,
+            creationDate,
+            isPublic,
+            routeID: newRouteKey
+        }
+        await firebase.database().ref(`routes`).child(newRouteKey).set(updateObj)
+        res.sendStatus(200)
+    } catch {
+        res.status(400).json({error: "REQUEST_FAILED"})
+    }
+}
+
 module.exports = {
     login,
     register,
-    signout
+    signout,
+    createRoute
 }
 

@@ -4,7 +4,7 @@ const {json} = require('body-parser');
 const session = require("express-session");
 // const bcrypt = require('bcryptjs');
 const { findStuffNearLocation, searchForLocation, getPlaceDetails } = require('./controllers/mapsController')
-const { register, login, signout } = require('./controllers/firebaseControllers');
+const { register, login, signout, createRoute } = require('./controllers/firebaseControllers');
 
 
 const app = express();
@@ -27,6 +27,7 @@ app.delete('/api/auth/signout', signout);
 app.post('/api/places/near', findStuffNearLocation);
 app.post('/api/places/search', searchForLocation);
 app.post('/api/places/details', getPlaceDetails);
+app.post('/api/create/route', createRoute)
 
 const PORT = process.env.SERVER_PORT || 4000;
 // app.get('/api/seed', seed)
