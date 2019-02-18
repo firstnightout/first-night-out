@@ -26,7 +26,7 @@ export default (
         <Route exact path='/account/settings' component={ AccountSettings } />
         <Route path="/auth/register-1" component={ Register }/>
         <Route path="/auth/register-2" component={ Register2 }/>
-        <Route path="/home" component={Home} />
+        <Route path="/home" component={ Home } />
 
         <Route path="/venue/details" component={ VenueCard } />
 

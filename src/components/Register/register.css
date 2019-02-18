@@ -1,0 +1,73 @@
+.register-page-1, .register-page-2{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+.register-page-1, .register-page-2{
+    background: url('https://s3.us-east-2.amazonaws.com/first-night-out/main+backgroung.png');
+    width: 100vw;
+    height: 100vh;
+}
+.reg-input{
+    line-height: 1.8;
+    margin: 20px;
+    width: 200px;
+    background: none;
+
+    border: none;
+    border-bottom: 1px solid #d9d9d9;
+    outline: none;
+    color: white;
+}
+.reg-button{
+    width: 200px;
+    height: 32px;
+    background: #69a535;
+    border: none;
+    color: white;
+    font-size: 15px;
+    text-transform: uppercase;
+
+    margin-top: 10px;
+    cursor: pointer;
+}
+.inputfile{
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.inputfile + label {
+   
+    color: gainsboro;
+    /* background-color: red; */
+    display: inline-block;
+}
+.fa-camera{
+    font-size: 35px;
+}
+
+.reg-logo{
+    width: 50%;
+}
+
+/* navigates to the previous page */
+.fa-chevron-left{
+    color: white;
+    font-size: 25px;
+    position: absolute;
+    top: 9%;
+    left: 5%;
+    cursor: pointer;
+}
+
+.cancel-btn{
+    border: none;
+    background: none;
+    color: gainsboro;
+    font-size: 15px;
+    margin: 5px;
+}
