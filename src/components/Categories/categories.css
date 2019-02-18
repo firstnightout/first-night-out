@@ -54,37 +54,37 @@
 
 .foodLabel  {
     position: absolute;
-    top: 21vh;
+    top: 12vh;
     left: 10vh;
 }
 
 .ffLabel {
     position: absolute;
-    top: 21vh;
+    top: 12vh;
     right: 6vh;
 }
 
 .sLabel {
     position: absolute;
-    top: 51vh;
-    left: 5vh;
+    top: 43vh;
+    left: 7vh;
 }
 
 .spaLabel {
     position: absolute;
-    top: 51vh;
-    right: 11vh;
+    top: 43vh;
+    right: 12vh;
 }
 
 .nlLabel {
     position: absolute;
-    top: 81vh;
-    left: 5vh;
+    top: 74vh;
+    left: 7vh;
 }
 
 .eLabel {
     position: absolute;
-    top: 81vh;
+    top: 74vh;
     right: 3.5vh;
 }
 
