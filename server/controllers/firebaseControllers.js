@@ -33,9 +33,6 @@ const login = (req, res) =>{
         }).catch( err => console.log( err ));
 }
 
-
-
-
 const register = (req, res) =>{
     // connect to the database
     let db = firebase.database();
@@ -65,16 +62,24 @@ const register = (req, res) =>{
                 lastName: req.body.lastName,
                 username: req.body.username,
                 password: hash,
-                profilePic: req.body.profilePic,
+                // profilePic: req.body.profilePic,
                 city: req.body.city,
                 state: req.body.state,
                 zip: req.body.zip,
                 address: req.body.address
         });
-            req.session.user = {
-                username: req.body.username
-            }
-            res.status(200).json(req.session.user);  
+        req.session.user = {
+            username: req.body.username
+        }
+        // firebase.database().ref('preferences').once('value').then(preferences => {
+        //     firebase.database().ref(`preferences/${preferences.val().length}`).set({
+        //         nonAlcoholic: false,
+        //         familyFriendly: false,
+        //         userId: id,
+        //         preferenceId: preferences.val().length
+        //     })
+        //     res.status(200).json(req.session.user);  
+        // }).catch(err => res.status(400).json({error: err}));
     }).catch(err => console.log( err ));
 }
 
@@ -84,7 +89,7 @@ const signout = (req, res) => {
 }
 
 const createRoute = async (req, res) => {
-    const { place1, place2, place3, userID, creationDate, isPublic } = req.body;
+    const { place1, place2, place3, userID, creationDate, isPublic, city } = req.body;
     try {
         let newRouteKey = await firebase.database().ref('/routes').push({'a': 'a'}).key
         console.log(newRouteKey);
@@ -95,7 +100,8 @@ const createRoute = async (req, res) => {
             userID,
             creationDate,
             isPublic,
-            routeID: newRouteKey
+            routeID: newRouteKey,
+            city
         }
         await firebase.database().ref(`routes`).child(newRouteKey).set(updateObj)
         res.sendStatus(200)
@@ -104,10 +110,68 @@ const createRoute = async (req, res) => {
     }
 }
 
+const getRoutesByUserID = async (req, res) => {
+    const response = await firebase.database().ref(`routes`).once('value');
+    const routes = response.val();
+    let filteredRoutes = [];
+    for(let routeID in routes) {
+        if(routes[routeID].userID == req.params.id) {
+            filteredRoutes.push(routes[routeID]);
+        }
+    }
+    if(filteredRoutes.length > 0) { 
+        res.status(200).json(filteredRoutes);
+    } else {
+        res.status(404).json({error: 'NO_ROUTES_FOUND'});
+    }
+}
+
+const getRoutesBasedOnCity = async (req, res) => {
+    const response = await firebase.database().ref(`routes`).once('value');
+    const routes = response.val();
+    let filteredRoutes = [];
+    for(let routeID in routes) {
+        if(routes[routeID].city === req.params.city) {
+            filteredRoutes.push(routes[routeID]);
+        }
+    }
+    if(filteredRoutes.length > 0) { 
+        res.status(200).json(filteredRoutes);
+    } else {
+        res.status(404).json({error: 'NO_ROUTES_FOUND'});
+    }
+}
+
+const setPreferences = async (req, res) => {
+    const { nonAlcoholic, familyFriendly } = req.body;
+    const preferences = await firebase.database().ref('preferences').once('value');
+    let userPreferenceID = null;
+    for(let preferenceID in preferences) {
+        if(preferences[preferenceID].userId == req.params.id) {
+            userPreferenceID = preferenceID;
+        }
+    }
+    if(userPreferenceID) {
+        await firebase.database().ref(preferences).child(userPreferenceID).set({
+            nonAlcoholic,
+            familyFriendly,
+            userID: req.params.id,
+            preferenceId: userPreferenceID
+        })
+        res.sendStatus(200)
+    } else {
+        res.status(404).json({error: 'USER_NOT_FOUND'});
+    }
+}
+
+
+
 module.exports = {
     login,
     register,
     signout,
-    createRoute
+    createRoute,
+    getRoutesByUserID,
+    getRoutesBasedOnCity,
+    setPreferences
 }
-

@@ -6,8 +6,9 @@ import './entertainment.css'
 
 function Entertainment() {
     return(
-       <>
-       </> 
+        <>
+        
+        </> 
     )
 }
 

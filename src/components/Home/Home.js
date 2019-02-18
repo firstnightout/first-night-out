@@ -22,10 +22,9 @@ const Home = (props) => {
             // .then (response2 => {
             //     console.log(response2)
             // })
-            axios.post('/api/places/near', {location: `${lat},${long}`, radius: 5000, type: 'restaurant'}).then(response2 => {
-
+            axios.post('/api/places/near', {location: `${lat},${long}`, radius: 500, type: 'restaurant'}).then(response2 => {
+                console.log(response2);
                 const cafes = response2.data.results.map(cafe => {
-                   
                     return (
                         <MiniPlace place_id = {cafe.place_id} photo={ cafe.photos && cafe.photos[0].photo_reference }/>
                     )
