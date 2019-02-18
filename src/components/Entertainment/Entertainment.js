@@ -4,7 +4,13 @@ import {Link} from 'react-router-dom'
 // import {} from '../../ducks/reducer'
 import './entertainment.css'
 
-function Entertainment() {}
+function Entertainment() {
+    return(
+        <>
+        
+        </> 
+    )
+}
 
 
 const mapStateToProps = state => state

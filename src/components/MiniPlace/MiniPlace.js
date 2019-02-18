@@ -18,6 +18,7 @@ const MiniPlace = (props) => {
             }
         })
     }, [])
+
     
     return(
         <div className='mini-place'>

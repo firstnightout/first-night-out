@@ -36,7 +36,15 @@ const Login = (props) => {
                     src="https://s3.us-east-2.amazonaws.com/first-night-out/FNO-main-logo.png" className='login-logo' 
                     alt='first night out logo'
                 />
-        
+            <div className='buttonCont'>
+                <button className='login-button' onClick={handleLogin}>Login</button>
+                <Link to='/auth/register'><button className='register-button'>Register</button></Link> 
+            </div>
+            <div className='buttonCont2'>
+                <button className='passportButton'>Login with Passport</button>
+                <button className='googleButton'>Login with Google</button>
+
+            </div>
             
                     <input  
                         onChange={handleUpdates} 
