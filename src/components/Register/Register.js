@@ -1,29 +1,37 @@
 import React  from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {register, updateFirstName, updateLastName, updateUsername, updatePassword } from '../../ducks/reducer'
+import { updateFirstName, updateLastName, updateUsername, updatePassword } from '../../ducks/reducer'
 import './register.css'
 
 
-// register needs to be broken up into two views.
-// continue btn should navigate to the seond registraton page
-// <Route path="/auth/register-2" component={ Register2 }/>
-
-
-// all of the funtionality from the two register components needs to be strored inside of redux.
-// get rid of all of the hooks and store the user info inside of the reducer. 
 
 
 const Register = (props) => {
    
-    // const handleRegister = () => {
-    //     props.register(firstName,lastName,username,password);
-    // }
 
-    // const handleFirstName = (e) => {
-    //     this.props.updateFirstName(e.target.value);
-    // }
-
+    const handleUpdate = (e) => {
+    switch(e.target.name){
+        case 'firstName': 
+            props.updateFirstName(e.target.value);
+            console.log('updating name')
+            break
+        case 'lastName':
+            props.updateLastName(e.target.value);
+            console.log('updating lastname')
+            break
+        case 'username':
+            props.updateUsername(e.target.value);
+            console.log('updaating user')
+            break
+        case 'password':
+            props.updatePassword(e.target.value);
+            console.log('updating password')
+            break
+        default:
+            return ;
+    }
+}
 
 
 
@@ -36,10 +44,10 @@ const Register = (props) => {
                     className="reg-logo"
                 />
 
-                <input name='firstName' onChange={handleFirstName} placeholder='First Name' className='reg-input'/>
-                <input name='lastName' onChange={handleUpdate} placeholder='Last Name' className='reg-input'/>
-                <input name='username' onChange={handleUpdate} placeholder='Username' className='reg-input'/>
-                <input name='password' onChange={handleUpdate} placeholder='Password' type='password' className='reg-input'/>
+                <input value={props.firstName} name='firstName' onChange={ handleUpdate } placeholder=' first Name' className='reg-input' />
+                <input value={props.lastName} name='lastName' onChange={ handleUpdate } placeholder=' last Name' className='reg-input' />
+                <input value={props.username} name='username' onChange={ handleUpdate } placeholder=' username' className='reg-input' />
+                <input value={props.password} name='password' onChange={ handleUpdate } placeholder=' password' className='reg-input' type='password' />
 
                 <div>
                     <Link to="/auth/register-2"><button className="reg-button">continue</button></Link>
@@ -48,7 +56,7 @@ const Register = (props) => {
                 
                 <Link to="/"><button className="cancel-btn">cancel</button></Link>                 
         </div>
-    )
+    ) 
 }
 
 const mapStateToProps = (state) => {
@@ -60,30 +68,8 @@ const mapStateToProps = (state) => {
         password
     }
 }
-export default connect(mapStateToProps, { register, updateFirstName, updateLastName, updateUsername, updatePassword })(Register);
+export default connect(mapStateToProps, {  updateFirstName, updateLastName, updateUsername, updatePassword })(Register);
 
 
 
-// const [firstName, setFirstName] = useState();
-// const [lastName, setLastName] = useState();
-// const [username, setUsername] = useState();
-// const [password, setPassword] = useState();
 
-// const handleUpdate = (e) => {
-//     switch(e.target.name) {
-//         case 'firstName': 
-//             setFirstName(e.target.value)
-//             break
-//         case 'lastName':
-//             setLastName(e.target.value)
-//             break
-//         case 'username':
-//             setUsername(e.target.value)
-//             break
-//         case 'password':
-//             setPassword(e.target.value)
-//             break
-//         default:
-//             return ;
-//     }
-// }

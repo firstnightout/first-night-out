@@ -8,14 +8,14 @@ const initialState = {
     password: '',
     address: '',
     city: '',
-    state: '',
+    st: '',
     zip: '',
-    profilePic:''
+    profilePic: ''
 }
 
 // action types
 const LOGIN = 'LOGIN';
-const REGISTER = 'REGISTER';
+// const REGISTER = 'REGISTER';
 const UPDATE_FIRST_NAME = 'UPDATE_FIRST_NAME';
 const UPDATE_LAST_NAME = 'UPDATE_LAST_NAME';
 const UPDATE_USERNAME = 'UPDATE_USERNAME';
@@ -82,23 +82,21 @@ export function updateProfilePic(url){
         payload: url
     }
 }
-
-
-
 export function login(username,password) {
     return {
         type: LOGIN,
         payload: axios.post('/api/auth/login', {username,password})
     }
 }
-
-export function register(firstName,lastName,username,password,address,city,state,zip,profilePic) {
-    return {
-        type: REGISTER,
-        payload: axios.post('/api/auth/register',{firstName,lastName,username,password,
-                                                    address,city,state,zip,profilePic})
-    }
-}
+// export function register(firstName,lastName,username,password,address,city,state,zip,profilePic) {
+//     return {
+//         type: REGISTER,
+//         payload: axios.post('/api/auth/register',{firstName,lastName,username,password,address,city,state,zip,profilePic})
+//         .then( response => {
+//             console.log('register response',response)
+//         }).catch( err =>  console.log(err))
+//     }
+// }
 
 
 // reducer function
@@ -106,18 +104,62 @@ function reducer(state=initialState, action) {
     switch(action.type) {
         case `${LOGIN}_FULFILLED`:
             return {
-                ...state, user: action.payload.data
+                ...state, 
+                user: action.payload.data
             }
-        case `${REGISTER}_FULFILLED`:
+        // case `${REGISTER}_FULFILLED`:
+        //     return {
+        //         ...state, 
+        //         user: action.payload.data
+        //     }
+        case UPDATE_FIRST_NAME:
             return {
-                ...state, user: action.payload.data
+                ...state,
+                firstName: action.payload
+            }
+        case UPDATE_LAST_NAME:
+            return {
+                ...state,
+                lastName: action.payload
+            }
+        case UPDATE_USERNAME:
+            return {
+                type: UPDATE_USERNAME,
+                username: action.payload
+            }
+        case UPDATE_PASSWORD: 
+            return {
+                type: UPDATE_PASSWORD,
+                password: action.payload
+            }
+        case UPDATE_ADDRESS: 
+            return {
+                ...state,
+                address: action.payload
+            }
+        case UPDATE_CITY: 
+            return {
+                ...state,
+                city: action.payload
+            }
+        case UPDATE_STATE: 
+            return {
+                ...state,
+                st: action.payload
+            }
+        case UPDATE_ZIP: 
+            return {
+                ...state,
+                zip: action.payload
+            }
+        case UPDATE_PROFILE_PIC:
+            return {
+                ...state,
+                profilePic: action.payload
             }
 
         default: return state;
     }
 }
-
-
-
 
 export default reducer;

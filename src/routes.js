@@ -20,7 +20,7 @@ export default (
         <Route exact path="/" component={ Login }/>
         <Route path="/auth/register-1" component={ Register }/>
         <Route path="/auth/register-2" component={ Register2 }/>
-        <Route path="/home" component={Home} />
+        <Route path="/home" component={ Home } />
 
         <Route path="/venue/details" component={ VenueCard } />
 

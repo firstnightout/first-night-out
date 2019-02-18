@@ -28,7 +28,7 @@ app.post('/api/places/near', findStuffNearLocation);
 app.post('/api/places/search', searchForLocation);
 app.post('/api/places/details', getPlaceDetails);
 
-const PORT = process.env.SERVER_PORT || 4000;
+const PORT = process.env.SERVER_PORT || 5050;
 // app.get('/api/seed', seed)
 
 app.listen(PORT, () => console.log(`Listening on Port ${PORT}`));

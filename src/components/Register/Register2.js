@@ -1,45 +1,60 @@
-import React, {useState} from 'react';
-import { register } from '../../ducks/reducer';
+import React, {useState}  from 'react';
+import {  updateAddress, updateCity, updateState, updateZip, updateProfilePic } from '../../ducks/reducer';
 import  "./register.css";
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import axios from 'axios';
+
 
 
 const Register2 = (props) => {
-    const [address, setAddress] = useState();
-    const [city, setCity] = useState();
-    const [state, setState] = useState();
-    const [zip, setZip] = useState();
-    const [profilePic, setProfilePic] = useState();
-
+    const [toggle, setToggle] = useState(false);
     const handleUpdate = (e) =>{
         switch (e.target.name) {
             case 'address':
-                setAddress(e.target.value)
+                props.updateAddress(e.target.value);
+                console.log('address')
                 break
             case 'city':
-                setCity(e.target.value)
+                props.updateCity(e.target.value);
+                console.log('city')
                 break
             case 'state':
-                setState(e.target.value)
+                props.updateState(e.target.value);
+                console.log('state')
                 break
             case 'zip':
-                setZip(e.target.value)
+                props.updateZip(e.target.value);
+                console.log('zip')
                 break
             case 'profilePic':
-                setProfilePic(e.target.value)
+                props.updateProfilePic(e.target.value);
+                console.log('prof')
                 break
             default:
                 break;
         }
     }
 
-    const handleRegister = () => {
-        props.register(address, city, state, zip, profilePic);
+
+
+    const submitRegister = () => {
+        const { firstName, lastName, username, password, address, city, state, zip, profilePic } = props;
+        console.log('destructured')
+            axios.post("/api/auth/register",{firstName, lastName, username, password, address, city, state, zip, profilePic})
+                .then( response => {
+                    console.log(response)
+                    setToggle(true);
+                }).catch( err => console.log(err))
     }
+
+   
+
+
+
     return (
         <div className="register-page-2">
-
+            {toggle && <Redirect to='/home' />}
             <Link to="/auth/register-1"><i className="fas fa-chevron-left"></i> </Link>
 
             <img 
@@ -58,16 +73,25 @@ const Register2 = (props) => {
                 type="file" 
                 name="file" 
                 id="file" 
-                class="inputfile" 
+                className="inputfile" 
                 onChange={handleUpdate}
             />
             <label for="file"><i className="fas fa-camera"></i></label> 
             
-            <button onClick={handleRegister} className='reg-button'>Sign up</button>
+            <button onClick={submitRegister} className='reg-button'>Sign up</button>
         </div>
     )
 }
 
 
-const mapStateToProps = state => state;
-export default connect(mapStateToProps, {register})(Register2);
+const mapStateToProps = (state) => {
+    const { address, city, st, zip, profilePic } = state;
+    return {
+        address,
+        city,
+        st,
+        zip,
+        profilePic
+    }
+}
+export default connect(mapStateToProps, { updateAddress, updateCity, updateState, updateZip, updateProfilePic })(Register2);
