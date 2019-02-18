@@ -101,7 +101,8 @@ const createRoute = async (req, res) => {
             creationDate,
             isPublic,
             routeID: newRouteKey,
-            city
+            city,
+            likes: 0
         }
         await firebase.database().ref(`routes`).child(newRouteKey).set(updateObj)
         res.sendStatus(200)
@@ -164,7 +165,11 @@ const setPreferences = async (req, res) => {
     }
 }
 
-
+const getUsers = async (req, res) => {
+    let user = await firebase.database().ref(`users/${req.params.id}`).once('value');
+    console.log(user.val())
+    res.status(200).json(user.val());
+}
 
 module.exports = {
     login,
@@ -173,5 +178,6 @@ module.exports = {
     createRoute,
     getRoutesByUserID,
     getRoutesBasedOnCity,
-    setPreferences
+    setPreferences, 
+    getUsers
 }
