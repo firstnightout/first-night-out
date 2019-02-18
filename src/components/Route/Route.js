@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import MiniPlace from '../MiniPlace/MiniPlace'
-import './route.css'
+import './Route.css'
 
 const Route = (props) => {
 
