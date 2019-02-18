@@ -37,6 +37,7 @@ app.get('/api/routes/city/:city', getRoutesBasedOnCity)
 app.get('/api/users/:id', getUsers);
 // app.get('/api/seed', seed)
 
-const PORT = process.env.SERVER_PORT || 4000;
+const PORT = process.env.SERVER_PORT || 5050;
+// app.get('/api/seed', seed)
 
 app.listen(PORT, () => console.log(`Listening on Port ${PORT}`));
