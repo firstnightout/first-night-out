@@ -3,6 +3,9 @@ import Carousel from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
 import './venue.css';
 import axios from 'axios';
+import {Link, Redirect} from 'react-router-dom'
+import {addPlaceToRoute} from '../../ducks/reducer';
+import {connect} from 'react-redux';
 
 const VenueCard = (props) => {
     const [restaurantName, setRestaurantName] = useState(null)
@@ -12,9 +15,9 @@ const VenueCard = (props) => {
     const [rating, setRating] = useState(null)
     const [priceLevel, setPriceLevel] = useState(null)
     const [notFoundImg, setNotFound] = useState(null);
+    const [redirectToggle, setRedirect] = useState(false); 
     //<i class="fas fa-star"></i>    full star
     //<i class="fas fa-star-half-alt"></i>  half star
-    console.log(props.match.params.id)
 
     useEffect(() => {
         axios.post('/api/places/details', {placeid: props.match.params.id})
@@ -47,6 +50,16 @@ const VenueCard = (props) => {
         stars.push(<i className="fas fa-star"></i>)
     }
     let price = '$'.repeat(priceLevel);
+
+    const doReduxStuff = () => {
+        props.addPlaceToRoute(props.match.params.id);
+        setRedirect(true);
+    }
+
+    if(redirectToggle) {
+        return <Redirect to='/categories' />
+    }
+
     return (
         <div className="venue-container">
             <div className="content-container">
@@ -65,11 +78,12 @@ const VenueCard = (props) => {
                 <p>{price}</p>
                 <p><span>Hours: </span>{openStatus}</p>
                 <p><span>Phone: </span>{phoneNumber}</p>
-
-                <button className="add-btn">Add to route</button>
+                <button className="add-btn" onClick={doReduxStuff}>Add to route</button>
             </div>
         </div>
     )
 }
 
-export default VenueCard;
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps, {addPlaceToRoute})(VenueCard);

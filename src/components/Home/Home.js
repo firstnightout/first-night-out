@@ -47,7 +47,7 @@ const Home = (props) => {
         axios.get('/api/routes/city/' + city)
         .then( response => {
             console.log("response",response)
-            let routes = response.data.map( route =>  <MiniRoute likes={route.likes} user_id={route.userID} place1={route.place1} place2={route.place2} place3={route.place3}/>)
+            let routes = response.data.map( route =>  <MiniRoute likes={route.likes} user_id={route.userID} place1={route.place1} place2={route.place2} place3={route.place3} routeID={route.routeID}/>)
             setNearbyRoutes(routes);
         })
 

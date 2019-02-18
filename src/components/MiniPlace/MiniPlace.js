@@ -3,6 +3,7 @@ import axios from 'axios';
 import './MiniPlace.css'
 import {Redirect } from 'react-router-dom';
 
+//REQUIRES PLACE_ID PROP
 const MiniPlace = (props) => {
     const [ref, setRef] = useState(0);
     const [name, setName] = useState(0);
