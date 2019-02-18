@@ -31,7 +31,7 @@ const Login = (props) => {
                     src="https://s3.us-east-2.amazonaws.com/first-night-out/FNO-main-logo.png" className='login-logo' 
                     alt='first night out logo'
                 />
-            <div className='buttonCont'>
+            {/* <div className='buttonCont'>
                 <button className='login-button' onClick={handleLogin}>Login</button>
                 <Link to='/auth/register'><button className='register-button'>Register</button></Link> 
             </div>
@@ -39,7 +39,7 @@ const Login = (props) => {
                 <button className='passportButton'>Login with Passport</button>
                 <button className='googleButton'>Login with Google</button>
 
-            </div>
+            </div> */}
             
                     <input  
                         onChange={handleUpdates} 
@@ -54,11 +54,13 @@ const Login = (props) => {
                         name='password'
                         className="login-input"
                     />
-                    <Link to="/">
+                    {/* <Link to="/home"> */}
                     <button 
                     className="main-btn" 
-                    onClick={ handleLogin}>Login</button>
-                    </Link>
+                    onClick={ handleLogin}>
+                    Login
+                    </button>
+                    {/* </Link> */}
 
                     <Link to="/auth/register-1"><button className="sign-up-btn">sign up</button></Link>
         </div>

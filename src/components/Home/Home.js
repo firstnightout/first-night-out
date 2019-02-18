@@ -6,12 +6,14 @@ import Carousel from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
 import './Home.css'
 
+
 const Home = (props) => {
     //REMEMBER TO HIDE API KEY LATER
     const [nearbyRoutes, setNearbyRoutes] = useState([]);
+    
     //COMMENTED TO SAVE API REQUESTS
     useEffect(() => {
-        // const address = prompt('Please enter and address')
+        // const address = '500 S Ervay St, Dallas, TX'
         // const formatAdd = address.split(' ').join('+')
         // axios.get(`https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyA0dEOfis7q8Pl8_MM5uhen6ustyIGwCvQ&address=${formatAdd}`)
         // .then (response => {
@@ -26,19 +28,26 @@ const Home = (props) => {
         //         console.log(response2);
         //         const cafes = response2.data.results.map(cafe => {
         //             return (
-        //                 <MiniPlace place_id = {cafe.place_id} photo={ cafe.photos && cafe.photos[0].photo_reference }/>
+        //                 <MiniPlace place_id = {cafe.place_id} photo={ cafe.photos && cafe.photos[0].photo_reference } />
         //             )
                     
         //         })
-        //         setNearbyPlaces(cafes)
+        //         setNearbyRoutes(cafes)
         //     })
         // })
+
+
+
+
+
+
+
 
         let city = 'Dallas';
         axios.get('/api/routes/city/' + city)
         .then( response => {
             console.log("response",response)
-            let routes = response.data.map( route =>  <MiniRoute likes={route.likes} user_id={route.userID} place1={route.place1} place2={route.place2} place3={route.place3}/>)
+            let routes = response.data.map( route =>  <MiniRoute likes={route.likes} user_id={route.userID} place1={route.place1} place2={route.place2} place3={route.place3} routeID={route.routeID}/>)
             setNearbyRoutes(routes);
         })
 

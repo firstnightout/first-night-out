@@ -23,3 +23,11 @@
 .save-preferences {
     margin-bottom: 2vh;
 }
+.change-hometown {
+    margin-bottom: 3vh;
+    margin-top: 3vh;
+    text-align: center;
+}
+.hometown-input {
+    text-align: center;
+}

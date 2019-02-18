@@ -28,6 +28,7 @@ const login = (req, res) =>{
                 req.session.user = {
                     username: req.body.username
                 }
+                console.log('WORKED');
                 res.status(200).json(req.session.user);
             }
         }).catch( err => console.log( err ));
@@ -56,6 +57,8 @@ const register = (req, res) =>{
         }
         let id = max + 1;
         const salt = bcrypt.genSaltSync(12);
+        console.log('password', req.body.password)
+        console.log('salt: ', salt);
         const hash = bcrypt.hashSync(req.body.password, salt);
         console.log(1)
         db.ref(`users/${id}`).set({
@@ -73,6 +76,7 @@ const register = (req, res) =>{
         req.session.user = {
             username: req.body.username
         }
+        console.log('ALSO WORKED!')
         // firebase.database().ref('preferences').once('value').then(preferences => {
         //     firebase.database().ref(`preferences/${preferences.val().length}`).set({
         //         nonAlcoholic: false,
@@ -173,6 +177,11 @@ const getUsers = async (req, res) => {
     res.status(200).json(user.val());
 }
 
+const getRoute = async (req, res) => {
+    let route = await firebase.database().ref(`/routes/${req.params.id}`).once('value');
+    res.status(200).json(route.val());
+}
+
 module.exports = {
     login,
     register,
@@ -181,5 +190,6 @@ module.exports = {
     getRoutesByUserID,
     getRoutesBasedOnCity,
     setPreferences, 
-    getUsers
+    getUsers,
+    getRoute
 }

@@ -6,7 +6,8 @@ const session = require("express-session");
 const { findStuffNearLocation, searchForLocation, getPlaceDetails } = require('./controllers/mapsController')
 const 
 { register, login, signout, createRoute, getRoutesByUserID, 
-    getRoutesBasedOnCity, setPreferences, getUsers
+    getRoutesBasedOnCity, setPreferences, getUsers,
+    getRoute
 } = require('./controllers/firebaseControllers');
 
 
@@ -34,6 +35,7 @@ app.post('/api/places/details', getPlaceDetails);
 app.post('/api/create/route', createRoute)
 app.get('/api/routes/user/:id', getRoutesByUserID);
 app.get('/api/routes/city/:city', getRoutesBasedOnCity)
+app.get('/api/routes/:id', getRoute);
 app.get('/api/users/:id', getUsers);
 // app.get('/api/seed', seed)
 

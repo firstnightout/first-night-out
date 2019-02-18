@@ -1,11 +1,24 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
+import {updateRouteStep} from '../../ducks/reducer'
 import './categories.css'
 
-const Categories = () => {
+const Categories = (props) => {
 
+    const [toggle, setToggle] = useState(false);
 
+    useEffect(() => {
+        let num = props.routeCreationStep;
+        if(props.routeCreationStep > 3) {
+            setToggle(true);
+        } else {
+            props.updateRouteStep(num + 1)
+        }
+    }, []);
+    if(toggle) {
+        return <Redirect to='/' />
+    }
     return (
         <div className='CategoriesCont'>
             <div className='categoriesWrapper'>
@@ -29,4 +42,4 @@ const Categories = () => {
 
 const mapStateToProps = state => state
 
-export default connect(mapStateToProps)(Categories)
+export default connect(mapStateToProps, {updateRouteStep})(Categories)

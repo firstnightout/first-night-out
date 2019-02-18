@@ -12,7 +12,6 @@ import FamilyFun from './components/FamilyFun/FamilyFun';
 import Register2 from './components/Register/Register2';
 import VenueCard from './components/VenueCard/VenueCard';
 import Categories from './components/Categories/Categories'
-import Details from './components/Details/Details'
 import Map from './components/Map/Map'
 import RouteComponent from './components/Route/Route'
 
@@ -27,9 +26,7 @@ export default (
         <Route path="/auth/register-1" component={ Register }/>
         <Route path="/auth/register-2" component={ Register2 }/>
         <Route path="/home" component={ Home } />
-
-        <Route path="/venue/details" component={ VenueCard } />
-
+        <Route path="/venue/details/:id" component={ VenueCard } />
         {/* Route creation routes */}
         <Route path="/food" component={ Food }/>
         <Route path="/shopping" component={ Shopping }/>
@@ -38,8 +35,7 @@ export default (
         <Route path="/spa" component={ Spa }/>
         <Route path="/family-fun" component={ FamilyFun }/>
         <Route path="/categories" component={ Categories }/>
-        <Route path='/details/:id' component={ Details }/>
         <Route path='/map/:id' component={ Map }/>
-        <Route path='/route' component={ RouteComponent }/>
+        <Route path='/route/:routeid' component={ RouteComponent }/>
     </Switch>
 )

@@ -10,7 +10,9 @@ const initialState = {
     city: '',
     st: '',
     zip: '',
-    profilePic: ''
+    profilePic: '',
+    routeCreationStep: 1,
+    places: []
 }
 
 // action types
@@ -24,10 +26,24 @@ const UPDATE_ADDRESS = 'UPDATE_ADDRESS';
 const UPDATE_CITY = 'UPDATE_CITY';
 const UPDATE_STATE = 'UPDATE_STATE';
 const UPDATE_ZIP = 'UPDATE_ZIP';
-const UPDATE_PROFILE_PIC = 'UDATE_PROFILE_PIC';
+const UPDATE_PROFILE_PIC = 'UPDATE_PROFILE_PIC';
+const ROUTE_STEP = 'ROUTE_STEP';
+const UPDATE_PLACES = 'UPDATE_PLACES';
 
 
 // action creators
+export function addPlaceToRoute(place) {
+    return {
+        type: UPDATE_PLACES,
+        payload: place
+    }
+}
+export function updateRouteStep(step) {
+    return {
+        type: ROUTE_STEP,
+        payload: step
+    }
+}
 export function updateFirstName(firstName){
     return {
         type: UPDATE_FIRST_NAME,
@@ -102,6 +118,12 @@ export function login(username,password) {
 // reducer function
 function reducer(state=initialState, action) {
     switch(action.type) {
+        case ROUTE_STEP:
+        console.log(action.payload)
+            return {
+                ...state,
+                routeCreationStep: action.payload
+            }
         case `${LOGIN}_FULFILLED`:
             return {
                 ...state, 
@@ -157,7 +179,13 @@ function reducer(state=initialState, action) {
                 ...state,
                 profilePic: action.payload
             }
-
+        case UPDATE_PLACES:
+            console.log([...state.places, action.payload]);
+            return {
+                ...state,
+                places: [...state.places, action.payload]
+            }
+        
         default: return state;
     }
 }

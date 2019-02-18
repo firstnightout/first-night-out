@@ -21,9 +21,10 @@ const Account = (props) => {
                 <div className='my-routes-text'>
                     <h3>My Routes</h3>
                 </div>
+                    
+                {/* <MiniRoute />
                 <MiniRoute />
-                <MiniRoute />
-                <MiniRoute />
+                <MiniRoute /> */}
                 <br />
             </div>
         </>
