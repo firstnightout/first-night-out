@@ -8,6 +8,7 @@ import Axios from 'axios';
 
 const Nav = (props) => {
 
+    const hideNavPaths = ['/account'];
     const [toggle, setToggle] = useState(false)
     const [toggleLinks, setToggleLinks] = useState(false)
     const [toggleOpacity, setToggleOpacity] = useState(false)
@@ -24,7 +25,6 @@ const Nav = (props) => {
             setToggleOpacity(!toggleOpacity)
         }, 500);
     }
-
     return (
         <div>
             <div className='navBarMain'>

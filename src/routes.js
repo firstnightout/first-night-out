@@ -16,10 +16,14 @@ import Details from './components/Details/Details'
 import Map from './components/Map/Map'
 import RouteComponent from './components/Route/Route'
 
+import Account from './components/Account/Account';
+import AccountSettings from './components/AccountSettings/AccountSettings'
 
 export default (
     <Switch>
         <Route exact path="/" component={ Login }/>
+        <Route exact path='/account' component={ Account } />
+        <Route exact path='/account/settings' component={ AccountSettings } />
         <Route path="/auth/register-1" component={ Register }/>
         <Route path="/auth/register-2" component={ Register2 }/>
         <Route path="/home" component={Home} />

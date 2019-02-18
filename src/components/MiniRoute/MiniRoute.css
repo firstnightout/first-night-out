@@ -25,7 +25,8 @@
     width: 99vw;
     height: 18vh;
     margin-top: 2vh;
-    box-shadow: 3px 3px rgba(167, 167, 167, .6);
+    box-shadow: 3px 3px rgba(121, 121, 121, 0.6);
+    background-color: white;
 }
 .mini-route-text {
     position: absolute;
