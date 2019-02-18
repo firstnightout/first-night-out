@@ -25,7 +25,7 @@ export default (
         <Route path="/auth/register-2" component={ Register2 }/>
         <Route path="/home" component={Home} />
 
-        <Route path="/venue/details" component={ VenueCard } />
+        <Route path="/venue/details/:id" component={ VenueCard } />
 
 
 
