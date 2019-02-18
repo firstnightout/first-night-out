@@ -1,11 +1,14 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import axios from 'axios'
 // import {} from '../../ducks/reducer'
 import './nav.css'
+import Axios from 'axios';
 
 const Nav = (props) => {
 
+    const hideNavPaths = ['/account'];
     const [toggle, setToggle] = useState(false)
     const [toggleLinks, setToggleLinks] = useState(false)
     const [toggleOpacity, setToggleOpacity] = useState(false)
@@ -22,7 +25,6 @@ const Nav = (props) => {
             setToggleOpacity(!toggleOpacity)
         }, 500);
     }
-
     return (
         <div>
             <div className='navBarMain'>
@@ -39,24 +41,24 @@ const Nav = (props) => {
                             <div className='navPopOutHeader'>
                                 <button onClick={handleToggle} className='exitButton'>X</button>
                             </div>
-                            <img src='https://s3.us-east-2.amazonaws.com/first-night-out/ham-logo.png' className='navLogo'/>
+                            <img src='https://s3.us-east-2.amazonaws.com/first-night-out/ham-logo.png' className='navLogo' alt='logo'/>
                             <div className='accountImgDiv'>
                                 <i className="fas fa-user-alt"></i>
-                                <Link to='/account' className='accountLink'>Account</Link>
+                                <Link to='/account' className='accountLink' onClick={handleToggle}>Account</Link>
                             </div>
                             <div className='createDiv'>
-                                <i class="fas fa-plus"></i>
-                                <Link to='route' className='createLink'>Create Route</Link>
+                                <i className="fas fa-plus"></i>
+                                <Link to='/categories' className='createLink' onClick={handleToggle}>Create Route</Link>
                             </div>
                             <div className='searchImgDiv'>
                                 <i className="fas fa-search"></i>
-                                <Link to='search' className='searchLink'>Search</Link>
+                                <Link to='/search' className='searchLink' onClick={handleToggle}>Search</Link>
                             </div>
                             <div className='homeImgDiv'>
                                 <i className="fas fa-home"></i>
-                                <Link to='home' className='homeLink'>Home</Link>
+                                <Link to='/home' className='homeLink' onClick={handleToggle}>Home</Link>
                             </div>
-                            <Link to='/'><button className='logoutButton'>logout</button></Link>
+                            <Link to='/'><button className='logoutButton' onClick={handleToggle}>logout</button></Link>
                         </div>
                     }
                 </nav>

@@ -59,7 +59,7 @@
     width: 90vw;
     background: white;
     transition: .5s;
-    z-index: 40;
+    z-index: 400;
 }
 
 .navDropDownMenuText {
