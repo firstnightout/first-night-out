@@ -19,7 +19,7 @@ app.use(
         name: 'First Night Out',
         secret: process.env.SESSION_SECRET,
         resave: false,
-        saveUninitialized: false
+        saveUninitialized: true
 })
 );
 
