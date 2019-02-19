@@ -5,6 +5,7 @@ import axios from 'axios'
 import MiniPlace from '../MiniPlace/MiniPlace'
 // import {} from '../../ducks/reducer'
 import './food.css'
+import Nav from '../Nav/Nav';
 
 const Food = (props) => {
     const[selection, setSelection] = useState(['restaurant'])
@@ -26,6 +27,8 @@ const Food = (props) => {
 
     return (
         <>
+            <Nav />
+            <button onClick={() => props.history.goBack()}>Back</button>
             <div className='foodWrapper'>
                 <select className='foodDropDown' name='selected' onChange={handleChange}>
                     <option value='restaurant'>Restaurant</option>

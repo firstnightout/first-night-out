@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 import MiniPlace from '../MiniPlace/MiniPlace'
 import axios from 'axios';
 import './Route.css'
+import Nav from '../Nav/Nav'
 
 const Route = (props) => {
     const [routeData, setRouteData] = useState(null);
@@ -17,6 +18,8 @@ const Route = (props) => {
 
     
     return(
+        <>
+        <Nav />
         <div className='routeMain'>
             <div className='routeScreen'>
                 <span className='myRoute'>My Route</span>
@@ -41,6 +44,7 @@ const Route = (props) => {
             </div>
 
         </div>
+        </>
     )
 }
 

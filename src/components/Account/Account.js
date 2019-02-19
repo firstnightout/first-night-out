@@ -3,11 +3,13 @@ import SmilingMan from '../../images/smiling_man.png'
 import './Account.css'
 import MiniRoute from '../MiniRoute/MiniRoute'
 import {Link} from 'react-router-dom'
+import Nav from '../Nav/Nav';
 
 const Account = (props) => {
 
     return (
         <>
+            <Nav />
             <div className='account'>
                 <div className='prof-pic-container'>
                     <img className='profile-picture' src={SmilingMan} />

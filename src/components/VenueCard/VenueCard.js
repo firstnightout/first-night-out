@@ -6,6 +6,7 @@ import axios from 'axios';
 import {Link, Redirect} from 'react-router-dom'
 import {addPlaceToRoute} from '../../ducks/reducer';
 import {connect} from 'react-redux';
+import Nav from '../Nav/Nav';
 
 const VenueCard = (props) => {
     const [restaurantName, setRestaurantName] = useState(null)
@@ -16,13 +17,13 @@ const VenueCard = (props) => {
     const [priceLevel, setPriceLevel] = useState(null)
     const [notFoundImg, setNotFound] = useState(null);
     const [redirectToggle, setRedirect] = useState(false); 
+    const [photoRef, setPhotoRef] = useState(null);
     //<i class="fas fa-star"></i>    full star
     //<i class="fas fa-star-half-alt"></i>  half star
 
     useEffect(() => {
         axios.post('/api/places/details', {placeid: props.match.params.id})
         .then(response => {
-            console.log(response);
             setRestaurantName(response.data.result.name);
             setPhoneNumber(response.data.result.formatted_phone_number);
             if(response.data.result.opening_hours) {
@@ -33,6 +34,7 @@ const VenueCard = (props) => {
                 }
             }
             if(response.data.result.photos) {
+                setPhotoRef(response.data.result.photos[0].photo_reference);
                 setCarouselImages(response.data.result.photos.map(val => {
                     return <img className='img-dimensions' src={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${val.photo_reference}&maxheight=200&key=AIzaSyB3hkAtDj8ZZK9ptagSp_YqQouPEMcuaCo`}/>
                 }))
@@ -52,7 +54,7 @@ const VenueCard = (props) => {
     let price = '$'.repeat(priceLevel);
 
     const doReduxStuff = () => {
-        props.addPlaceToRoute(props.match.params.id);
+        props.addPlaceToRoute({id: props.match.params.id, photo: photoRef});
         setRedirect(true);
     }
 
@@ -61,6 +63,8 @@ const VenueCard = (props) => {
     }
 
     return (
+        <>
+        <Nav />
         <div className="venue-container">
             <div className="content-container">
                 <Carousel
@@ -79,8 +83,13 @@ const VenueCard = (props) => {
                 <p><span>Hours: </span>{openStatus}</p>
                 <p><span>Phone: </span>{phoneNumber}</p>
                 <button className="add-btn" onClick={doReduxStuff}>Add to route</button>
+                <br />
+                <br />
+                <br />
+                <button onClick={() => props.history.goBack()}>Back</button>
             </div>
         </div>
+        </>
     )
 }
 

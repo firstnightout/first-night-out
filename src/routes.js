@@ -14,7 +14,7 @@ import VenueCard from './components/VenueCard/VenueCard';
 import Categories from './components/Categories/Categories'
 import Map from './components/Map/Map'
 import RouteComponent from './components/Route/Route'
-
+import RouteReview from './components/RouteReview/RouteReview'
 import Account from './components/Account/Account';
 import AccountSettings from './components/AccountSettings/AccountSettings'
 
@@ -37,5 +37,6 @@ export default (
         <Route path="/categories" component={ Categories }/>
         <Route path='/map/:id' component={ Map }/>
         <Route path='/route/:routeid' component={ RouteComponent }/>
+        <Route path='/review' component={RouteReview} />
     </Switch>
 )

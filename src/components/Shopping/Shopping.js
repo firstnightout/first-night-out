@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 import './shopping.css'
 import axios from 'axios';
 import MiniPlace from "../MiniPlace/MiniPlace";
+import Nav from '../Nav/Nav';
 
 
 const Shopping = (props) => {
@@ -35,6 +36,8 @@ const Shopping = (props) => {
 
     return (
         <>
+            <Nav />
+            <button onClick={() => props.history.goBack()}>Back</button>
             <div className='shoppingWrapper'>
                 <select className='shoppingDropDown' name='selected' onChange={handleChange}>
                     <option value='book_store'>Book Store</option>

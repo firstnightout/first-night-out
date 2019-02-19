@@ -17,7 +17,7 @@ firebase.initializeApp(config);
 const login = (req, res) =>{
     let db = firebase.database();
         db.ref('users').once('value').then( response => {
-            let user = response.val().find(user => user.username === req.body.username)
+            let user = response.val().find( user => user.username === req.body.username)
             if(!user){
                 res.status(401).json("USER NOT FOUND")
             }
@@ -26,13 +26,16 @@ const login = (req, res) =>{
                 res.status(403).json('INCORRECT PASSWORD')
             } else {
                 req.session.user = {
-                    username: req.body.username
+                    username: req.body.username,
+                    userId : user.userId
                 }
                 console.log('WORKED');
                 res.status(200).json(req.session.user);
             }
         }).catch( err => console.log( err ));
 }
+
+
 
 const register = (req, res) =>{
     // connect to the database
@@ -74,7 +77,8 @@ const register = (req, res) =>{
                 address: req.body.address
         });
         req.session.user = {
-            username: req.body.username
+            username: req.body.username,
+            userId: id
         }
         console.log('ALSO WORKED!')
         // firebase.database().ref('preferences').once('value').then(preferences => {

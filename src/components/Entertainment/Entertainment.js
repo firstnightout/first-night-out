@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 import './entertainment.css'
 import axios from 'axios';
 import MiniPlace from "../MiniPlace/MiniPlace";
+import Nav from '../Nav/Nav';
 
 
 
@@ -35,6 +36,8 @@ const Entertainment = (props) => {
 
 return (
     <>
+        <Nav />
+        <button onClick={() => props.history.goBack()}>Back</button>
         <div className='entertainmentWrapper'>
             <select className='entertainmentDropDown' name='selected' onChange={handleChange}>
                 <option value='movie_theater'>Movie Theater</option>

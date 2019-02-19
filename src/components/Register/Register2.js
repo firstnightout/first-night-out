@@ -10,6 +10,7 @@ import axios from 'axios';
 const Register2 = (props) => {
     const [toggle, setToggle] = useState(false);
     const handleUpdate = (e) =>{
+        console.log('these are the props right here',props)
         switch (e.target.name) {
             case 'address':
                 props.updateAddress(e.target.value);
@@ -39,9 +40,9 @@ const Register2 = (props) => {
 
 
     const submitRegister = () => {
-        const { firstName, lastName, username, password, address, city, state, zip, profilePic } = props;
+        const { firstName, lastName, username, password, address, city, st, zip, profilePic } = props;
         console.log('destructured')
-            axios.post("/api/auth/register",{firstName, lastName, username, password, address, city, state, zip, profilePic})
+            axios.post("/api/auth/register",{firstName, lastName, username, password, address, city, state: st, zip, profilePic})
                 .then( response => {
                     console.log(response)
                     setToggle(true);
@@ -84,14 +85,5 @@ const Register2 = (props) => {
 }
 
 
-const mapStateToProps = (state) => {
-    const { address, city, st, zip, profilePic } = state;
-    return {
-        address,
-        city,
-        st,
-        zip,
-        profilePic
-    }
-}
+const mapStateToProps = state => state;
 export default connect(mapStateToProps, { updateAddress, updateCity, updateState, updateZip, updateProfilePic })(Register2);

@@ -1,10 +1,12 @@
 import React from 'react';
 import './AccountSettings.css'
 import {Link} from 'react-router-dom'
+import Nav from '../Nav/Nav';
 
 const AccountSettings = props => {
     return(
         <>  
+            <Nav />
             <div className='preferences-back-button'>
                 <Link to='/account'><button>Back</button></Link>
             </div>
