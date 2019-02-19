@@ -19,6 +19,7 @@ const Entertainment = (props) => {
 
     useEffect(()=> {
         console.log(selection[0]);
+
         axios.post('/api/places/near', { location: '32.777599, -96.795403', radius: 5000, type: selection[0] })
         .then( response => {
             setPlaces(null);
@@ -26,7 +27,6 @@ const Entertainment = (props) => {
             setPlaces(response.data.results.map( val => {
                 return val.photos ? <MiniPlace place_id={val.place_id} photo={ val.photos[0].photo_reference }/> : <MiniPlace place_id={val.place_id}/>
             }));
-    
         })
     }, selection)
 

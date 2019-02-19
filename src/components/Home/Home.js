@@ -6,12 +6,13 @@ import Carousel from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
 import './Home.css'
 import Nav from '../Nav/Nav';
+import {connect} from 'react-redux';
 
 
 const Home = (props) => {
     //REMEMBER TO HIDE API KEY LATER
     const [nearbyRoutes, setNearbyRoutes] = useState([]);
-    
+    console.log(props.user.city)
     //COMMENTED TO SAVE API REQUESTS
     useEffect(() => {
         // const address = '500 S Ervay St, Dallas, TX'
@@ -44,7 +45,7 @@ const Home = (props) => {
 
 
 
-        let city = 'Dallas';
+        let city = props.user.city;
         axios.get('/api/routes/city/' + city)
         .then( response => {
             console.log("response",response)
@@ -102,4 +103,6 @@ const Home = (props) => {
     )
 }
 
-export default Home;
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps)(Home);
