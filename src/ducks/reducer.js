@@ -27,21 +27,19 @@ const UPDATE_CITY = 'UPDATE_CITY';
 const UPDATE_STATE = 'UPDATE_STATE';
 const UPDATE_ZIP = 'UPDATE_ZIP';
 const UPDATE_PROFILE_PIC = 'UPDATE_PROFILE_PIC';
-const ROUTE_STEP = 'ROUTE_STEP';
 const UPDATE_PLACES = 'UPDATE_PLACES';
-
+const RESET_PLACES = 'RESET_PLACES';
 
 // action creators
+export function resetPlaces() {
+    return {
+        type: RESET_PLACES,
+    }
+}
 export function addPlaceToRoute(place) {
     return {
         type: UPDATE_PLACES,
         payload: place
-    }
-}
-export function updateRouteStep(step) {
-    return {
-        type: ROUTE_STEP,
-        payload: step
     }
 }
 export function updateFirstName(firstName){
@@ -118,11 +116,10 @@ export function login(username,password) {
 // reducer function
 function reducer(state=initialState, action) {
     switch(action.type) {
-        case ROUTE_STEP:
-        console.log(action.payload)
+        case RESET_PLACES: 
             return {
                 ...state,
-                routeCreationStep: action.payload
+                places: []
             }
         case `${LOGIN}_FULFILLED`:
             return {
@@ -146,12 +143,12 @@ function reducer(state=initialState, action) {
             }
         case UPDATE_USERNAME:
             return {
-                type: UPDATE_USERNAME,
+                ...state,
                 username: action.payload
             }
         case UPDATE_PASSWORD: 
             return {
-                type: UPDATE_PASSWORD,
+                ...state,
                 password: action.payload
             }
         case UPDATE_ADDRESS: 
@@ -180,7 +177,6 @@ function reducer(state=initialState, action) {
                 profilePic: action.payload
             }
         case UPDATE_PLACES:
-            console.log([...state.places, action.payload]);
             return {
                 ...state,
                 places: [...state.places, action.payload]

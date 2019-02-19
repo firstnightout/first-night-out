@@ -5,6 +5,7 @@ import MiniRoute from '../MiniRoute/MiniRoute'
 import Carousel from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
 import './Home.css'
+import Nav from '../Nav/Nav';
 
 
 const Home = (props) => {
@@ -54,6 +55,8 @@ const Home = (props) => {
 
     }, []);
     return(
+        <>
+        <Nav />
         <div className='home'>
             <Carousel
             animationSpeed={2000}
@@ -95,6 +98,7 @@ const Home = (props) => {
             <MiniRoute />
             <MiniRoute /> */}
         </div>
+        </>
     )
 }
 

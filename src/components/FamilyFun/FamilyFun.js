@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 import './familyFun.css'
 import MiniPlace from '../MiniPlace/MiniPlace';
 import axios from 'axios';
+import Nav from '../Nav/Nav';
 
 const FamilyFun = (props) => {
     const[selection, setSelection] = useState(['art_gallery'])
@@ -26,7 +27,8 @@ const FamilyFun = (props) => {
 
     return (
         <>
-
+            <Nav />
+            <button onClick={() => props.history.goBack()}>Back</button>
             <div className='familyFunWrapper'>
                 <select className='familyFunDropDown' name='selection' onChange={handleChange}>
                     <option value='art_gallery'>Art Gallery</option>

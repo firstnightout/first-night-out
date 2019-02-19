@@ -5,12 +5,14 @@ import axios from 'axios'
 // import {} from '../../ducks/reducer'
 import './spa.css'
 import MiniPlace from '../MiniPlace/MiniPlace'
+import Nav from '../Nav/Nav';
 
 const Spa = (props) => {
     const[selection, setSelection] = useState(['spa'])
     const [places, setPlaces] = useState(null)
 
     useEffect(() => {
+        console.log(props);
         axios.post('/api/places/near', { location: '32.777599, -96.795403', radius: 5000, type: selection[0]})
         .then(response => {
             console.log(response)
@@ -26,7 +28,9 @@ const Spa = (props) => {
         setSelection([e.target.value]);
     }
     return (
-        <>
+        <>  
+            <Nav />
+            <button onClick={() => props.history.goBack()}>Back</button>
             <div className='spaWrapper'>
                 <select className='spaDropDown' name='selected' onChange={handleChange}>
                     <option value="spa">spa</option>

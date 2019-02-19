@@ -1,25 +1,26 @@
 import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
 import {Link, Redirect} from 'react-router-dom'
-import {updateRouteStep} from '../../ducks/reducer'
 import './categories.css'
+import Nav from '../Nav/Nav';
 
 const Categories = (props) => {
 
     const [toggle, setToggle] = useState(false);
 
     useEffect(() => {
+        console.log(props);
         let num = props.routeCreationStep;
-        if(props.routeCreationStep > 3) {
+        if(props.places.length >= 3) {
             setToggle(true);
-        } else {
-            props.updateRouteStep(num + 1)
         }
     }, []);
     if(toggle) {
-        return <Redirect to='/' />
+        return <Redirect to='/review' />
     }
     return (
+        <>
+        <Nav />
         <div className='CategoriesCont'>
             <div className='categoriesWrapper'>
                 <Link to='/food'><div title='Food' className='foodPic'/>
@@ -36,10 +37,11 @@ const Categories = (props) => {
                     <span className='eLabel'>Entertainment</span></Link>
             </div>
         </div>
+        </>
     )
 }
 
 
 const mapStateToProps = state => state
 
-export default connect(mapStateToProps, {updateRouteStep})(Categories)
+export default connect(mapStateToProps)(Categories)

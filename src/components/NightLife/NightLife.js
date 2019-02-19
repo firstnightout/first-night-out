@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 import './nightLife.css'
 import axios from 'axios';
 import MiniPlace from '../MiniPlace/MiniPlace';
+import Nav from '../Nav/Nav';
 
 const NightLife = (props) => {
     const[selection, setSelection] = useState(['bar'])
@@ -29,6 +30,8 @@ const NightLife = (props) => {
 
     return (
         <>
+        <Nav />
+        <button onClick={() => props.history.goBack()}>Back</button>
         <div className='nightLifeWrapper'>
             <select className='nightLifeDropDown' name='selected' onChange={handleChange}>
                 <option value='bar'>Bar</option>
