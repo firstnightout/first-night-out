@@ -26,8 +26,11 @@ const login = (req, res) =>{
                 res.status(403).json('INCORRECT PASSWORD')
             } else {
                 req.session.user = {
+                    city: user.city,
                     username: req.body.username,
-                    userId : user.userId
+                    userId : user.userId,
+                    address: user.address,
+                    state: user.state
                 }
                 console.log('WORKED');
                 res.status(200).json(req.session.user);
@@ -40,9 +43,10 @@ const login = (req, res) =>{
 const register = (req, res) =>{
     // connect to the database
     let db = firebase.database();
-    console.log(2)
-    db.ref('users').once('value').then(response => {
-        console.log(1)
+    let test = db.ref('users')
+    console.log(test);
+    test.once('value').then(response => {
+        console.log(register);
         let user = response.val();
         for(let i = 0; i < user.length; i++){
             if(user[i].username === req.body.username){
@@ -77,8 +81,11 @@ const register = (req, res) =>{
                 address: req.body.address
         });
         req.session.user = {
+            city: req.body.city,
             username: req.body.username,
-            userId: id
+            userId : req.body.userId,
+            address: req.body.address,
+            state: req.body.state
         }
         console.log('ALSO WORKED!')
         // firebase.database().ref('preferences').once('value').then(preferences => {

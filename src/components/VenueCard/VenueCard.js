@@ -36,7 +36,7 @@ const VenueCard = (props) => {
             if(response.data.result.photos) {
                 setPhotoRef(response.data.result.photos[0].photo_reference);
                 setCarouselImages(response.data.result.photos.map(val => {
-                    return <img className='img-dimensions' src={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${val.photo_reference}&maxheight=200&key=AIzaSyB3hkAtDj8ZZK9ptagSp_YqQouPEMcuaCo`}/>
+                    return <img className='img-dimensions' src={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${val.photo_reference}&maxheight=200&key=${process.env.REACT_APP_GCLOUD_PLACES_API}`}/>
                 }))
             } else {
                 setNotFound(<img className='img-dimensions' src='https://s3.us-east-2.amazonaws.com/first-night-out/placeholder_img.png' />)

@@ -2,9 +2,8 @@ import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
-// import {} from '../../ducks/reducer'
-import './nav.css'
-import Axios from 'axios';
+import {resetUser} from '../../ducks/reducer'
+import './nav.css';
 
 const Nav = (props) => {
 
@@ -13,9 +12,12 @@ const Nav = (props) => {
     const [toggleLinks, setToggleLinks] = useState(false)
     const [toggleOpacity, setToggleOpacity] = useState(false)
 
-    const handleToggle = () => {
+    const handleToggle = (e) => {
         setToggle(!toggle)
-    
+        if(e.target.value === 'logout') {
+            props.resetUser();
+            axios.delete('/api/auth/signout')
+        }
         setTimeout(() => {
             setToggleLinks(!toggleLinks)
             
@@ -58,7 +60,7 @@ const Nav = (props) => {
                                 <i className="fas fa-home"></i>
                                 <Link to='/home' className='homeLink' onClick={handleToggle}>Home</Link>
                             </div>
-                            <Link to='/'><button className='logoutButton' onClick={handleToggle}>logout</button></Link>
+                            <Link to='/'><button className='logoutButton' value='logout' onClick={handleToggle}>logout</button></Link>
                         </div>
                     }
                 </nav>
@@ -72,4 +74,4 @@ const Nav = (props) => {
 
 const mapStateToProps = state => state
 
-export default connect(mapStateToProps)(Nav)
+export default connect(mapStateToProps, {resetUser})(Nav)

@@ -14,15 +14,17 @@ const Food = (props) => {
     const handleChange = (e) => {
         setSelection([e.target.value]);
     }
-
     useEffect(() => {
-            axios.post('/api/places/near', { location: '32.777599, -96.795403', radius: 5000, type: selection[0]})
+        let formatAdd = props.user.address.split(' ').join('+') + `,+${props.user.city}+,${props.user.state}`
+        axios.get(`https://maps.googleapis.com/maps/api/geocode/json?key=${process.env.REACT_APP_GCLOUD_GEOCODING_API}&address=${formatAdd}`).then(location => {
+            axios.post('/api/places/near', { location: `${location.data.results[0].geometry.location.lat},${location.data.results[0].geometry.location.lng}`, radius: 5000, type: selection[0]})
             .then(response => {
                 setPlaces(null)
                 setPlaces(response.data.results.map(val => {
                     return val.photos ? <MiniPlace key={val.place_id} place_id={val.place_id} photo={ val.photos[0].photo_reference }/> : <MiniPlace key={val.place_id} place_id={val.place_id}/>
                 }))
-            })
+            }).catch(err => setPlaces(null))
+        })
         }, selection)
 
     return (
