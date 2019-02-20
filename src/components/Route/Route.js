@@ -1,36 +1,50 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import MiniPlace from '../MiniPlace/MiniPlace'
+import axios from 'axios';
 import './Route.css'
+import Nav from '../Nav/Nav'
 
 const Route = (props) => {
+    const [routeData, setRouteData] = useState(null);
 
+    useEffect(() => {
+        axios(`/api/routes/${props.match.params.routeid}`).then(response => {
+            console.log(response);
+            setRouteData(response.data);
+        })
+    }, []);
+
+    
     return(
+        <>
+        <Nav />
         <div className='routeMain'>
             <div className='routeScreen'>
                 <span className='myRoute'>My Route</span>
                 <Link to='/map' className='mapRoute'><span className='goCont'>GO</span></Link>
             </div>
             <div className='routeDisplay'>
-                <MiniPlace
-                    photo={`CmRaAAAALb8G_p8Uy0PMWKlkS7MoPpy1EcUxuJ7qUzq8bUhCJ_vZEFYRWY_gq1u2xvQ2Sf8m9zmGm3jwCWG51Jgc64HWbxCFNIwgN4tW-yOqR2dTqoQkK0LhZVxp9VztBagKuGuuEhDwjyVWnCk_R1ORGLeqD2jtGhQ-tya89r5DwS7POfbkBXYWBOtV6Q`} place_id={`ChIJ0d3gQh-ZToYRXIOa4JoP5e8`}
-                />
+                {routeData && <MiniPlace
+                    photo={routeData.place1.photos[0].photo_reference} place_id={routeData.place1.place_id}
+                /> }
             </div>
             <div className='spacerRoute'></div>
             <div>
-                <MiniPlace
-                        photo={`CmRaAAAALb8G_p8Uy0PMWKlkS7MoPpy1EcUxuJ7qUzq8bUhCJ_vZEFYRWY_gq1u2xvQ2Sf8m9zmGm3jwCWG51Jgc64HWbxCFNIwgN4tW-yOqR2dTqoQkK0LhZVxp9VztBagKuGuuEhDwjyVWnCk_R1ORGLeqD2jtGhQ-tya89r5DwS7POfbkBXYWBOtV6Q`} place_id={`ChIJ0d3gQh-ZToYRXIOa4JoP5e8`}
-                />
+                { routeData && <MiniPlace
+                        photo={routeData.place2.photos[0].photo_reference} place_id={routeData.place2.place_id}
+                /> }
             </div>
             <div className='spacerRoute'></div>
             <div>
-                <MiniPlace
-                        photo={`CmRaAAAALb8G_p8Uy0PMWKlkS7MoPpy1EcUxuJ7qUzq8bUhCJ_vZEFYRWY_gq1u2xvQ2Sf8m9zmGm3jwCWG51Jgc64HWbxCFNIwgN4tW-yOqR2dTqoQkK0LhZVxp9VztBagKuGuuEhDwjyVWnCk_R1ORGLeqD2jtGhQ-tya89r5DwS7POfbkBXYWBOtV6Q`} place_id={`ChIJ0d3gQh-ZToYRXIOa4JoP5e8`}
-                />
+                { routeData && <MiniPlace
+                        photo={routeData.place3.photos[0].photo_reference} place_id={routeData.place3.place_id}
+                /> }
             </div>
 
         </div>
+        </>
     )
 }
 

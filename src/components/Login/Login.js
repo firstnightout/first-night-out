@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import './login.css'
 import { login } from '../../ducks/reducer';
 
@@ -10,7 +10,6 @@ import { login } from '../../ducks/reducer';
 const Login = (props) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    
     const handleUpdates = (e) => {
         if(e.target.name === 'username') {
             setUsername(e.target.value)
@@ -22,6 +21,9 @@ const Login = (props) => {
 
     const handleLogin = () => {
         props.login(username,password)
+    }
+    if(props.user.username) {
+        return <Redirect to='/home' />
     }
 
     return (
@@ -54,11 +56,13 @@ const Login = (props) => {
                         name='password'
                         className="login-input"
                     />
-                    <Link to="/">
+                    {/* <Link to="/home"> */}
                     <button 
                     className="main-btn" 
-                    onClick={ handleLogin}>Login</button>
-                    </Link>
+                    onClick={ handleLogin}>
+                    Login
+                    </button>
+                    {/* </Link> */}
 
                     <Link to="/auth/register-1"><button className="sign-up-btn">sign up</button></Link>
         </div>

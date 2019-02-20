@@ -12,34 +12,33 @@ import FamilyFun from './components/FamilyFun/FamilyFun';
 import Register2 from './components/Register/Register2';
 import VenueCard from './components/VenueCard/VenueCard';
 import Categories from './components/Categories/Categories'
-import Details from './components/Details/Details'
 import Map from './components/Map/Map'
 import RouteComponent from './components/Route/Route'
-
+import RouteReview from './components/RouteReview/RouteReview'
 import Account from './components/Account/Account';
 import AccountSettings from './components/AccountSettings/AccountSettings'
+import Search from './components/Search/Search'
 
 export default (
     <Switch>
         <Route exact path="/" component={ Login }/>
         <Route exact path='/account' component={ Account } />
         <Route exact path='/account/settings' component={ AccountSettings } />
-        <Route path="/auth/register-1" component={ Register }/>
-        <Route path="/auth/register-2" component={ Register2 }/>
+        <Route path='/search' component={Search} />
+        <Route path="/auth/register-1" component={ Register } />
+        <Route path="/auth/register-2" component={ Register2 } />
         <Route path="/home" component={ Home } />
-
-        <Route path="/venue/details" component={ VenueCard } />
-
+        <Route path="/venue/details/:id" component={ VenueCard } />
         {/* Route creation routes */}
-        <Route path="/food" component={ Food }/>
-        <Route path="/shopping" component={ Shopping }/>
-        <Route path="/entertainment" component={ Entertainment }/>
-        <Route path="/night-life" component={ NightLife }/>
-        <Route path="/spa" component={ Spa }/>
+        <Route path="/food" component={ Food } />
+        <Route path="/shopping" component={ Shopping } />
+        <Route path="/entertainment" component={ Entertainment } />
+        <Route path="/night-life" component={ NightLife } />
+        <Route path="/spa" component={ Spa } />
         <Route path="/family-fun" component={ FamilyFun }/>
         <Route path="/categories" component={ Categories }/>
-        <Route path='/details/:id' component={ Details }/>
         <Route path='/map/:id' component={ Map }/>
-        <Route path='/route' component={ RouteComponent }/>
+        <Route path='/route/:routeid' component={ RouteComponent }/>
+        <Route path='/review' component={RouteReview} />
     </Switch>
 )

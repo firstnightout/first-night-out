@@ -1,48 +1,38 @@
 import React, { useState } from 'react';
 import './MiniRoute.css';
 import axios from 'axios';
+import {Redirect} from 'react-router-dom';
 const MiniRoute = (props) => {
     const [username, setUsername] = useState(null);
+    const [redirectToggle, setRedirectToggle] = useState(false);
     //WILL NEED MEDIA QUERIES TO DEAL WITH ABSOLUTE POSITIONING
-    let places = [
-        {
-            image: 'https://www.denverarchitects.org/wp-content/uploads/2018/01/RestaurantArchitects_Denver_1-Izakaya-Den.jpg',
-            name: "Good Restaurant",
-            rating: 3
-        },
-        {
-            image: "https://cdn.cnn.com/cnnnext/dam/assets/161221152712-new-restaurants-2017-attitude-at-avani-riverside-bangkok.jpg",
-            name: "Fantastic Restaurant",
-            rating: 4
-        },
-        {
-            image: "https://cdn0.wideopeneats.com/wp-content/uploads/2018/06/mcdonalds-950x535.jpg",
-            name: "Best Restaurant",
-            rating: 5
-        }
-    ]
-    // let renderArr = places.map((val, i) => <img className={`mini-route-image-${i+1}`} src={val.image} />);
-    console.log(props)
+    console.log(props.routeID)
     axios.get(`/api/users/${props.user_id}`)
     .then( response => {
-        // console.log(response)
         setUsername(response.data.username);
     })
     let render = <>
 
             {props.place1.photos && <img 
-            src={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${props.place1.photos[0].photo_reference}&maxheight=100&key=AIzaSyB3hkAtDj8ZZK9ptagSp_YqQouPEMcuaCo`}
+            src={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${props.place1.photos[0].photo_reference}&maxheight=100&key=${process.env.REACT_APP_GCLOUD_PLACES_API}`}
             className={`mini-route-image-1`}
+            onClick={() => setRedirectToggle(true)}
             /> }
             { props.place2.photos && <img 
-            src={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${props.place2.photos[0].photo_reference}&maxheight=100&key=AIzaSyB3hkAtDj8ZZK9ptagSp_YqQouPEMcuaCo`}
+            src={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${props.place2.photos[0].photo_reference}&maxheight=100&key=${process.env.REACT_APP_GCLOUD_PLACES_API}`}
             className={`mini-route-image-2`}
+            onClick={() => setRedirectToggle(true)}
             /> }
             {props.place3.photos && <img 
-            src={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${props.place3.photos[0].photo_reference}&maxheight=100&key=AIzaSyB3hkAtDj8ZZK9ptagSp_YqQouPEMcuaCo`}
+            src={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${props.place3.photos[0].photo_reference}&maxheight=100&key=${process.env.REACT_APP_GCLOUD_PLACES_API}`}
             className={`mini-route-image-3`}
+            onClick={() => setRedirectToggle(true)}
             /> }
         </>
+        
+    if(redirectToggle) {
+        return <Redirect to={`/route/${props.routeID}`} />
+    }
     return(
         <div className='mini-route'>
         <h1 className='mini-route-text mini-route-username'>{username}</h1>

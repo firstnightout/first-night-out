@@ -1,7 +1,9 @@
 const axios = require('axios');
+const util = require('util')
 const nearbyBaseURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json';
 const textSearchURL = 'https://maps.googleapis.com/maps/api/place/textsearch/json'
 const placeDetailsURL = 'https://maps.googleapis.com/maps/api/place/details/json'
+const autoCompleteURL = 'https://maps.googleapis.com/maps/api/place/autocomplete/json'
 function searchForLocation(req, res, next) {
     const {query, location, radius, minPrice, maxPrice, type} = req.body;
     const key = process.env.REACT_APP_GCLOUD_PLACES_API;
@@ -82,10 +84,25 @@ function getPlaceDetails(req, res, next) {
     }
 }
 
+function autoCompletePlace(req, res) {
+    const {input, sessiontoken} = req.body;
+    console.log(input, sessiontoken);
+    if(!(input && sessiontoken)) {
+        res.status(412).json({error: 'INVALID_REQUEST'});
+    } else {
+        axios.get(`${autoCompleteURL}?key=${process.env.REACT_APP_GCLOUD_PLACES_API}&input=${input}&sessiontoken=${sessiontoken}`).then(response => {
+            res.json(response.data)
+        })
+        // res.status(200).send(response);
+    }
+
+}
+
 module.exports = {
     findStuffNearLocation,
     searchForLocation,
-    getPlaceDetails
+    getPlaceDetails,
+    autoCompletePlace
 }
 
 /*

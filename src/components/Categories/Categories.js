@@ -1,13 +1,28 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import './categories.css'
+import Nav from '../Nav/Nav';
 
-const Categories = () => {
+const Categories = (props) => {
 
+    const [toggle, setToggle] = useState(false);
 
+    useEffect(() => {
+        console.log(props);
+        let num = props.routeCreationStep;
+        if(props.places.length >= 3) {
+            setToggle(true);
+        }
+    }, []);
+    if(toggle) {
+        return <Redirect to='/review' />
+    }
     return (
+        <>
+        <Nav />
         <div className='CategoriesCont'>
+            <input placeholder='Search' />
             <div className='categoriesWrapper'>
                 <Link to='/food'><div title='Food' className='foodPic'/>
                     <span className='foodLabel'>Food</span></Link>
@@ -23,6 +38,7 @@ const Categories = () => {
                     <span className='eLabel'>Entertainment</span></Link>
             </div>
         </div>
+        </>
     )
 }
 

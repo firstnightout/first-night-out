@@ -10,7 +10,10 @@ const initialState = {
     city: '',
     st: '',
     zip: '',
-    profilePic: ''
+    profilePic: '',
+    routeCreationStep: 1,
+    places: [],
+    user: {}
 }
 
 // action types
@@ -24,10 +27,28 @@ const UPDATE_ADDRESS = 'UPDATE_ADDRESS';
 const UPDATE_CITY = 'UPDATE_CITY';
 const UPDATE_STATE = 'UPDATE_STATE';
 const UPDATE_ZIP = 'UPDATE_ZIP';
-const UPDATE_PROFILE_PIC = 'UDATE_PROFILE_PIC';
-
+const UPDATE_PROFILE_PIC = 'UPDATE_PROFILE_PIC';
+const UPDATE_PLACES = 'UPDATE_PLACES';
+const RESET_PLACES = 'RESET_PLACES';
+const RESET_USER = 'RESET_USER';
 
 // action creators
+export function resetUser() {
+    return {
+        type: RESET_USER
+    }
+}
+export function resetPlaces() {
+    return {
+        type: RESET_PLACES
+    }
+}
+export function addPlaceToRoute(place) {
+    return {
+        type: UPDATE_PLACES,
+        payload: place
+    }
+}
 export function updateFirstName(firstName){
     return {
         type: UPDATE_FIRST_NAME,
@@ -102,7 +123,13 @@ export function login(username,password) {
 // reducer function
 function reducer(state=initialState, action) {
     switch(action.type) {
+        case RESET_PLACES: 
+            return {
+                ...state,
+                places: []
+            }
         case `${LOGIN}_FULFILLED`:
+        console.log(action.payload)
             return {
                 ...state, 
                 user: action.payload.data
@@ -124,12 +151,12 @@ function reducer(state=initialState, action) {
             }
         case UPDATE_USERNAME:
             return {
-                type: UPDATE_USERNAME,
+                ...state,
                 username: action.payload
             }
         case UPDATE_PASSWORD: 
             return {
-                type: UPDATE_PASSWORD,
+                ...state,
                 password: action.payload
             }
         case UPDATE_ADDRESS: 
@@ -157,7 +184,16 @@ function reducer(state=initialState, action) {
                 ...state,
                 profilePic: action.payload
             }
-
+        case UPDATE_PLACES:
+            return {
+                ...state,
+                places: [...state.places, action.payload]
+            }
+        case RESET_USER:
+            return {
+                ...state,
+                user: {}
+            }
         default: return state;
     }
 }
