@@ -73,6 +73,7 @@ const register = (req, res) =>{
         req.session.user = {
             username: req.body.username
         }
+        console.log('MADE IT HERE')
         // firebase.database().ref('preferences').once('value').then(preferences => {
         //     firebase.database().ref(`preferences/${preferences.val().length}`).set({
         //         nonAlcoholic: false,
