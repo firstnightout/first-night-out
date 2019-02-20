@@ -12,7 +12,8 @@ const initialState = {
     zip: '',
     profilePic: '',
     routeCreationStep: 1,
-    places: []
+    places: [],
+    user: {}
 }
 
 // action types
@@ -29,11 +30,17 @@ const UPDATE_ZIP = 'UPDATE_ZIP';
 const UPDATE_PROFILE_PIC = 'UPDATE_PROFILE_PIC';
 const UPDATE_PLACES = 'UPDATE_PLACES';
 const RESET_PLACES = 'RESET_PLACES';
+const RESET_USER = 'RESET_USER';
 
 // action creators
+export function resetUser() {
+    return {
+        type: RESET_USER
+    }
+}
 export function resetPlaces() {
     return {
-        type: RESET_PLACES,
+        type: RESET_PLACES
     }
 }
 export function addPlaceToRoute(place) {
@@ -122,6 +129,7 @@ function reducer(state=initialState, action) {
                 places: []
             }
         case `${LOGIN}_FULFILLED`:
+        console.log(action.payload)
             return {
                 ...state, 
                 user: action.payload.data
@@ -181,7 +189,11 @@ function reducer(state=initialState, action) {
                 ...state,
                 places: [...state.places, action.payload]
             }
-        
+        case RESET_USER:
+            return {
+                ...state,
+                user: {}
+            }
         default: return state;
     }
 }

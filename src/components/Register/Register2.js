@@ -79,7 +79,7 @@ const Register2 = (props) => {
             />
             <label for="file"><i className="fas fa-camera"></i></label> 
             
-            <button onClick={submitRegister} className='reg-button'>Sign up</button>
+            <button onClick={submitRegister} className='reg-button'><Link to='/home'>Sign up</Link></button>
         </div>
     )
 }

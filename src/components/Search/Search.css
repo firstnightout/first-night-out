@@ -1,0 +1,25 @@
+.search-bar {
+    border: 2px solid black;
+    height: 5vh;
+    width: 90vw;
+    margin-left: 4vw;
+    margin-top: 5vh;
+    text-align: center;
+}
+.search-results {
+    width: 90vw;
+    margin-left: 4.4vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 2px;
+    position: absolute;
+}
+.search-result-element {
+    width: 90%;
+    text-align: center;
+    padding-bottom: 3vh;
+    border-bottom: 1px solid rgba(0, 0, 0, .3);
+    margin-top: 3vh;
+    font-weight: normal
+}

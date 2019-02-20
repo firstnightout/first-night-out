@@ -3,7 +3,7 @@ const express = require('express');
 const {json} = require('body-parser');
 const session = require("express-session");
 // const bcrypt = require('bcryptjs');
-const { findStuffNearLocation, searchForLocation, getPlaceDetails } = require('./controllers/mapsController')
+const { findStuffNearLocation, searchForLocation, getPlaceDetails, autoCompletePlace } = require('./controllers/mapsController')
 const 
 { register, login, signout, createRoute, getRoutesByUserID, 
     getRoutesBasedOnCity, setPreferences, getUsers,
@@ -37,6 +37,7 @@ app.get('/api/routes/user/:id', getRoutesByUserID);
 app.get('/api/routes/city/:city', getRoutesBasedOnCity)
 app.get('/api/routes/:id', getRoute);
 app.get('/api/users/:id', getUsers);
+app.post('/api/autocomplete', autoCompletePlace)
 // app.get('/api/seed', seed)
 
 const PORT = process.env.SERVER_PORT || 5050;
