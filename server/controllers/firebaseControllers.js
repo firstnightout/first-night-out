@@ -194,6 +194,27 @@ const getRoute = async (req, res) => {
     res.status(200).json(route.val());
 }
 
+
+const getCity = (req, res) => {
+    const db = firebase.database();
+    db.ref('routes').once('value')
+    .then(response => {
+        // console.log(response.val())
+        let routes = response.val();
+        let filterdCity = [];
+        for(let route in routes){
+            console.log(routes[route].city)
+            if(req.params.city.toUpperCase() === routes[route].city.toUpperCase()){
+                filterdCity.push(routes[route])
+            }
+        }
+        // console.log(filterdCity)
+        res.status(200).json(filterdCity)
+    }).catch( err => console.log(err));
+}
+
+
+
 module.exports = {
     login,
     register,
@@ -203,5 +224,6 @@ module.exports = {
     getRoutesBasedOnCity,
     setPreferences, 
     getUsers,
-    getRoute
+    getRoute,
+    getCity
 }
