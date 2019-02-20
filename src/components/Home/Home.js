@@ -15,35 +15,6 @@ const Home = (props) => {
     console.log(props.user.city)
     //COMMENTED TO SAVE API REQUESTS
     useEffect(() => {
-        // const address = '500 S Ervay St, Dallas, TX'
-        // const formatAdd = address.split(' ').join('+')
-        // axios.get(`https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyA0dEOfis7q8Pl8_MM5uhen6ustyIGwCvQ&address=${formatAdd}`)
-        // .then (response => {
-        //     const lat = response.data.results[0].geometry.location.lat
-        //     const long = response.data.results[0].geometry.location.lng
-        //     console.log(lat, long)
-        //     // axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${long}&radius=500&type=cafe&key=AIzaSyB3hkAtDj8ZZK9ptagSp_YqQouPEMcuaCo`)
-        //     // .then (response2 => {
-        //     //     console.log(response2)
-        //     // })
-        //     axios.post('/api/places/near', {location: `${lat},${long}`, radius: 500, type: 'restaurant'}).then(response2 => {
-        //         console.log(response2);
-        //         const cafes = response2.data.results.map(cafe => {
-        //             return (
-        //                 <MiniPlace place_id = {cafe.place_id} photo={ cafe.photos && cafe.photos[0].photo_reference } />
-        //             )
-                    
-        //         })
-        //         setNearbyRoutes(cafes)
-        //     })
-        // })
-
-
-
-
-
-
-
 
         let city = props.user.city;
         axios.get('/api/routes/city/' + city)
@@ -55,6 +26,7 @@ const Home = (props) => {
 
 
     }, []);
+    
     return(
         <>
         <Nav />
@@ -73,31 +45,6 @@ const Home = (props) => {
                 <img className='carousel-img' src={`https://firebasestorage.googleapis.com/v0/b/first-night-out.appspot.com/o/spa-1.jpg?alt=media&token=95c951ea-b4c1-403f-abbd-fe2d469d341d`} />
             </Carousel>
             {nearbyRoutes}
-
-
-
-
-
-
-
-
-
-
-
-            {/* <MiniRoute />
-            <MiniRoute />
-            <MiniRoute />
-            <MiniRoute />
-            <MiniRoute />
-            <MiniRoute />
-            <MiniRoute />
-            <MiniRoute />
-            <MiniRoute />
-            <MiniRoute />
-            <MiniRoute />
-            <MiniRoute />
-            <MiniRoute />
-            <MiniRoute /> */}
         </div>
         </>
     )

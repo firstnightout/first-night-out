@@ -22,6 +22,7 @@ const Categories = (props) => {
         <>
         <Nav />
         <div className='CategoriesCont'>
+            <input placeholder='Search' />
             <div className='categoriesWrapper'>
                 <Link to='/food'><div title='Food' className='foodPic'/>
                     <span className='foodLabel'>Food</span></Link>
