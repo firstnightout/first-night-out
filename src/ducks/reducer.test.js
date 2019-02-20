@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import {updateFirstName,updateLastName,updateAddress,updateCity,updateZip} from './reducer'
 import axios from 'axios'
 
@@ -9,7 +8,6 @@ test('expect values to match variable value', () => {
     expect(updateCity('Prosper').payload).toEqual('Prosper')
     expect(updateZip('55512').payload).toEqual('55512')
 })
-=======
 import { updateUsername, updatePassword } from './reducer'
 import {  UPDATE_PASSWORD } from './reducer'
 
@@ -28,4 +26,3 @@ test('Type should equal "UPDATE_PASSWORD"', function(){
 test('Type should equal "UPDATE_PASSWORD"', function(){
     expect('UPDATE_PASSWORD').toEqual('UPDATE_PASSWORD');
 });
->>>>>>> master

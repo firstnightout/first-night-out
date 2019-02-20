@@ -4,6 +4,7 @@ import './Search.css'
 import axios from 'axios';
 import { checkPropTypes } from 'prop-types';
 import MiniPlace from '../MiniPlace/MiniPlace';
+import MiniRoute from '../MiniRoute/MiniRoute';
 
 const Search = (props) => {
     const [ inputText, setInputText ] = useState(['']);
@@ -11,6 +12,7 @@ const Search = (props) => {
     const [ autoSuggestions, setAutoSuggestions ] = useState(null); 
     const [ searchResultStyle, setResultStyle ] = useState(null);
     const [ toggleSearchResults, toggleResults ] = useState(false);
+    const [searchResults, setSearchResults] = useState(null)
 
     useEffect(() => {
         //Making Random Token for the Billing Session
@@ -49,6 +51,7 @@ const Search = (props) => {
             setAutoSuggestions(response.data.predictions.filter((val) => val.types.includes('locality')).map(val => {
                 return <span className='search-result-element' onClick={() => resetSuggestion(val.description)}>{val.description}</span>
             }))
+            console.log(autoSuggestions);
         })
             setInputText( [e.target.value] )
     }
@@ -58,11 +61,12 @@ const Search = (props) => {
         axios.get(`/api/getcity/${formatedText[0]}`)
         .then(response => {
             console.log(response.data);
-            // let searchResults = response.data.map(val => {
-            //     return (
-            //         <MiniPlace props.place1.photos[0].photo_reference
-            //     )
-            // })
+            let searchResults = response.data.map(val => {
+                return (
+                    <MiniRoute place1={val.place1} place2={val.place2} place3={val.place3} routeID={val.routeID} user_id={val.userID}/>
+                )
+            })
+            setSearchResults(searchResults)
         })
     }
 
@@ -74,6 +78,7 @@ const Search = (props) => {
                 {autoSuggestions}
             </div>
             <button onClick={handleSearchResult}>Submit</button>
+            {searchResults}
         </>
     )
 }
