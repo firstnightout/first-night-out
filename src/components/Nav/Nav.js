@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
@@ -11,7 +11,9 @@ const Nav = (props) => {
     const [toggle, setToggle] = useState(false)
     const [toggleLinks, setToggleLinks] = useState(false)
     const [toggleOpacity, setToggleOpacity] = useState(false)
+    useEffect(() => {
 
+    }, [])
     const handleToggle = (e) => {
         setToggle(!toggle)
         if(e.target.value === 'logout') {

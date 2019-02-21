@@ -1,18 +1,25 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import SmilingMan from '../../images/smiling_man.png'
 import './Account.css'
 import MiniRoute from '../MiniRoute/MiniRoute'
 import {Link} from 'react-router-dom'
 import Nav from '../Nav/Nav';
-
+import axios from 'axios';
+import {connect} from 'react-redux';
 const Account = (props) => {
-
+    const [profPicLink, setLink] = useState(null)
+    console.log('here')
+    useEffect(() => {
+        axios.get('/auth/profile/' + props.user.userId).then(response => {
+            setLink(response.data)
+        }).catch(err => console.log(err))
+    }, [])
     return (
         <>
             <Nav />
             <div className='account'>
                 <div className='prof-pic-container'>
-                    <img className='profile-picture' src={SmilingMan} />
+                    <img className='profile-picture' src={profPicLink} />
                 </div>
             </div>
             <div className='center-button'>
@@ -32,5 +39,5 @@ const Account = (props) => {
         </>
     )
 }
-
-export default Account;
+const mapStateToProps = state => state;
+export default connect(mapStateToProps)(Account);

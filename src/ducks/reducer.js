@@ -10,7 +10,7 @@ const initialState = {
     city: '',
     st: '',
     zip: '',
-    profilePic: '',
+    profilePic: {},
     routeCreationStep: 1,
     places: [],
     user: {}
@@ -98,6 +98,7 @@ export function updateZip(zip){
     }
 }
 export function updateProfilePic(url){
+    console.log('here');
     return {
         type: UPDATE_PROFILE_PIC,
         payload: url
@@ -180,6 +181,7 @@ function reducer(state=initialState, action) {
                 zip: action.payload
             }
         case UPDATE_PROFILE_PIC:
+        console.log('also here');
             return {
                 ...state,
                 profilePic: action.payload

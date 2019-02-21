@@ -10,6 +10,7 @@ const MiniPlace = (props) => {
     const [redirectToggle, setRedirectToggle] = useState(false);
 
     useEffect(() => {
+        console.log(props.place_id)
         axios.post(`/api/places/details`, {
             placeid: props.place_id,
         }).then(response => {

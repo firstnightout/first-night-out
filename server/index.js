@@ -7,7 +7,7 @@ const { findStuffNearLocation, searchForLocation, getPlaceDetails, autoCompleteP
 const 
 { register, login, signout, createRoute, getRoutesByUserID, 
     getRoutesBasedOnCity, setPreferences, getUsers,
-    getRoute
+    getRoute, setProfLink, getProfLink
 } = require('./controllers/firebaseControllers');
 
 
@@ -38,6 +38,8 @@ app.get('/api/routes/city/:city', getRoutesBasedOnCity)
 app.get('/api/routes/:id', getRoute);
 app.get('/api/users/:id', getUsers);
 app.post('/api/autocomplete', autoCompletePlace)
+app.post('/auth/set/profile', setProfLink)
+app.get('/auth/profile/:id', getProfLink)
 // app.get('/api/seed', seed)
 
 const PORT = process.env.SERVER_PORT || 5050;

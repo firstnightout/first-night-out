@@ -43,6 +43,7 @@ const Search = () => {
 
     const handleChange = e => {
         axios.post('/api/autocomplete', {input: e.target.value, sessiontoken: sessionToken}).then(response => {
+            console.log(response);
             setAutoSuggestions(response.data.predictions.map(val => {
                 return <span className='search-result-element' onClick={() => resetSuggestion(val.description)}>{val.description}</span>
             }))
@@ -56,6 +57,7 @@ const Search = () => {
             <div className='search-results' style={searchResultStyle}>
                 {autoSuggestions}
             </div>
+
         </>
     )
 }

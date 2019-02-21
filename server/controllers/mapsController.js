@@ -10,6 +10,7 @@ function searchForLocation(req, res, next) {
     //QUERY AND KEY ARE REQUIRED
     if(!(query && key)) {
         res.status(412).json({error: "INVALID_REQUEST"})
+        return {error: "INVALID_REQUEST"}
     } else {
         let newQuery = query.split(' ').join('+');
         let request = `${textSearchURL}?query=${query}&key=${key}`;
@@ -25,10 +26,14 @@ function searchForLocation(req, res, next) {
             request+=`&type=${type}`;
 
         axios.get(request).then(response => {
-            if(response.data.status === "ZERO_RESULTS")
+            if(response.data.status === "ZERO_RESULTS") {
                 res.status(404).json({error: "No results were found"});
-            else
+                return {error: "No results were found"};
+            }
+            else {
                 res.status(200).json(response.data);
+                return response.data
+            }
         })
     }
 }
@@ -40,6 +45,7 @@ function findStuffNearLocation(req, res, next) {
     if(!(location && radius && key)) {
         console.log('failed')
         res.status(412).json({error: "INVALID_REQUEST"});
+        return {error: "INVALID_REQUEST"}
     } else {
         let request = `${nearbyBaseURL}?location=${location}&radius=${radius}&key=${key}`
         if(keyword)
@@ -56,10 +62,14 @@ function findStuffNearLocation(req, res, next) {
             request+=`&type=${type}`;
 
         axios.get(request).then(response => {
-            if(response.data.status === "ZERO_RESULTS")
+            if(response.data.status === "ZERO_RESULTS") {
                 res.status(404).json({error: "No results were found"});
-            else 
+                return request
+            }
+            else {
                 res.status(200).json(response.data);
+                return request
+            }
         })
     }
 }
@@ -67,6 +77,7 @@ function findStuffNearLocation(req, res, next) {
 function getPlaceDetails(req, res, next) {
     const {placeid, fields} = req.body;
     const key = process.env.REACT_APP_GCLOUD_PLACES_API;
+    //PLACEID IS REQUIRED
     if(!(key && placeid)) {
         res.status(412).json({error: "INVALID_REQUEST"});
     } else {
