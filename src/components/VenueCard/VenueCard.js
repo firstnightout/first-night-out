@@ -7,6 +7,7 @@ import {Link, Redirect} from 'react-router-dom'
 import {addPlaceToRoute} from '../../ducks/reducer';
 import {connect} from 'react-redux';
 import Nav from '../Nav/Nav';
+import swal from 'sweetalert';
 
 const VenueCard = (props) => {
     const [restaurantName, setRestaurantName] = useState(null)
@@ -56,6 +57,11 @@ const VenueCard = (props) => {
     const doReduxStuff = () => {
         props.addPlaceToRoute({id: props.match.params.id, photo: photoRef});
         setRedirect(true);
+        swal({
+            title: 'Route',
+            text: 'Item successfully added to route',
+            icon: 'success'
+        })
     }
 
     if(redirectToggle) {

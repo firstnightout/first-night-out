@@ -1,16 +1,19 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
-import {resetUser} from '../../ducks/reducer'
+import {resetUser,getUser} from '../../ducks/reducer'
 import './nav.css';
 
 const Nav = (props) => {
-
     const hideNavPaths = ['/account'];
     const [toggle, setToggle] = useState(false)
     const [toggleLinks, setToggleLinks] = useState(false)
     const [toggleOpacity, setToggleOpacity] = useState(false)
+    
+    useEffect (() => {
+        props.getUser()
+    },[])
 
     const handleToggle = (e) => {
         setToggle(!toggle)
@@ -27,11 +30,12 @@ const Nav = (props) => {
             setToggleOpacity(!toggleOpacity)
         }, 500);
     }
+
     return (
         <div>
             <div className='navBarMain'>
                 <i className="fas fa-bars" onClick={handleToggle}></i>
-                {/* <span>{props.users[0].username}</span> */}
+                <span className='usernameNav'>{props.user.username}</span>
             </div>
 
             {toggle ? 
@@ -74,4 +78,4 @@ const Nav = (props) => {
 
 const mapStateToProps = state => state
 
-export default connect(mapStateToProps, {resetUser})(Nav)
+export default connect(mapStateToProps, {resetUser,getUser})(Nav)

@@ -7,7 +7,7 @@ const { findStuffNearLocation, searchForLocation, getPlaceDetails, autoCompleteP
 const 
 { register, login, signout, createRoute, getRoutesByUserID, 
     getRoutesBasedOnCity, setPreferences, getUsers,
-    getRoute, getCity, getVotes
+    getRoute, getCity, getVotes, getUser
 } = require('./controllers/firebaseControllers');
 
 
@@ -38,6 +38,7 @@ app.get('/api/routes/user/:id', getRoutesByUserID);
 app.get('/api/routes/city/:city', getRoutesBasedOnCity)
 app.get('/api/routes/:id', getRoute);
 app.get('/api/users/:id', getUsers);
+app.get('/api/session', getUser)
 app.post('/api/autocomplete', autoCompletePlace)
 // app.get('/api/seed', seed)
 app.get('/api/getcity/:city', getCity);

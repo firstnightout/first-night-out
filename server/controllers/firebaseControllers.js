@@ -189,6 +189,11 @@ const getUsers = async (req, res) => {
     res.status(200).json(user.val());
 }
 
+const getUser = (req,res) => {
+    res.status(200).json(req.session.user)
+    console.log(req.session.user);
+}
+
 const getRoute = async (req, res) => {
     let route = await firebase.database().ref(`/routes/${req.params.id}`).once('value');
     res.status(200).json(route.val());
@@ -255,5 +260,6 @@ module.exports = {
     getUsers,
     getRoute,
     getCity,
-    getVotes
+    getVotes,
+    getUser
 }
