@@ -77,12 +77,8 @@ const Search = (props) => {
             <div className='search-results' style={searchResultStyle}>
                 {autoSuggestions}
             </div>
-<<<<<<< HEAD
-
-=======
             <button onClick={handleSearchResult}>Submit</button>
             {searchResults}
->>>>>>> master
         </>
     )
 }

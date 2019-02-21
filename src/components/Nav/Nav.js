@@ -10,16 +10,10 @@ const Nav = (props) => {
     const [toggle, setToggle] = useState(false)
     const [toggleLinks, setToggleLinks] = useState(false)
     const [toggleOpacity, setToggleOpacity] = useState(false)
-<<<<<<< HEAD
-    useEffect(() => {
-=======
     
     useEffect (() => {
         props.getUser()
     },[])
->>>>>>> master
-
-    }, [])
     const handleToggle = (e) => {
         setToggle(!toggle)
         if(e.target.value === 'logout') {

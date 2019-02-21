@@ -4,11 +4,8 @@ import  "./register.css";
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
-<<<<<<< HEAD
 import {storage} from '../../firebase'
-=======
 import swal from 'sweetalert'
->>>>>>> master
 
 
 
