@@ -39,6 +39,7 @@ const MiniRoute = (props) => {
         <h3 className='mini-route-text mini-route-likes'>{props.likes} Likes</h3>
             {render}
         </div>
+        
     )
 }
 

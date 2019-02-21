@@ -4,6 +4,7 @@ import  "./register.css";
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
+import swal from 'sweetalert'
 
 
 
@@ -47,6 +48,12 @@ const Register2 = (props) => {
                     console.log(response)
                     setToggle(true);
                 }).catch( err => console.log(err))
+
+                swal({
+                    title: 'Register',
+                    text: 'Registration successful',
+                    icon: 'success',
+                })
     }
 
    

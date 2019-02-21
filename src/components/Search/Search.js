@@ -2,13 +2,17 @@ import React, {useState, useEffect} from 'react';
 import Nav from '../Nav/Nav'
 import './Search.css'
 import axios from 'axios';
+import { checkPropTypes } from 'prop-types';
+import MiniPlace from '../MiniPlace/MiniPlace';
+import MiniRoute from '../MiniRoute/MiniRoute';
 
-const Search = () => {
+const Search = (props) => {
     const [ inputText, setInputText ] = useState(['']);
     const [ sessionToken, setToken ] = useState(null);
     const [ autoSuggestions, setAutoSuggestions ] = useState(null); 
     const [ searchResultStyle, setResultStyle ] = useState(null);
     const [ toggleSearchResults, toggleResults ] = useState(false);
+    const [searchResults, setSearchResults] = useState(null)
 
     useEffect(() => {
         //Making Random Token for the Billing Session
@@ -43,12 +47,29 @@ const Search = () => {
 
     const handleChange = e => {
         axios.post('/api/autocomplete', {input: e.target.value, sessiontoken: sessionToken}).then(response => {
-            setAutoSuggestions(response.data.predictions.map(val => {
+            console.log(response);
+            setAutoSuggestions(response.data.predictions.filter((val) => val.types.includes('locality')).map(val => {
                 return <span className='search-result-element' onClick={() => resetSuggestion(val.description)}>{val.description}</span>
             }))
+            console.log(autoSuggestions);
         })
             setInputText( [e.target.value] )
     }
+
+    const handleSearchResult = () => {
+        const formatedText = inputText[0].split(',')
+        axios.get(`/api/getcity/${formatedText[0]}`)
+        .then(response => {
+            console.log(response.data);
+            let searchResults = response.data.map(val => {
+                return (
+                    <MiniRoute place1={val.place1} place2={val.place2} place3={val.place3} routeID={val.routeID} user_id={val.userID}/>
+                )
+            })
+            setSearchResults(searchResults)
+        })
+    }
+
     return(
         <>
             <Nav />
@@ -56,6 +77,8 @@ const Search = () => {
             <div className='search-results' style={searchResultStyle}>
                 {autoSuggestions}
             </div>
+            <button onClick={handleSearchResult}>Submit</button>
+            {searchResults}
         </>
     )
 }

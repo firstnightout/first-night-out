@@ -189,6 +189,11 @@ const getUsers = async (req, res) => {
     res.status(200).json(user.val());
 }
 
+const getUser = (req,res) => {
+    res.status(200).json(req.session.user)
+    console.log(req.session.user);
+}
+
 const getRoute = async (req, res) => {
     let route = await firebase.database().ref(`/routes/${req.params.id}`).once('value');
     res.status(200).json(route.val());
@@ -213,6 +218,35 @@ const getCity = (req, res) => {
     }).catch( err => console.log(err));
 }
 
+const getVotes = (req,res) => {
+    const db = firebase.database()
+    db.ref(`routes/${req.body.routeID}`).once('value')
+    .then(response => {
+        let likes = +response.val().likes
+        if(req.body.vote > 0) {
+            likes += 1
+        }
+        else if (req.body.vote < 0) {
+            if(likes <= 0) {
+                likes = 0
+            }
+            else {
+                likes -= 1
+            }
+        }
+
+        db.ref(`routes/${req.body.routeID}`).update({likes: likes})
+            .then(() => {
+                res.sendStatus(200)
+            }).catch(() => {
+                res.status(404).json('Could not update')
+            })
+            
+    }).catch(err => {
+        console.log(err);
+    })
+}
+
 
 
 module.exports = {
@@ -225,5 +259,7 @@ module.exports = {
     setPreferences, 
     getUsers,
     getRoute,
-    getCity
+    getCity,
+    getVotes,
+    getUser
 }
