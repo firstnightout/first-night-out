@@ -16,9 +16,15 @@ const Route = (props) => {
         })
     }, []);
 
-    
+    const upVote = () => {
+        axios.post(`/api/vote`, {vote: 1, routeID: props.match.params.routeid } )
+    }
+
+    const downVote = () => {
+        axios.post(`/api/vote`, {vote: -1, routeID: props.match.params.routeid } )
+    }
     return(
-        <>
+        <>f
         <Nav />
         <div className='routeMain'>
             <div className='routeScreen'>
@@ -42,7 +48,18 @@ const Route = (props) => {
                         photo={routeData.place3.photos[0].photo_reference} place_id={routeData.place3.place_id}
                 /> }
             </div>
-
+            <div>
+                <div>
+                    <i 
+                        className="fas fa-thumbs-up"
+                        onClick={ upVote }
+                    ></i>
+                    <i 
+                        className="fas fa-thumbs-down"
+                        onClick={ downVote }
+                    ></i>
+                </div>
+            </div>
         </div>
         </>
     )
