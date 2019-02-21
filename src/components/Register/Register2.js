@@ -4,7 +4,11 @@ import  "./register.css";
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
+<<<<<<< HEAD
 import {storage} from '../../firebase'
+=======
+import swal from 'sweetalert'
+>>>>>>> master
 
 
 
@@ -56,6 +60,12 @@ const Register2 = (props) => {
                         })
                     })
                 }).catch( err => console.log(err))
+
+                swal({
+                    title: 'Register',
+                    text: 'Registration successful',
+                    icon: 'success',
+                })
     }
 
                     // setToggle(true);

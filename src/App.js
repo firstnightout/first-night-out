@@ -7,6 +7,7 @@ import routes from './routes';
 
 
 class App extends Component {
+
   render() {
     console.log(this.props)
     return (
@@ -21,4 +22,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App

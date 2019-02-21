@@ -31,8 +31,18 @@ const UPDATE_PROFILE_PIC = 'UPDATE_PROFILE_PIC';
 const UPDATE_PLACES = 'UPDATE_PLACES';
 const RESET_PLACES = 'RESET_PLACES';
 const RESET_USER = 'RESET_USER';
+const GET_USER = 'GET_USER'
 
 // action creators
+export function getUser() {
+    
+    return {
+        type: GET_USER,
+        payload: axios.get('/api/session')
+        // payload: 12
+    }
+}
+
 export function resetUser() {
     return {
         type: RESET_USER
@@ -195,6 +205,12 @@ function reducer(state=initialState, action) {
             return {
                 ...state,
                 user: {}
+            }
+        case `${GET_USER}_FULFILLED`:
+        console.log('here')
+            return {
+                ...state,
+                user: action.payload.data
             }
         default: return state;
     }
