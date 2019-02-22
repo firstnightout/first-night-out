@@ -53,6 +53,8 @@ const Register2 = (props) => {
                     title: 'Register',
                     text: 'Registration successful',
                     icon: 'success',
+                    timer: 1500,
+                    button: null
                 })
     }
 
