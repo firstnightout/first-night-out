@@ -45,6 +45,7 @@
     color: white;
 }
 
+
 /*These swal classNames change the notifications in the Register2 and VenueCard components as well */
 
 .swal-modal {
@@ -63,3 +64,6 @@
 }
 
 
+@media only screen and (max-height: 770px) {
+    
+}

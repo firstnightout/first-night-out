@@ -50,7 +50,6 @@ const Login = (props) => {
                 <button className='googleButton'>Login with Google</button>
 
             </div> */}
-            
                     <input  
                         onChange={handleUpdates} 
                         placeholder=' username' 

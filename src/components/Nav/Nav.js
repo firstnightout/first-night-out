@@ -6,7 +6,7 @@ import {resetUser,getUser} from '../../ducks/reducer'
 import './nav.css';
 
 const Nav = (props) => {
-    const hideNavPaths = ['/account'];
+    // const hideNavPaths = ['/account'];
     const [toggle, setToggle] = useState(false)
     const [toggleLinks, setToggleLinks] = useState(false)
     const [toggleOpacity, setToggleOpacity] = useState(false)
@@ -14,7 +14,6 @@ const Nav = (props) => {
     useEffect (() => {
         props.getUser()
     },[])
-
     const handleToggle = (e) => {
         setToggle(!toggle)
         if(e.target.value === 'logout') {

@@ -3,27 +3,61 @@ import {connect} from 'react-redux'
 import {Link, Redirect} from 'react-router-dom'
 import './categories.css'
 import Nav from '../Nav/Nav';
+import axios from 'axios';
+import MiniPlace from '../MiniPlace/MiniPlace'
 
 const Categories = (props) => {
 
     const [toggle, setToggle] = useState(false);
+    const [searchText, setSearchText] = useState(['']);
+    const [sessionToken, setToken] = useState(null);
+    const [suggestedPlaces, setSuggestedPlaces] = useState([]);
 
     useEffect(() => {
         console.log(props);
-        let num = props.routeCreationStep;
+        // let num = props.routeCreationStep;
         if(props.places.length >= 3) {
             setToggle(true);
         }
+        let arr = [];
+        for(let i = 0; i < 15; i++) {
+            arr.push(Math.round(Math.random() * 57 + 65))
+        }
+        arr = arr.map(val => String.fromCharCode(val))
+        let sessionToken = arr.join('');
+        setToken(sessionToken)
     }, []);
+
+    useEffect(() => {
+        if(searchText[0]) {
+            axios.post('/api/autocomplete', {input: searchText[0], sessiontoken: sessionToken}).then(suggestions => {
+                console.log(suggestions)
+                setSuggestedPlaces(null);
+                axios.post('/api/photos/places', {predictions: suggestions.data.predictions}).then(placesPhoto => {
+                    console.log(placesPhoto)
+                    setSuggestedPlaces(suggestions.data.predictions.map((val, i) => {
+                        return <MiniPlace place_id={val.place_id} photo={placesPhoto.data[i].result.photos ? placesPhoto.data[i].result.photos[0].photo_reference : null} />
+                    }))
+                }).catch(err => console.log(err))
+            })
+        }
+    }, searchText)
+
+
     if(toggle) {
         return <Redirect to='/review' />
+    }
+    const handleSearch = e => {
+        setSearchText([e.target.value])
     }
     return (
         <>
         <Nav />
         <div className='CategoriesCont'>
-            <input placeholder='Search' />
-            <div className='categoriesWrapper'>
+            <div className='category-search-container'>
+                <input className='category-search' placeholder='Search' onChange={handleSearch}/>
+            </div>
+            {!searchText[0] ? <div className='categoriesWrapper'>
                 <Link to='/food'><div title='Food' className='foodPic'/>
                     <span className='foodLabel'>Food</span></Link>
                 <Link to='/family-fun'><div title='Family Fun' className='familyFunPic'/>
@@ -36,7 +70,7 @@ const Categories = (props) => {
                     <span className='nlLabel'>Night Life</span></Link>
                 <Link to='/entertainment'><div title='Entertainment' className='ePic'/>
                     <span className='eLabel'>Entertainment</span></Link>
-            </div>
+            </div> : suggestedPlaces}
         </div>
         </>
     )
