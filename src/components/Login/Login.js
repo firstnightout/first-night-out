@@ -25,9 +25,11 @@ const Login = (props) => {
 
     if (props.user.username) {
         swal({
-            title: 'Login',
+            title: 'Welcome',
             text: 'Successfully logged in',
-            icon: 'success'
+            icon: 'success',
+            timer: 1500,
+            button: null
         })
         return <Redirect to='/home' />
     }

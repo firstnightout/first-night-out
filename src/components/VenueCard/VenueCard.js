@@ -60,7 +60,9 @@ const VenueCard = (props) => {
         swal({
             title: 'Route',
             text: 'Item successfully added to route',
-            icon: 'success'
+            icon: 'success',
+            timer: 1500,
+            button: null
         })
     }
 
