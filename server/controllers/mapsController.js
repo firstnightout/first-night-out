@@ -109,11 +109,30 @@ function autoCompletePlace(req, res) {
 
 }
 
+async function getPlacesPhotos(req, res) {
+    const {predictions} = req.body;
+    const key = process.env.REACT_APP_GCLOUD_PLACES_API;
+    let place1Details = predictions.length >= 1 ? await axios.get(`${placeDetailsURL}?placeid=${predictions[0].place_id}&key=${key}`) : {};
+    let place2Details = predictions.length >= 2 ? await axios.get(`${placeDetailsURL}?placeid=${predictions[1].place_id}&key=${key}`) : {}
+    let place3Details = predictions.length >= 3 ? await axios.get(`${placeDetailsURL}?placeid=${predictions[2].place_id}&key=${key}`) : {}
+    let place4Details = predictions.length >= 4 ? await axios.get(`${placeDetailsURL}?placeid=${predictions[3].place_id}&key=${key}`) : {}
+    let place5Details = predictions.length >= 5 ? await axios.get(`${placeDetailsURL}?placeid=${predictions[4].place_id}&key=${key}`) : {};
+    let responseArr = [
+        place1Details.data,
+        place2Details.data,
+        place3Details.data,
+        place4Details.data,
+        place5Details.data
+    ]
+    res.status(200).json(responseArr);
+}
+
 module.exports = {
     findStuffNearLocation,
     searchForLocation,
     getPlaceDetails,
-    autoCompletePlace
+    autoCompletePlace,
+    getPlacesPhotos
 }
 
 /*

@@ -2,8 +2,6 @@ import React, {useState, useEffect} from 'react';
 import Nav from '../Nav/Nav'
 import './Search.css'
 import axios from 'axios';
-import { checkPropTypes } from 'prop-types';
-import MiniPlace from '../MiniPlace/MiniPlace';
 import MiniRoute from '../MiniRoute/MiniRoute';
 
 const Search = (props) => {
@@ -11,7 +9,7 @@ const Search = (props) => {
     const [ sessionToken, setToken ] = useState(null);
     const [ autoSuggestions, setAutoSuggestions ] = useState(null); 
     const [ searchResultStyle, setResultStyle ] = useState(null);
-    const [ toggleSearchResults, toggleResults ] = useState(false);
+    // const [ toggleSearchResults, toggleResults ] = useState(false);
     const [searchResults, setSearchResults] = useState(null)
 
     useEffect(() => {

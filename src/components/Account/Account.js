@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import SmilingMan from '../../images/smiling_man.png'
+// import SmilingMan from '../../images/smiling_man.png'
 import './Account.css'
-import MiniRoute from '../MiniRoute/MiniRoute'
+// import MiniRoute from '../MiniRoute/MiniRoute'
 import {Link} from 'react-router-dom'
 import Nav from '../Nav/Nav';
 import axios from 'axios';
@@ -19,7 +19,7 @@ const Account = (props) => {
             <Nav />
             <div className='account'>
                 <div className='prof-pic-container'>
-                    <img className='profile-picture' src={profPicLink} />
+                    <img className='profile-picture' alt='' src={profPicLink} />
                 </div>
             </div>
             <div className='center-button'>

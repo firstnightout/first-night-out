@@ -13,7 +13,8 @@ const initialState = {
     profilePic: {},
     routeCreationStep: 1,
     places: [],
-    user: {}
+    user: {},
+    directionRoutes: [],
 }
 
 // action types
@@ -32,8 +33,16 @@ const UPDATE_PLACES = 'UPDATE_PLACES';
 const RESET_PLACES = 'RESET_PLACES';
 const RESET_USER = 'RESET_USER';
 const GET_USER = 'GET_USER'
+const UPDATE_DIRECTION_ROUTES = 'UPDATE_DIRECTION_ROUTES';
 
 // action creators
+export function updateDirectionRoutes(info) {
+    return {
+        type: UPDATE_DIRECTION_ROUTES,
+        payload: info
+    }
+}
+
 export function getUser() {
     
     return {
@@ -207,10 +216,18 @@ function reducer(state=initialState, action) {
                 user: {}
             }
         case `${GET_USER}_FULFILLED`:
-        console.log('here')
             return {
                 ...state,
                 user: action.payload.data
+            }
+        case UPDATE_DIRECTION_ROUTES:
+            return {
+                ...state,
+                directionRoutes: [
+                    action.payload.address1,
+                    action.payload.address2,
+                    action.payload.address3,
+                ]
             }
         default: return state;
     }

@@ -47,3 +47,6 @@
     color: white;
 }
 
+@media only screen and (max-height: 770px) {
+    
+}

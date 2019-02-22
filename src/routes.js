@@ -12,7 +12,7 @@ import FamilyFun from './components/FamilyFun/FamilyFun';
 import Register2 from './components/Register/Register2';
 import VenueCard from './components/VenueCard/VenueCard';
 import Categories from './components/Categories/Categories'
-import Map from './components/Map/Map'
+import MapComponent from './components/MapComponent/MapComponent'
 import RouteComponent from './components/Route/Route'
 import RouteReview from './components/RouteReview/RouteReview'
 import Account from './components/Account/Account';
@@ -37,7 +37,7 @@ export default (
         <Route path="/spa" component={ Spa } />
         <Route path="/family-fun" component={ FamilyFun }/>
         <Route path="/categories" component={ Categories }/>
-        <Route path='/map/:id' component={ Map }/>
+        <Route path='/map' component={ MapComponent }/>
         <Route path='/route/:routeid' component={ RouteComponent }/>
         <Route path='/review' component={RouteReview} />
     </Switch>
