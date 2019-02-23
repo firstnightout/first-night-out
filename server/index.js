@@ -1,3 +1,4 @@
+const path = require('path')
 require('dotenv').config();
 const express = require('express');
 const {json} = require('body-parser');
@@ -16,6 +17,7 @@ const
 
 const app = express();
 app.use(json());
+app.use( express.static( `${__dirname}/../build` ) )
 
 // SESSION:
 app.use(
@@ -51,5 +53,9 @@ app.get('/api/getcity/:city', getCity);
 
 const PORT = process.env.SERVER_PORT || 5050;
 // app.get('/api/seed', seed)
+
+app.get('*', (req, res)=>{
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+})
 
 app.listen(PORT, () => console.log(`Listening on Port ${PORT}`));
