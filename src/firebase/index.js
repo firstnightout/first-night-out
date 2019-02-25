@@ -1,5 +1,11 @@
 import firebase from 'firebase/app';
 import 'firebase/storage';
+import 'firebase-functions'
+import * as admin from'firebase-admin'
+
+firebase.initializeApp(config);
+
+const storage = firebase.storage();
 
 let hidden = process.env;
 var config = {
@@ -10,9 +16,6 @@ var config = {
     storageBucket: hidden.REACT_APP_STORAGE_BUCKET,
     messagingSenderId: hidden.REACT_APP_MESSAGING_SENDER_ID
 };
-firebase.initializeApp(config);
-
-const storage = firebase.storage();
 
 export {
     storage, firebase as default
