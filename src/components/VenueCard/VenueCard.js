@@ -94,7 +94,7 @@ const VenueCard = (props) => {
                 <br />
                 <br />
                 <br />
-                <button onClick={() => props.history.goBack()}>Back</button>
+                {/* <button onClick={() => props.history.goBack()}>Back</button> */}
             </div>
         </div>
         </>

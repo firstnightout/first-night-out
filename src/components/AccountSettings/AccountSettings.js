@@ -42,9 +42,9 @@ const AccountSettings = props => {
     return(
         <>  
             <Nav />
-            <div className='preferences-back-button'>
+            {/* <div className='preferences-back-button'>
                 <Link to='/account'><button>Back</button></Link>
-            </div>
+            </div> */}
             <div className='account-settings'>
                 <span className='preference'><input type='checkbox' />Non-Alcoholic Filtering</span>
                 <span className='preference'><input type='checkbox' />Family Friendly Filtering<br /></span><br />

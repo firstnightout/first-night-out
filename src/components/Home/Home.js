@@ -11,16 +11,20 @@ import {connect} from 'react-redux';
 const Home = (props) => {
     //REMEMBER TO HIDE API KEY LATER
     const [nearbyRoutes, setNearbyRoutes] = useState([]);
-    console.log(props.user.city)
     //COMMENTED TO SAVE API REQUESTS
     useEffect(() => {
-
-        let city = props.user.city;
-        axios.get('/api/routes/city/' + city)
-        .then( response => {
-            console.log("response",response)
-            let routes = response.data.map( route =>  <MiniRoute likes={route.likes} user_id={route.userID} place1={route.place1} place2={route.place2} place3={route.place3} routeID={route.routeID}/>)
-            setNearbyRoutes(routes);
+        axios.post('https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyA0dEOfis7q8Pl8_MM5uhen6ustyIGwCvQ').then(currLocation => {
+            const {lat, lng} = currLocation.data.location;
+            axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyA0dEOfis7q8Pl8_MM5uhen6ustyIGwCvQ`).then(currPlace => {
+                let cityNameIndex = currPlace.data.results[0].address_components.findIndex(val => val.types.includes('locality') || val.types.includes('sublocality'));
+                console.log(currPlace.data.results[0])
+                let city = currPlace.data.results[0].address_components[cityNameIndex].long_name
+                axios.get('/api/routes/city/' + city)
+                .then( response => {
+                    let routes = response.data.map( route =>  <MiniRoute likes={route.likes} user_id={route.userID} place1={route.place1} place2={route.place2} place3={route.place3} routeID={route.routeID}/>)
+                    setNearbyRoutes(routes);
+                })
+            })
         })
     }, []);
     

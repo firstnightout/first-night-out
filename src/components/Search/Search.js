@@ -10,7 +10,7 @@ const Search = (props) => {
     const [ autoSuggestions, setAutoSuggestions ] = useState(null); 
     const [ searchResultStyle, setResultStyle ] = useState(null);
     // const [ toggleSearchResults, toggleResults ] = useState(false);
-    const [searchResults, setSearchResults] = useState(null)
+    const [searchResults, setSearchResults] = useState([])
 
     useEffect(() => {
         //Making Random Token for the Billing Session
@@ -30,9 +30,9 @@ const Search = (props) => {
         } else {
             setResultStyle({
                 'border': '1px solid gray',
-                'WebkitBoxShadow': '0px 6px 5px 5px rgba(230,230,230,1)',
-                'MozBoxShadow': '0px 6px 5px 5px rgba(230,230,230,1)',
-                'boxShadow': '0px 6px 5px 5px rgba(230,230,230,1)'
+                'WebkitBoxShadow': '0px 2px 5px 0px rgba(0,0,0,0.16);',
+                'MozBoxShadow': '0px 2px 5px 0px rgba(0,0,0,0.16);',
+                'boxShadow': '0px 2px 5px 0px rgba(0,0,0,0.16);'
             });
         }
     }, inputText)
@@ -55,13 +55,14 @@ const Search = (props) => {
     }
 
     const handleSearchResult = () => {
+        setAutoSuggestions(null)
         const formatedText = inputText[0].split(',')
         axios.get(`/api/getcity/${formatedText[0]}`)
         .then(response => {
             console.log(response.data);
             let searchResults = response.data.map(val => {
                 return (
-                    <MiniRoute place1={val.place1} place2={val.place2} place3={val.place3} routeID={val.routeID} user_id={val.userID}/>
+                    <MiniRoute likes={val.likes} place1={val.place1} place2={val.place2} place3={val.place3} routeID={val.routeID} user_id={val.userID}/>
                 )
             })
             setSearchResults(searchResults)
@@ -71,11 +72,13 @@ const Search = (props) => {
     return(
         <>
             <Nav />
-            <input className='search-bar' value={inputText[0]} onChange={handleChange} placeholder='Search' />
-            <div className='search-results' style={searchResultStyle}>
+            <div className='search-container'>
+                <input className='search-bar' value={inputText[0]} onChange={handleChange} placeholder='Search' />
+                <button onClick={handleSearchResult} className='search-submit-button'>Submit</button>
+            </div>
+            <div className={'search-results'} style={searchResultStyle}>
                 {autoSuggestions}
             </div>
-            <button onClick={handleSearchResult}>Submit</button>
             {searchResults}
         </>
     )

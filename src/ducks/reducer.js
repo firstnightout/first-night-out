@@ -200,7 +200,6 @@ function reducer(state=initialState, action) {
                 zip: action.payload
             }
         case UPDATE_PROFILE_PIC:
-        console.log('also here');
             return {
                 ...state,
                 profilePic: action.payload

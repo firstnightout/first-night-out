@@ -6,7 +6,7 @@ const session = require("express-session");
 // const bcrypt = require('bcryptjs');
 const 
 { findStuffNearLocation, searchForLocation, getPlaceDetails, autoCompletePlace,
-    getPlacesPhotos            
+    getPlacesPhotos
 } = require('./controllers/mapsController')
 const 
 { register, login, signout, createRoute, getRoutesByUserID, 

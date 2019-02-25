@@ -34,16 +34,14 @@ const Spa = (props) => {
             <button onClick={() => props.history.goBack()}>Back</button>
             <div className='spaWrapper'>
                 <select className='spaDropDown' name='selected' onChange={handleChange}>
-                    <option value="spa">spa</option>
+                    <option value="spa">Spa</option>
                     <option value='beauty_salon'>Beauty Salon</option>
                 </select>
             </div>
-
             {places}
-
         </>
     )
- }
+}
 
 const mapStateToProps = state => state
 
