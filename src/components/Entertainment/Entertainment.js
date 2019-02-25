@@ -44,7 +44,7 @@ const Entertainment = (props) => {
 return (
     <>
         <Nav />
-        <button onClick={() => props.history.goBack()}>Back</button>
+        {/* <button onClick={() => props.history.goBack()}>Back</button> */}
         <div className='entertainmentWrapper'>
             <select className='entertainmentDropDown' name='selected' onChange={handleChange}>
                 <option value='movie_theater'>Movie Theater</option>

@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/storage';
 import 'firebase-functions'
-import * as admin from'firebase-admin'
+// import * as admin from'firebase-admin'
 
 firebase.initializeApp(config);
 

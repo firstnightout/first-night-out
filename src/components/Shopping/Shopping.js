@@ -40,7 +40,7 @@ const Shopping = (props) => {
     return (
         <>
             <Nav />
-            <button onClick={() => props.history.goBack()}>Back</button>
+            {/* <button onClick={() => props.history.goBack()}>Back</button> */}
             <div className='shoppingWrapper'>
                 <select className='shoppingDropDown' name='selected' onChange={handleChange}>
                     <option value='book_store'>Book Store</option>

@@ -31,7 +31,7 @@ const Spa = (props) => {
     return (
         <>  
             <Nav />
-            <button onClick={() => props.history.goBack()}>Back</button>
+            {/* <button onClick={() => props.history.goBack()}>Back</button> */}
             <div className='spaWrapper'>
                 <select className='spaDropDown' name='selected' onChange={handleChange}>
                     <option value="spa">Spa</option>

@@ -24,7 +24,7 @@ const Search = (props) => {
     }, [])
 
     useEffect(() => {
-        if(inputText[0].length === 0) {
+        if(inputText[0].length <= 2) {
             setAutoSuggestions(null);
             setResultStyle(null);
         } else {

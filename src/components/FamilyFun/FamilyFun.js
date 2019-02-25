@@ -45,7 +45,7 @@ const FamilyFun = (props) => {
     return (
         <>
             <Nav />
-            <button onClick={() => props.history.goBack()}>Back</button>
+            {/* <button onClick={() => props.history.goBack()}>Back</button> */}
             <div className='familyFunWrapper'>
                 <select className='familyFunDropDown' name='selection' onChange={handleChange}>
                     <option value='art_gallery'>Art Gallery</option>
