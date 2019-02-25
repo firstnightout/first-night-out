@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/storage';
 
+
 let hidden = process.env;
 var config = {
     apiKey: hidden.REACT_APP_API_KEY,
@@ -10,6 +11,7 @@ var config = {
     storageBucket: hidden.REACT_APP_STORAGE_BUCKET,
     messagingSenderId: hidden.REACT_APP_MESSAGING_SENDER_ID
 };
+
 firebase.initializeApp(config);
 
 const storage = firebase.storage();
