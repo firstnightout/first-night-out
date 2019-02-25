@@ -23,7 +23,7 @@ app.use( express.static( `${__dirname}/../build` ) )
 app.use(
     session({
         name: 'First Night Out',
-        secret: process.env.SESSION_SECRET,
+        secret: "not so secret",
         resave: false,
         saveUninitialized: true
 })
