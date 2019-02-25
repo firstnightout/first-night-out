@@ -40,3 +40,30 @@
     font-size: 1em;
     margin-top: 4vh;
 }
+
+.fa-heart{
+    color: red;
+    font-size: 32px;
+    position: absolute;
+    top: 280px;
+    left: 15px;
+}
+
+.likes-circle{
+    width: 20px;
+    height: 20px;
+    background: #4527a0;
+    border-radius: 50%;
+    position: absolute;
+    top: 275px;
+    left: 38px;
+    /* z-index: 100 */
+}
+.likes{
+    color: white;
+    position:absolute;
+    top: 277px;
+    left: 41px;
+    font-size: 12px;
+    /* z-index: 1000px; */
+}
