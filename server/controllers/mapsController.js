@@ -6,7 +6,8 @@ const placeDetailsURL = 'https://maps.googleapis.com/maps/api/place/details/json
 const autoCompleteURL = 'https://maps.googleapis.com/maps/api/place/autocomplete/json'
 function searchForLocation(req, res, next) {
     const {query, location, radius, minPrice, maxPrice, type} = req.body;
-    const key = process.env.REACT_APP_GCLOUD_PLACES_API;
+    const key = "AIzaSyB3hkAtDj8ZZK9ptagSp_YqQouPEMcuaCo"
+    // process.env.REACT_APP_GCLOUD_PLACES_API;
     //QUERY AND KEY ARE REQUIRED
     if(!(query && key)) {
         res.status(412).json({error: "INVALID_REQUEST"})
@@ -40,7 +41,8 @@ function searchForLocation(req, res, next) {
 
 function findStuffNearLocation(req, res, next) {
     const {location, radius, keyword, minPrice, maxPrice, name, openNow, type} = req.body;
-    const key = process.env.REACT_APP_GCLOUD_PLACES_API;
+    const key = "AIzaSyB3hkAtDj8ZZK9ptagSp_YqQouPEMcuaCo"
+    // process.env.REACT_APP_GCLOUD_PLACES_API;
     //LOCATION, RADIUS, AND KEY ARE ALL REQUIRED
     if(!(location && radius && key)) {
         res.status(412).json({error: "INVALID_REQUEST"});
@@ -75,7 +77,8 @@ function findStuffNearLocation(req, res, next) {
 
 function getPlaceDetails(req, res, next) {
     const {placeid, fields} = req.body;
-    const key = process.env.REACT_APP_GCLOUD_PLACES_API;
+    const key = "AIzaSyB3hkAtDj8ZZK9ptagSp_YqQouPEMcuaCo"
+    // process.env.REACT_APP_GCLOUD_PLACES_API;
     //PLACEID IS REQUIRED
     if(!(key && placeid)) {
         res.status(412).json({error: "INVALID_REQUEST"});
@@ -99,7 +102,7 @@ function autoCompletePlace(req, res) {
     if(!(input && sessiontoken)) {
         res.status(412).json({error: 'INVALID_REQUEST'});
     } else {
-        axios.get(`${autoCompleteURL}?key=${process.env.REACT_APP_GCLOUD_PLACES_API}&input=${input}&sessiontoken=${sessiontoken}`).then(response => {
+        axios.get(`${autoCompleteURL}?key="AIzaSyB3hkAtDj8ZZK9ptagSp_YqQouPEMcuaCo"&input=${input}&sessiontoken=${sessiontoken}`).then(response => {
             res.json(response.data)
         })
         // res.status(200).send(response);
@@ -109,7 +112,8 @@ function autoCompletePlace(req, res) {
 
 async function getPlacesPhotos(req, res) {
     const {predictions} = req.body;
-    const key = process.env.REACT_APP_GCLOUD_PLACES_API;
+    const key = "AIzaSyB3hkAtDj8ZZK9ptagSp_YqQouPEMcuaCo"
+    // process.env.REACT_APP_GCLOUD_PLACES_API;
     let place1Details = predictions.length >= 1 ? await axios.get(`${placeDetailsURL}?placeid=${predictions[0].place_id}&key=${key}`) : {};
     let place2Details = predictions.length >= 2 ? await axios.get(`${placeDetailsURL}?placeid=${predictions[1].place_id}&key=${key}`) : {}
     let place3Details = predictions.length >= 3 ? await axios.get(`${placeDetailsURL}?placeid=${predictions[2].place_id}&key=${key}`) : {}
