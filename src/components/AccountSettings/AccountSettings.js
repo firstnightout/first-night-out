@@ -22,18 +22,12 @@ const AccountSettings = props => {
     }, toggleRedir);
 
     const handleClick = () => {
-        console.log('here', toggleRedir)
         let username = props.user.username;
-        console.log(1);
         const update = storage.ref(`profile-pictures/${username}`).put(profilePic);
-        console.log(1);
         update.on("state_changed", () => null, (err) => console.log(err), ()=> {
-        console.log(1);
             storage.ref(`profile-pictures/${username}`).getDownloadURL().then( downLoadURL => {
-        console.log(1);
                 axios.post(`/auth/set/profile`, { downloadURL: downLoadURL , userID: props.user.userId }).then(()=>{
                     // redirect
-                    console.log('here', toggleRedir)
                     setRedir(true);
                 })
             })

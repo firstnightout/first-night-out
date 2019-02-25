@@ -3,13 +3,14 @@
     border-radius: 3px;
     border: none;
     height: 5vh;
-    width: 90vw;
+    width: 40vw;
     margin-left: 4vw;
     /* margin-top: 5vh; */
     text-align: center;
+    outline: none;
 }
 .search-results {
-    width: 78vw;
+    width: 90vw;
     margin-left: 4.4vw;
     display: flex;
     flex-direction: column;
@@ -25,18 +26,17 @@
     padding-bottom: 3vh;
     border-bottom: 1px solid rgba(0, 0, 0, .3);
     margin-top: 3vh;
-    font-weight: normal
+    font-weight: normal;
+    margin-bottom: 1vh;
 }
 .search-container {
     display: flex;
     width: 100vw;
-    align-items: center;
-    height: 10vh;
+    align-items: flex-end;
     /* border: 1px solid white; */
-    justify-content: space-between;
+    justify-content: center;
     margin-top: 3vh;
     /* border: 1px solid white; */
-}
-.search-submit-button {
-    /* border: 1px solid black; */
+    height: 40vh;
+    margin-bottom: 1vh;
 }

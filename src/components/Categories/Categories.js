@@ -14,7 +14,6 @@ const Categories = (props) => {
     const [suggestedPlaces, setSuggestedPlaces] = useState([]);
 
     useEffect(() => {
-        console.log(props);
         // let num = props.routeCreationStep;
         if(props.places.length >= 3) {
             setToggle(true);
@@ -31,10 +30,8 @@ const Categories = (props) => {
     useEffect(() => {
         if(searchText[0]) {
             axios.post('/api/autocomplete', {input: searchText[0], sessiontoken: sessionToken}).then(suggestions => {
-                console.log(suggestions)
                 setSuggestedPlaces(null);
                 axios.post('/api/photos/places', {predictions: suggestions.data.predictions}).then(placesPhoto => {
-                    console.log(placesPhoto)
                     setSuggestedPlaces(suggestions.data.predictions.map((val, i) => {
                         return <MiniPlace place_id={val.place_id} photo={placesPhoto.data[i].result.photos ? placesPhoto.data[i].result.photos[0].photo_reference : null} />
                     }))

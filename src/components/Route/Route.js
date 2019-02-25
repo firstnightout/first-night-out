@@ -13,7 +13,6 @@ const Route = (props) => {
 
     useEffect(() => {
         axios(`/api/routes/${props.match.params.routeid}`).then(response => {
-            console.log(response);
             setRouteData(response.data);
             props.updateDirectionRoutes({
                 address1: {

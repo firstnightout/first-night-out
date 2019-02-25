@@ -43,7 +43,6 @@ function findStuffNearLocation(req, res, next) {
     const key = process.env.REACT_APP_GCLOUD_PLACES_API;
     //LOCATION, RADIUS, AND KEY ARE ALL REQUIRED
     if(!(location && radius && key)) {
-        console.log('failed')
         res.status(412).json({error: "INVALID_REQUEST"});
         return {error: "INVALID_REQUEST"}
     } else {
@@ -97,7 +96,6 @@ function getPlaceDetails(req, res, next) {
 
 function autoCompletePlace(req, res) {
     const {input, sessiontoken} = req.body;
-    console.log(input, sessiontoken);
     if(!(input && sessiontoken)) {
         res.status(412).json({error: 'INVALID_REQUEST'});
     } else {

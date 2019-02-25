@@ -8,13 +8,18 @@ const MiniPlace = (props) => {
     const [ref, setRef] = useState(0);
     const [name, setName] = useState(0);
     const [redirectToggle, setRedirectToggle] = useState(false);
+    const [starsArr, setStarsArr] = useState([]);
 
     useEffect(() => {
-        console.log(props.place_id)
         axios.post(`/api/places/details`, {
             placeid: props.place_id,
         }).then(response => {
             setRef(response.data.result);
+            let tempArr = [];
+            for(let i = 0; i < Math.round(response.data.result.rating); i++) {
+                tempArr.push(<i className="fas fa-star"></i>);
+            }
+            setStarsArr(tempArr);
             if(response.data.result.name.length > 30) {
                 setName(response.data.result.name.substring(0,27) + '...');
             } else {
@@ -22,7 +27,6 @@ const MiniPlace = (props) => {
             }
         })
     }, [])
-
     if(redirectToggle !== false) {
         return <Redirect to={'/venue/details/' + redirectToggle} />
     }
@@ -32,7 +36,7 @@ const MiniPlace = (props) => {
             <div className='mini-place-info'>
                 <h1>{name}</h1>
                 <h3>{ref.formatted_address && ref.formatted_address.substring(0, ref.formatted_address.indexOf(',', ref.formatted_address.indexOf(',') + 1))}</h3>
-                <h3>{ref.rating}</h3>
+                <h3>{starsArr}</h3>
             </div>
         </div>
     );

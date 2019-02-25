@@ -117,7 +117,6 @@ export function updateZip(zip){
     }
 }
 export function updateProfilePic(url){
-    console.log('here');
     return {
         type: UPDATE_PROFILE_PIC,
         payload: url
@@ -129,15 +128,6 @@ export function login(username,password) {
         payload: axios.post('/api/auth/login', {username,password})
     }
 }
-// export function register(firstName,lastName,username,password,address,city,state,zip,profilePic) {
-//     return {
-//         type: REGISTER,
-//         payload: axios.post('/api/auth/register',{firstName,lastName,username,password,address,city,state,zip,profilePic})
-//         .then( response => {
-//             console.log('register response',response)
-//         }).catch( err =>  console.log(err))
-//     }
-// }
 
 
 // reducer function
@@ -149,7 +139,6 @@ function reducer(state=initialState, action) {
                 places: []
             }
         case `${LOGIN}_FULFILLED`:
-        console.log(action.payload)
             return {
                 ...state, 
                 user: action.payload.data

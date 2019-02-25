@@ -17,7 +17,6 @@ const MapComponent = (props) => {
   // const [map, setMap] = useState(null);
 
   useEffect(() => {
-    console.log(props);
     let directionsService = new props.google.maps.DirectionsService()
     let directionsDisplay = new props.google.maps.DirectionsRenderer()
     // let DevMountain = new props.google.maps.LatLng(32.777599, -96.795403)
@@ -62,7 +61,6 @@ const MapComponent = (props) => {
 
 
   }, [])
-  console.log(props.google);
     return(
         <div>
         <Nav />

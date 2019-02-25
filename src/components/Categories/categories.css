@@ -109,6 +109,11 @@ body {
     margin-top: 1vh;
     margin-bottom: 1vh;
     text-align: center;
-    width: 90%;
+    width: 30%;
     outline: none;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+.category-search:focus {
+    width: 90%;
 }

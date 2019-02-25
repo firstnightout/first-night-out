@@ -8,7 +8,7 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 const Account = (props) => {
     const [profPicLink, setLink] = useState(null)
-    console.log('here')
+    const [userRoutes, setUserRoutes] = useState([]);
     useEffect(() => {
         axios.get('/auth/profile/' + props.user.userId).then(response => {
             setLink(response.data)
@@ -23,17 +23,14 @@ const Account = (props) => {
                 </div>
             </div>
             <div className='center-button'>
-                <Link to='/account/settings'><button className='profile-settings-button'>Settings</button></Link>
+                <Link to='/account/settings'><button className='profile-settings-button'>Change Picture</button></Link>
             </div>
             <br />
             <div className='gray-background'>
                 <div className='my-routes-text'>
                     <h3>My Routes</h3>
                 </div>
-                    
-                {/* <MiniRoute />
-                <MiniRoute />
-                <MiniRoute /> */}
+
                 <br />
             </div>
         </>
