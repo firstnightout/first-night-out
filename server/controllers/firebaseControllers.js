@@ -46,17 +46,14 @@ const register = (req, res) =>{
     let test = db.ref('users')
     console.log(test);
     test.once('value').then(response => {
-        console.log(register);
         let user = response.val();
         for(let i = 0; i < user.length; i++){
             if(user[i].username === req.body.username){
                 res.status(500).json('USERNAME ALREADY EXISTS.')
             }
         }
-        console.log(1)
         let max = -1;
         let users = response.val();
-        console.log(1)  
         for(let i = 0; i < users.length; i++){
             if(users[i].userId > max){
                 max = users[i].userId
@@ -64,17 +61,14 @@ const register = (req, res) =>{
         }
         let id = max + 1;
         const salt = bcrypt.genSaltSync(12);
-        console.log('password', req.body.password)
-        console.log('salt: ', salt);
         const hash = bcrypt.hashSync(req.body.password, salt);
-        console.log(1)
         db.ref(`users/${id}`).set({
                 userId: id,
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
                 username: req.body.username,
                 password: hash,
-                // profilePic: req.body.profilePic,
+                profilePic: 'A',
                 city: req.body.city,
                 state: req.body.state,
                 zip: req.body.zip,
@@ -83,21 +77,11 @@ const register = (req, res) =>{
         req.session.user = {
             city: req.body.city,
             username: req.body.username,
-            userId : req.body.userId,
+            userId : id,
             address: req.body.address,
             state: req.body.state
         }
-        console.log('MADE IT HERE')
-        console.log('ALSO WORKED!')
-        // firebase.database().ref('preferences').once('value').then(preferences => {
-        //     firebase.database().ref(`preferences/${preferences.val().length}`).set({
-        //         nonAlcoholic: false,
-        //         familyFriendly: false,
-        //         userId: id,
-        //         preferenceId: preferences.val().length
-        //     })
-        //     res.status(200).json(req.session.user);  
-        // }).catch(err => res.status(400).json({error: err}));
+        res.status(200).json(req.session.user);
     }).catch(err => console.log( err ));
 }
 
@@ -189,12 +173,35 @@ const getUsers = async (req, res) => {
     res.status(200).json(user.val());
 }
 
+const getUser = (req,res) => {
+    res.status(200).json(req.session.user)
+    console.log(req.session.user);
+}
+
 const getRoute = async (req, res) => {
     let route = await firebase.database().ref(`/routes/${req.params.id}`).once('value');
     res.status(200).json(route.val());
 }
 
+const setProfLink = async (req, res) => {
+    try {
+        await firebase.database().ref(`users/${req.body.userID}`).update({profilePic: req.body.downloadURL})
+        res.status(200)
+    } catch(e) {
+        console.log(e);
+        res.status(400).json({error: 'INVALID_REQUEST'});
+    }
+}
 
+const getProfLink = async (req, res) => {
+    let userInfo = await firebase.database().ref(`users/${req.params.id}`).once('value')
+    console.log(userInfo.val());
+    if(userInfo.val().profilePic) {
+        res.status(200).json(userInfo.val().profilePic);
+    } else {
+        res.status(404).json({error: 'USER_NOT_FOUND'});
+    }
+}
 const getCity = (req, res) => {
     const db = firebase.database();
     db.ref('routes').once('value')
@@ -213,6 +220,35 @@ const getCity = (req, res) => {
     }).catch( err => console.log(err));
 }
 
+const getVotes = (req,res) => {
+    const db = firebase.database()
+    db.ref(`routes/${req.body.routeID}`).once('value')
+    .then(response => {
+        let likes = +response.val().likes
+        if(req.body.vote > 0) {
+            likes += 1
+        }
+        else if (req.body.vote < 0) {
+            if(likes <= 0) {
+                likes = 0
+            }
+            else {
+                likes -= 1
+            }
+        }
+
+        db.ref(`routes/${req.body.routeID}`).update({likes: likes})
+            .then(() => {
+                res.sendStatus(200)
+            }).catch(() => {
+                res.status(404).json('Could not update')
+            })
+            
+    }).catch(err => {
+        console.log(err);
+    })
+}
+
 
 
 module.exports = {
@@ -225,5 +261,9 @@ module.exports = {
     setPreferences, 
     getUsers,
     getRoute,
-    getCity
+    setProfLink,
+    getProfLink,
+    getCity,
+    getVotes,
+    getUser
 }

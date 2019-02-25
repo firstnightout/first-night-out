@@ -4,6 +4,8 @@ import  "./register.css";
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
+import {storage} from '../../firebase'
+import swal from 'sweetalert'
 
 
 
@@ -28,8 +30,9 @@ const Register2 = (props) => {
                 props.updateZip(e.target.value);
                 console.log('zip')
                 break
-            case 'profilePic':
-                props.updateProfilePic(e.target.value);
+            case 'file':
+                console.log(e.target.files[0])
+                props.updateProfilePic(e.target.files[0]);
                 console.log('prof')
                 break
             default:
@@ -42,13 +45,29 @@ const Register2 = (props) => {
     const submitRegister = () => {
         const { firstName, lastName, username, password, address, city, st, zip, profilePic } = props;
         console.log('destructured')
-            axios.post("/api/auth/register",{firstName, lastName, username, password, address, city, state: st, zip, profilePic})
+            axios.post("/api/auth/register",{firstName, lastName, username, password, address, city, state: st, zip})
                 .then( response => {
                     console.log(response)
-                    setToggle(true);
+                    const upload = storage.ref(`profile-pictures/${username}`).put(profilePic);
+                    upload.on('state_changed', () => null, (err) => console.log(err), () => {
+                        storage.ref(`profile-pictures/${username}`).getDownloadURL().then(downloadURL => {
+                            axios.post('/auth/set/profile', {userID: response.data.userId, downloadURL}).then(() => {
+                               setToggle(true) 
+                            })
+                        })
+                    })
                 }).catch( err => console.log(err))
+
+                swal({
+                    title: 'Register',
+                    text: 'Registration successful',
+                    icon: 'success',
+                    timer: 1500,
+                    button: null
+                })
     }
 
+                    // setToggle(true);
    
 
 

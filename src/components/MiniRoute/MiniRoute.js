@@ -16,16 +16,19 @@ const MiniRoute = (props) => {
             {props.place1.photos && <img 
             src={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${props.place1.photos[0].photo_reference}&maxheight=100&key=${process.env.REACT_APP_GCLOUD_PLACES_API}`}
             className={`mini-route-image-1`}
+            alt=''
             onClick={() => setRedirectToggle(true)}
             /> }
             { props.place2.photos && <img 
             src={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${props.place2.photos[0].photo_reference}&maxheight=100&key=${process.env.REACT_APP_GCLOUD_PLACES_API}`}
             className={`mini-route-image-2`}
+            alt=''
             onClick={() => setRedirectToggle(true)}
             /> }
             {props.place3.photos && <img 
             src={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${props.place3.photos[0].photo_reference}&maxheight=100&key=${process.env.REACT_APP_GCLOUD_PLACES_API}`}
             className={`mini-route-image-3`}
+            alt=''
             onClick={() => setRedirectToggle(true)}
             /> }
         </>
@@ -33,12 +36,18 @@ const MiniRoute = (props) => {
     if(redirectToggle) {
         return <Redirect to={`/route/${props.routeID}`} />
     }
+
     return(
+
         <div className='mini-route'>
         <h1 className='mini-route-text mini-route-username'>{username}</h1>
-        <h3 className='mini-route-text mini-route-likes'>{props.likes} Likes</h3>
+        {/* <h3 className='mini-route-text mini-route-likes'>{props.likes} Likes</h3> */}
             {render}
+            <i className="fas fa-heart"></i>
+            <div className="likes-circle"></div>
+            <div className="likes">{props.likes}</div>
         </div>
+        
     )
 }
 

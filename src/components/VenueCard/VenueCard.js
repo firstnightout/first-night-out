@@ -3,10 +3,11 @@ import Carousel from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
 import './venue.css';
 import axios from 'axios';
-import {Link, Redirect} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
 import {addPlaceToRoute} from '../../ducks/reducer';
 import {connect} from 'react-redux';
 import Nav from '../Nav/Nav';
+import swal from 'sweetalert';
 
 const VenueCard = (props) => {
     const [restaurantName, setRestaurantName] = useState(null)
@@ -36,10 +37,10 @@ const VenueCard = (props) => {
             if(response.data.result.photos) {
                 setPhotoRef(response.data.result.photos[0].photo_reference);
                 setCarouselImages(response.data.result.photos.map(val => {
-                    return <img className='img-dimensions' src={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${val.photo_reference}&maxheight=200&key=${process.env.REACT_APP_GCLOUD_PLACES_API}`}/>
+                    return <img className='img-dimensions' alt={""} src={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${val.photo_reference}&maxheight=200&key=${process.env.REACT_APP_GCLOUD_PLACES_API}`}/>
                 }))
             } else {
-                setNotFound(<img className='img-dimensions' src='https://s3.us-east-2.amazonaws.com/first-night-out/placeholder_img.png' />)
+                setNotFound(<img className='img-dimensions' alt={""} src='https://s3.us-east-2.amazonaws.com/first-night-out/placeholder_img.png' />)
             }
             setRating(Math.round(response.data.result.rating))
             setPriceLevel(response.data.result.price_level)
@@ -56,6 +57,13 @@ const VenueCard = (props) => {
     const doReduxStuff = () => {
         props.addPlaceToRoute({id: props.match.params.id, photo: photoRef});
         setRedirect(true);
+        swal({
+            title: 'Route',
+            text: 'Item successfully added to route',
+            icon: 'success',
+            timer: 1500,
+            button: null
+        })
     }
 
     if(redirectToggle) {

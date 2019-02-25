@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {Link, Redirect} from 'react-router-dom'
 import './login.css'
 import { login } from '../../ducks/reducer';
-
+import swal from 'sweetalert'
 
 
 //ONLY MOBILE VIEW COMPATIBLE
@@ -22,10 +22,18 @@ const Login = (props) => {
     const handleLogin = () => {
         props.login(username,password)
     }
-    if(props.user.username) {
+
+    if (props.user.username) {
+        swal({
+            title: 'Welcome',
+            text: 'Successfully logged in',
+            icon: 'success',
+            timer: 1500,
+            button: null
+        })
         return <Redirect to='/home' />
     }
-
+    
     return (
         <div className='login-container'>
 
@@ -42,7 +50,6 @@ const Login = (props) => {
                 <button className='googleButton'>Login with Google</button>
 
             </div> */}
-            
                     <input  
                         onChange={handleUpdates} 
                         placeholder=' username' 

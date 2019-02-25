@@ -1,9 +1,7 @@
-
 .login-container {
     background: url("https://s3.us-east-2.amazonaws.com/first-night-out/main+backgroung.png");
     width: 100vw;
     height: 100vh;
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,10 +15,10 @@
     color: white;
     font-size: 15px;
     text-transform: uppercase;
-
     margin-top: 10px;
     cursor: pointer;
 }
+
 .sign-up-btn{
     background: none;
     color: white;
@@ -28,6 +26,7 @@
     margin-top: 5px;
     cursor: pointer;
 }
+
 .login-logo{
     width: 65vw;
     height: 9vh;
@@ -40,10 +39,31 @@
     margin: 20px;
     width: 200px;
     background: none;
-
     border: none;
     border-bottom: 1px solid #d9d9d9;
     outline: none;
     color: white;
 }
 
+
+/*These swal classNames change the notifications in the Register2 and VenueCard components as well */
+
+.swal-modal {
+    height: 50vh;
+}
+
+.swal-title {
+    color: #4527a0;
+    padding-bottom: 2vh !important;
+}
+
+.swal-text {
+    color: #4527a0;
+    border-radius: 5px;
+    margin-top: 3vh;
+}
+
+
+@media only screen and (max-height: 770px) {
+    
+}

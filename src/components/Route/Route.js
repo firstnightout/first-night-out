@@ -4,15 +4,23 @@ import {Link} from 'react-router-dom'
 import MiniPlace from '../MiniPlace/MiniPlace'
 import axios from 'axios';
 import './Route.css'
+import {updateDirectionRoutes} from '../../ducks/reducer';
 import Nav from '../Nav/Nav'
 
 const Route = (props) => {
     const [routeData, setRouteData] = useState(null);
+    // const [mapAddresses, setMapAddresses] = useState('');
 
     useEffect(() => {
         axios(`/api/routes/${props.match.params.routeid}`).then(response => {
             console.log(response);
             setRouteData(response.data);
+            props.updateDirectionRoutes({
+                address1: response.data.place1.formatted_address,
+                address2: response.data.place2.formatted_address,
+                address3: response.data.place3.formatted_address,
+            }
+            );
         })
     }, []);
 
@@ -24,12 +32,12 @@ const Route = (props) => {
         axios.post(`/api/vote`, {vote: -1, routeID: props.match.params.routeid } )
     }
     return(
-        <>f
+        <>
         <Nav />
         <div className='routeMain'>
             <div className='routeScreen'>
                 <span className='myRoute'>My Route</span>
-                <Link to='/map' className='mapRoute'><span className='goCont'>GO</span></Link>
+                <Link to={`/map`} className='mapRoute'><span className='goCont'>GO</span></Link>
             </div>
             <div className='routeDisplay'>
                 {routeData && <MiniPlace
@@ -49,11 +57,12 @@ const Route = (props) => {
                 /> }
             </div>
             <div>
-                <div>
+                <div className="vote-box">
                     <i 
                         className="fas fa-thumbs-up"
                         onClick={ upVote }
                     ></i>
+
                     <i 
                         className="fas fa-thumbs-down"
                         onClick={ downVote }
@@ -67,4 +76,4 @@ const Route = (props) => {
 
 const mapStateToProps = state => state
 
-export default connect(mapStateToProps)(Route)
+export default connect(mapStateToProps, {updateDirectionRoutes})(Route)

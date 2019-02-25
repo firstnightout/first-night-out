@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import MiniPlace from './../MiniPlace/MiniPlace'
 import MiniRoute from '../MiniRoute/MiniRoute'
 import Carousel from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
@@ -23,8 +22,6 @@ const Home = (props) => {
             let routes = response.data.map( route =>  <MiniRoute likes={route.likes} user_id={route.userID} place1={route.place1} place2={route.place2} place3={route.place3} routeID={route.routeID}/>)
             setNearbyRoutes(routes);
         })
-
-
     }, []);
     
     return(
@@ -37,12 +34,12 @@ const Home = (props) => {
             stopAutoPlayOnHover
             centered
             infinite>
-                <img className='carousel-img' src={`https://firebasestorage.googleapis.com/v0/b/first-night-out.appspot.com/o/restaurant-picture-1.jpg?alt=media&token=140b8892-a6e0-4b55-9b79-ac1585e98cb9`} />
-                <img className='carousel-img' src={`https://firebasestorage.googleapis.com/v0/b/first-night-out.appspot.com/o/bar-1.jpg?alt=media&token=337920c8-9353-4914-b56d-b8259c5e3020`} />
-                <img className='carousel-img' src={`https://firebasestorage.googleapis.com/v0/b/first-night-out.appspot.com/o/zoo-1.jpg?alt=media&token=af6666a2-a219-4ae2-9da2-9225200f0d48`} />
-                <img className='carousel-img' src={`https://firebasestorage.googleapis.com/v0/b/first-night-out.appspot.com/o/restaurant-2.jpg?alt=media&token=d12a1d52-1a26-4a82-b988-8ca54d90e9b4`} />
-                <img className='carousel-img' src={`https://firebasestorage.googleapis.com/v0/b/first-night-out.appspot.com/o/bar-2.jpg?alt=media&token=bc638ff9-9f76-4158-b303-6e13411da981`} />
-                <img className='carousel-img' src={`https://firebasestorage.googleapis.com/v0/b/first-night-out.appspot.com/o/spa-1.jpg?alt=media&token=95c951ea-b4c1-403f-abbd-fe2d469d341d`} />
+                <img className='carousel-img' alt='' src={`https://firebasestorage.googleapis.com/v0/b/first-night-out.appspot.com/o/restaurant-picture-1.jpg?alt=media&token=140b8892-a6e0-4b55-9b79-ac1585e98cb9`} />
+                <img className='carousel-img' alt='' src={`https://firebasestorage.googleapis.com/v0/b/first-night-out.appspot.com/o/bar-1.jpg?alt=media&token=337920c8-9353-4914-b56d-b8259c5e3020`} />
+                <img className='carousel-img' alt='' src={`https://firebasestorage.googleapis.com/v0/b/first-night-out.appspot.com/o/zoo-1.jpg?alt=media&token=af6666a2-a219-4ae2-9da2-9225200f0d48`} />
+                <img className='carousel-img' alt='' src={`https://firebasestorage.googleapis.com/v0/b/first-night-out.appspot.com/o/restaurant-2.jpg?alt=media&token=d12a1d52-1a26-4a82-b988-8ca54d90e9b4`} />
+                <img className='carousel-img' alt='' src={`https://firebasestorage.googleapis.com/v0/b/first-night-out.appspot.com/o/bar-2.jpg?alt=media&token=bc638ff9-9f76-4158-b303-6e13411da981`} />
+                <img className='carousel-img' alt='' src={`https://firebasestorage.googleapis.com/v0/b/first-night-out.appspot.com/o/spa-1.jpg?alt=media&token=95c951ea-b4c1-403f-abbd-fe2d469d341d`} />
             </Carousel>
             {nearbyRoutes}
         </div>

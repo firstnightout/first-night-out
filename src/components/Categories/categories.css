@@ -20,6 +20,7 @@
     min-height: 26vh;
     margin-top: 2vh;
     border-radius: 6px;
+    /* opacity: .5; */
 }
 
 .foodPic {
@@ -50,6 +51,8 @@
     font-size: 1.2em;
     font-weight: bold;
     color: white;
+    /* -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black; */
 }
 
 .foodLabel  {
@@ -94,3 +97,12 @@
     background: #4527a0;
 }
 
+.category-search-container {
+    display: flex;
+    justify-content: center;
+}
+
+.category-search {
+    text-align: center;
+    width: 90%;
+}

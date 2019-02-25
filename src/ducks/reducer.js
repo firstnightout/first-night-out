@@ -10,10 +10,11 @@ const initialState = {
     city: '',
     st: '',
     zip: '',
-    profilePic: '',
+    profilePic: {},
     routeCreationStep: 1,
     places: [],
-    user: {}
+    user: {},
+    directionRoutes: [],
 }
 
 // action types
@@ -31,8 +32,26 @@ const UPDATE_PROFILE_PIC = 'UPDATE_PROFILE_PIC';
 const UPDATE_PLACES = 'UPDATE_PLACES';
 const RESET_PLACES = 'RESET_PLACES';
 const RESET_USER = 'RESET_USER';
+const GET_USER = 'GET_USER'
+const UPDATE_DIRECTION_ROUTES = 'UPDATE_DIRECTION_ROUTES';
 
 // action creators
+export function updateDirectionRoutes(info) {
+    return {
+        type: UPDATE_DIRECTION_ROUTES,
+        payload: info
+    }
+}
+
+export function getUser() {
+    
+    return {
+        type: GET_USER,
+        payload: axios.get('/api/session')
+        // payload: 12
+    }
+}
+
 export function resetUser() {
     return {
         type: RESET_USER
@@ -98,6 +117,7 @@ export function updateZip(zip){
     }
 }
 export function updateProfilePic(url){
+    console.log('here');
     return {
         type: UPDATE_PROFILE_PIC,
         payload: url
@@ -180,6 +200,7 @@ function reducer(state=initialState, action) {
                 zip: action.payload
             }
         case UPDATE_PROFILE_PIC:
+        console.log('also here');
             return {
                 ...state,
                 profilePic: action.payload
@@ -193,6 +214,20 @@ function reducer(state=initialState, action) {
             return {
                 ...state,
                 user: {}
+            }
+        case `${GET_USER}_FULFILLED`:
+            return {
+                ...state,
+                user: action.payload.data
+            }
+        case UPDATE_DIRECTION_ROUTES:
+            return {
+                ...state,
+                directionRoutes: [
+                    action.payload.address1,
+                    action.payload.address2,
+                    action.payload.address3,
+                ]
             }
         default: return state;
     }
