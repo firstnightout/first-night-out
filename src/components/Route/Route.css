@@ -45,3 +45,21 @@
     width: 100vw;
     height: auto;
 }
+
+.vote-box{
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+    background: gainsboro;
+}
+
+.fa-thumbs-up{
+    color: green;
+}
+.fa-thumbs-down{
+    color: red;
+}
+.fa-thumbs-up, 
+.fa-thumbs-down{
+    font-size: 35px;
+}
