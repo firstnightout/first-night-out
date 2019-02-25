@@ -4,12 +4,18 @@ const firebase = require('firebase');
 let hidden = process.env;
 
 var config = {
-    apiKey: hidden.REACT_APP_API_KEY,
-    authDomain: hidden.REACT_APP_AUTH_DOMAIN,
-    databaseURL: hidden.REACT_APP_DATABASE_URL,
-    projectId: hidden.REACT_APP_PROJECT_ID,
-    storageBucket: hidden.REACT_APP_STORAGE_BUCKET,
-    messagingSenderId: hidden.REACT_APP_MESSAGING_SENDER_ID
+    apiKey: "AIzaSyC4xQuKAX5zj5TuVO0GUFNfzJA_bC1zfW0",
+    // hidden.REACT_APP_API_KEY,
+    authDomain: "first-night-out.firebaseapp.com",
+    // hidden.REACT_APP_AUTH_DOMAIN,
+    databaseURL: "https://first-night-out.firebaseio.com",
+    // hidden.REACT_APP_DATABASE_URL,
+    projectId: "first-night-out",
+    // hidden.REACT_APP_PROJECT_ID,
+    storageBucket: "first-night-out.appspot.com",
+    // hidden.REACT_APP_STORAGE_BUCKET,
+    messagingSenderId: "146896437188"
+    // hidden.REACT_APP_MESSAGING_SENDER_ID
 };
 
 firebase.initializeApp(config);
