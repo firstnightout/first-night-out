@@ -3,17 +3,19 @@ require('dotenv').config();
 const express = require('express');
 const {json} = require('body-parser');
 const session = require("express-session");
-// const bcrypt = require('bcryptjs');
+const functions = require('firebase-functions')
+const admin = require('firebase-admin')
+
 const 
 { findStuffNearLocation, searchForLocation, getPlaceDetails, autoCompletePlace,
     getPlacesPhotos            
 } = require('./controllers/mapsController')
+
 const 
 { register, login, signout, createRoute, getRoutesByUserID, 
     getRoutesBasedOnCity, setPreferences, getUsers,
     getRoute, setProfLink, getProfLink, getCity, getVotes, getUser
 } = require('./controllers/firebaseControllers');
-
 
 const app = express();
 app.use(json());
