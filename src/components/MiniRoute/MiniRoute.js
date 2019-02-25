@@ -36,11 +36,16 @@ const MiniRoute = (props) => {
     if(redirectToggle) {
         return <Redirect to={`/route/${props.routeID}`} />
     }
+
     return(
+
         <div className='mini-route'>
         <h1 className='mini-route-text mini-route-username'>{username}</h1>
-        <h3 className='mini-route-text mini-route-likes'>{props.likes} Likes</h3>
+        {/* <h3 className='mini-route-text mini-route-likes'>{props.likes} Likes</h3> */}
             {render}
+            <i className="fas fa-heart"></i>
+            <div className="likes-circle"></div>
+            <div className="likes">{props.likes}</div>
         </div>
         
     )
