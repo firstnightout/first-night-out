@@ -57,11 +57,12 @@ const Route = (props) => {
                 /> }
             </div>
             <div>
-                <div>
+                <div className="vote-box">
                     <i 
                         className="fas fa-thumbs-up"
                         onClick={ upVote }
                     ></i>
+
                     <i 
                         className="fas fa-thumbs-down"
                         onClick={ downVote }
