@@ -102,7 +102,7 @@ function autoCompletePlace(req, res) {
     if(!(input && sessiontoken)) {
         res.status(412).json({error: 'INVALID_REQUEST'});
     } else {
-        axios.get(`${autoCompleteURL}?key="AIzaSyB3hkAtDj8ZZK9ptagSp_YqQouPEMcuaCo"&input=${input}&sessiontoken=${sessiontoken}`).then(response => {
+        axios.get(`${autoCompleteURL}?key=AIzaSyB3hkAtDj8ZZK9ptagSp_YqQouPEMcuaCo&input=${input}&sessiontoken=${sessiontoken}`).then(response => {
             res.json(response.data)
         })
         // res.status(200).send(response);

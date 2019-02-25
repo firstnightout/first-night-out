@@ -28,6 +28,7 @@
     margin-top: 1vh;
     margin-left: 2vw;
     color: white;
+    z-index: 3;
 }
 
 .fa-search, .fa-home {
