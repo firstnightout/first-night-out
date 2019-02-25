@@ -3,8 +3,6 @@ require('dotenv').config();
 const express = require('express');
 const {json} = require('body-parser');
 const session = require("express-session");
-const functions = require('firebase-functions')
-const admin = require('firebase-admin')
 
 const 
 { findStuffNearLocation, searchForLocation, getPlaceDetails, autoCompletePlace,
