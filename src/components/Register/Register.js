@@ -14,19 +14,15 @@ const Register = (props) => {
     switch(e.target.name){
         case 'firstName': 
             props.updateFirstName(e.target.value);
-            console.log('updating name')
             break
         case 'lastName':
             props.updateLastName(e.target.value);
-            console.log('updating lastname')
             break
         case 'username':
             props.updateUsername(e.target.value);
-            console.log('updaating user')
             break
         case 'password':
             props.updatePassword(e.target.value);
-            console.log('updating password')
             break
         default:
             return ;

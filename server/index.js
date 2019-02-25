@@ -6,7 +6,7 @@ const session = require("express-session");
 
 const 
 { findStuffNearLocation, searchForLocation, getPlaceDetails, autoCompletePlace,
-    getPlacesPhotos            
+    getPlacesPhotos
 } = require('./controllers/mapsController')
 
 const 

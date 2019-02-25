@@ -22,18 +22,12 @@ const AccountSettings = props => {
     }, toggleRedir);
 
     const handleClick = () => {
-        console.log('here', toggleRedir)
         let username = props.user.username;
-        console.log(1);
         const update = storage.ref(`profile-pictures/${username}`).put(profilePic);
-        console.log(1);
         update.on("state_changed", () => null, (err) => console.log(err), ()=> {
-        console.log(1);
             storage.ref(`profile-pictures/${username}`).getDownloadURL().then( downLoadURL => {
-        console.log(1);
                 axios.post(`/auth/set/profile`, { downloadURL: downLoadURL , userID: props.user.userId }).then(()=>{
                     // redirect
-                    console.log('here', toggleRedir)
                     setRedir(true);
                 })
             })
@@ -42,14 +36,13 @@ const AccountSettings = props => {
     return(
         <>  
             <Nav />
-            <div className='preferences-back-button'>
+            {/* <div className='preferences-back-button'>
                 <Link to='/account'><button>Back</button></Link>
-            </div>
+            </div> */}
             <div className='account-settings'>
-                <span className='preference'><input type='checkbox' />Non-Alcoholic Filtering</span>
-                <span className='preference'><input type='checkbox' />Family Friendly Filtering<br /></span><br />
+                {/* <span className='preference'><input type='checkbox' />Non-Alcoholic Filtering</span>
+                <span className='preference'><input type='checkbox' />Family Friendly Filtering<br /></span><br /> */}
                 <span className=''>Change Profile Picture</span>
-                <span className='change-hometown'><input className='hometown-input' placeholder='Change Hometown' /></span>
                 <span className='change-profile-pic'><input type='file' onChange={ handleChange } /></span><br />
                 <span className='save-preferences'><button onClick={handleClick} >Save Changes</button></span>
             </div>

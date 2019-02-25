@@ -3,6 +3,7 @@ import Nav from '../Nav/Nav'
 import './Search.css'
 import axios from 'axios';
 import MiniRoute from '../MiniRoute/MiniRoute';
+import { TweenMax, Power3 } from "gsap";
 
 const Search = (props) => {
     const [ inputText, setInputText ] = useState(['']);
@@ -10,7 +11,7 @@ const Search = (props) => {
     const [ autoSuggestions, setAutoSuggestions ] = useState(null); 
     const [ searchResultStyle, setResultStyle ] = useState(null);
     // const [ toggleSearchResults, toggleResults ] = useState(false);
-    const [searchResults, setSearchResults] = useState(null)
+    const [searchResults, setSearchResults] = useState([])
 
     useEffect(() => {
         //Making Random Token for the Billing Session
@@ -30,52 +31,58 @@ const Search = (props) => {
         } else {
             setResultStyle({
                 'border': '1px solid gray',
-                'WebkitBoxShadow': '0px 6px 5px 5px rgba(230,230,230,1)',
-                'MozBoxShadow': '0px 6px 5px 5px rgba(230,230,230,1)',
-                'boxShadow': '0px 6px 5px 5px rgba(230,230,230,1)'
+                'WebkitBoxShadow': '0px 2px 5px 0px rgba(0,0,0,0.16)',
+                'MozBoxShadow': '0px 2px 5px 0px rgba(0,0,0,0.16)',
+                'boxShadow': '0px 2px 5px 0px rgba(0,0,0,0.16)'
             });
         }
     }, inputText)
 
     const resetSuggestion = (description) => {
-        setResultStyle(null)
-        setAutoSuggestions(null);
+        console.log(description);
         setInputText([description])
+        setResultStyle(null)
+        setAutoSuggestions(null)
     }
 
-    const handleChange = e => {
+    const handleChange = async (e) => {
         axios.post('/api/autocomplete', {input: e.target.value, sessiontoken: sessionToken}).then(response => {
-            console.log(response);
             setAutoSuggestions(response.data.predictions.filter((val) => val.types.includes('locality')).map(val => {
                 return <span className='search-result-element' onClick={() => resetSuggestion(val.description)}>{val.description}</span>
             }))
-            console.log(autoSuggestions);
         })
-            setInputText( [e.target.value] )
+            await setInputText( [e.target.value] )
     }
 
     const handleSearchResult = () => {
-        const formatedText = inputText[0].split(',')
-        axios.get(`/api/getcity/${formatedText[0]}`)
+        setAutoSuggestions(null)
+        const formattedText = inputText[0].split(',')
+        axios.get(`/api/getcity/${formattedText[0]}`)
         .then(response => {
-            console.log(response.data);
-            let searchResults = response.data.map(val => {
+            let searchResults = response.data.sort((a,b) => b.likes - a.likes).map(val => {
                 return (
-                    <MiniRoute place1={val.place1} place2={val.place2} place3={val.place3} routeID={val.routeID} user_id={val.userID}/>
+                    <MiniRoute likes={val.likes} place1={val.place1} place2={val.place2} place3={val.place3} routeID={val.routeID} user_id={val.userID}/>
                 )
             })
             setSearchResults(searchResults)
         })
     }
 
+    const animateWide = () => {
+        TweenMax.to('.search-container', 1, { ease: Power3.easeOut, y: -200})
+        TweenMax.to('.search-bar', 1, { width: 300, x: -7})
+        TweenMax.to('.search-results', 1, { ease: Power3.easeOut, y: -200})
+    }
+
     return(
         <>
             <Nav />
-            <input className='search-bar' value={inputText[0]} onChange={handleChange} placeholder='Search' />
-            <div className='search-results' style={searchResultStyle}>
+            <div className='search-container'>
+                <input className='search-bar' value={inputText[0]} onChange={handleChange} onClick={animateWide} placeholder='Search' onKeyPress={e => e.key === 'Enter' && handleSearchResult()} />
+            </div>
+            <div className={'search-results'} style={searchResultStyle}>
                 {autoSuggestions}
             </div>
-            <button onClick={handleSearchResult}>Submit</button>
             {searchResults}
         </>
     )

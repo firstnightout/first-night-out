@@ -29,7 +29,7 @@ const Food = (props) => {
     return (
         <>
             <Nav />
-            <button onClick={() => props.history.goBack()}>Back</button>
+            {/* <button onClick={() => props.history.goBack()}>Back</button> */}
             <div className='foodWrapper'>
                 <select className='foodDropDown' name='selected' onChange={handleChange}>
                     <option value='restaurant'>Restaurant</option>
