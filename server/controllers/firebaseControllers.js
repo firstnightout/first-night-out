@@ -38,7 +38,6 @@ const login = (req, res) =>{
                     address: user.address,
                     state: user.state
                 }
-                console.log('WORKED');
                 res.status(200).json(req.session.user);
             }
         }).catch( err => console.log( err ));
@@ -50,7 +49,6 @@ const register = (req, res) =>{
     // connect to the database
     let db = firebase.database();
     let test = db.ref('users')
-    console.log(test);
     test.once('value').then(response => {
         let user = response.val();
         for(let i = 0; i < user.length; i++){
@@ -100,7 +98,6 @@ const createRoute = async (req, res) => {
     const { place1, place2, place3, userID, creationDate, isPublic, city } = req.body;
     try {
         let newRouteKey = await firebase.database().ref('/routes').push({'a': 'a'}).key
-        console.log(newRouteKey);
         let updateObj = {
             place1,
             place2,
@@ -175,13 +172,11 @@ const setPreferences = async (req, res) => {
 
 const getUsers = async (req, res) => {
     let user = await firebase.database().ref(`users/${req.params.id}`).once('value');
-    console.log(user.val())
     res.status(200).json(user.val());
 }
 
 const getUser = (req,res) => {
     res.status(200).json(req.session.user)
-    console.log(req.session.user);
 }
 
 const getRoute = async (req, res) => {
@@ -201,7 +196,6 @@ const setProfLink = async (req, res) => {
 
 const getProfLink = async (req, res) => {
     let userInfo = await firebase.database().ref(`users/${req.params.id}`).once('value')
-    console.log(userInfo.val());
     if(userInfo.val().profilePic) {
         res.status(200).json(userInfo.val().profilePic);
     } else {
@@ -212,16 +206,13 @@ const getCity = (req, res) => {
     const db = firebase.database();
     db.ref('routes').once('value')
     .then(response => {
-        // console.log(response.val())
         let routes = response.val();
         let filterdCity = [];
         for(let route in routes){
-            // console.log(routes[route].city)
             if(req.params.city.toUpperCase() === routes[route].city.toUpperCase()){
                 filterdCity.push(routes[route])
             }
         }
-        // console.log(filterdCity)
         res.status(200).json(filterdCity)
     }).catch( err => console.log(err));
 }

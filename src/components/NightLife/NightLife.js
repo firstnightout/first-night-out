@@ -17,7 +17,6 @@ const NightLife = (props) => {
             .then(response => {
                 setPlaces(null);
                 let newPlaces = response.data.results.map(val => {
-                    console.log( val.place_id);
                     return <MiniPlace place_id={val.place_id} photo={ val.photos[0].photo_reference }/>
                 })
                 setPlaces(newPlaces);
@@ -34,7 +33,7 @@ const NightLife = (props) => {
     return (
         <>
         <Nav />
-        <button onClick={() => props.history.goBack()}>Back</button>
+        {/* <button onClick={() => props.history.goBack()}>Back</button> */}
         <div className='nightLifeWrapper'>
             <select className='nightLifeDropDown' name='selected' onChange={handleChange}>
                 <option value='bar'>Bar</option>

@@ -11,7 +11,6 @@ const RouteReview = (props) => {
     const [isPublic, setPublic] = useState(true);
     const [redirect, setRedirect] = useState(false);
     useEffect(() => {
-        console.log(props)
         setRoutes(props.places.map(val => {
             return <MiniPlace place_id={val.id} photo={val.photo} />
         }))
@@ -37,7 +36,6 @@ const RouteReview = (props) => {
             }
             axios.post('/api/places/details', {placeid: props.places[1].id}).then(place2 => {
                 axios.post('/api/places/details', {placeid: props.places[2].id}).then(place3 => {
-                    console.log(place1, '\n', place2, '\n', place3);
                     axios.post('/api/create/route', {
                         place1: place1.data.result,
                         place2: place2.data.result,

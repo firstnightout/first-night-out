@@ -47,7 +47,6 @@ const VenueCard = (props) => {
         })
     }, []);
 
-    // let rating = stars.map( star => <i className="fas fa-star"></i>);
     let stars = [];
     for(let i = 0; i < rating; i++) {
         stars.push(<i className="fas fa-star"></i>)
@@ -94,7 +93,7 @@ const VenueCard = (props) => {
                 <br />
                 <br />
                 <br />
-                <button onClick={() => props.history.goBack()}>Back</button>
+                {/* <button onClick={() => props.history.goBack()}>Back</button> */}
             </div>
         </div>
         </>

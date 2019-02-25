@@ -7,15 +7,22 @@ import './nav.css';
 
 const Nav = (props) => {
     // const hideNavPaths = ['/account'];
-    const [toggle, setToggle] = useState(false)
+    const [toggle, setToggle] = useState([false])
     const [toggleLinks, setToggleLinks] = useState(false)
     const [toggleOpacity, setToggleOpacity] = useState(false)
     
     useEffect (() => {
         props.getUser()
     },[])
+    useEffect(() => {
+        if(toggle[0]) {
+            document.getElementsByTagName('body')[0].classList.add('no-scroll')
+        } else {
+            document.getElementsByTagName('body')[0].classList.remove('no-scroll')
+        }
+    }, toggle)
     const handleToggle = (e) => {
-        setToggle(!toggle)
+        setToggle([!toggle[0]])
         if(e.target.value === 'logout') {
             props.resetUser();
             axios.delete('/api/auth/signout')
@@ -37,7 +44,7 @@ const Nav = (props) => {
                 <span className='usernameNav'>{props.user.username}</span>
             </div>
 
-            {toggle ? 
+            {toggle[0] ? 
                 <nav className='navDropDownMenu'>
                     {toggleOpacity &&
                         <div className='opacBar' onClick={handleToggle}></div>}

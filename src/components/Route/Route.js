@@ -13,12 +13,20 @@ const Route = (props) => {
 
     useEffect(() => {
         axios(`/api/routes/${props.match.params.routeid}`).then(response => {
-            console.log(response);
             setRouteData(response.data);
             props.updateDirectionRoutes({
-                address1: response.data.place1.formatted_address,
-                address2: response.data.place2.formatted_address,
-                address3: response.data.place3.formatted_address,
+                address1: {
+                    lat: response.data.place1.geometry.location.lat,
+                    lng: response.data.place1.geometry.location.lng
+                },
+                address2: {
+                    lat: response.data.place2.geometry.location.lat,
+                    lng: response.data.place2.geometry.location.lng
+                },
+                address3: {
+                    lat: response.data.place3.geometry.location.lat,
+                    lng: response.data.place3.geometry.location.lng
+                }
             }
             );
         })

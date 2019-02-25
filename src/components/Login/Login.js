@@ -71,7 +71,7 @@ const Login = (props) => {
                     </button>
                     {/* </Link> */}
 
-                    <Link to="/auth/register-1"><button className="sign-up-btn">sign up</button></Link>
+                    <Link to="/auth/register-1"><button className="sign-up-btn">Sign Up</button></Link>
         </div>
     )
 }
