@@ -1,5 +1,10 @@
 import firebase from 'firebase/app';
 import 'firebase/storage';
+<<<<<<< HEAD
+=======
+// import * as admin from'firebase-admin'
+
+>>>>>>> master
 
 let hidden = process.env;
 var config = {

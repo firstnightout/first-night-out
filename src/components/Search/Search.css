@@ -2,7 +2,7 @@
     /* border: 1px solid black; */
     border-radius: 3px;
     border: none;
-    height: 5vh;
+    height: 10vh;
     width: 40vw;
     margin-left: 4vw;
     /* margin-top: 5vh; */
@@ -37,6 +37,6 @@
     justify-content: center;
     margin-top: 3vh;
     /* border: 1px solid white; */
-    height: 40vh;
+    height: 45vh;
     margin-bottom: 1vh;
 }
