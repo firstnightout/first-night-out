@@ -20,11 +20,11 @@
     .usernameNav {
         width: 30vw;
         height: 5vh;
-        margin-top: 2.5vh;
+        margin-top: 1.5vh;
         margin-right: 1vw;
         color: white;
         text-align: center;
-        font-size: .6em;
+        font-size: 1.2em;
     }
     
     .fa-bars {
@@ -143,10 +143,6 @@
     .createLink {
         margin-left: 13vw;
     }
-
-    .fa-user-alt {
-
-    }
     
     .homeImgDiv {
         border-bottom: 1px solid #d9d9d9; 
@@ -164,6 +160,14 @@
     }
 
 @media (max-width: 1024px) {
+
+    .usernameNav {
+        font-size: 1.5em;
+    }
+
+    .fa-bars {
+        font-size: 4em;
+    }
 
     .accountLink, .homeLink, .searchLink, .createLink {
         font-size: 2em;
@@ -215,9 +219,21 @@
     .logoutButton {
         font-size: 2em;
     }
+
+    .usernameNav {
+        font-size: 1.3em;
+    }
+
+    .fa-bars {
+        font-size: 2.6em;
+    }
 }
 
 @media (max-width: 414px) {
+
+    .usernameNav {
+        font-size: .8em;
+    }
     
     .fa-bars {
         font-size: 1.8em;
@@ -328,6 +344,14 @@
     .fa-plus {
         margin-left: 10vw;
     }
+
+    .usernameNav {
+        font-size: .7em;
+    }
+
+    .fa-bars {
+        font-size: 1.5em;
+    }
 }
 
 @media (max-width: 320px) {
@@ -339,6 +363,14 @@
 
     .fa-plus {
         margin-left: 11vw;
+    }
+    
+    .usernameNav {
+        font-size: .6em;
+    }
+
+    .fa-bars {
+        font-size: 1.3em;
     }
 }
 
