@@ -39,7 +39,6 @@ const Search = (props) => {
     }, inputText)
 
     const resetSuggestion = (description) => {
-        console.log(description);
         setInputText([description])
         setResultStyle(null)
         setAutoSuggestions(null)
@@ -59,6 +58,7 @@ const Search = (props) => {
         const formattedText = inputText[0].split(',')
         axios.get(`/api/getcity/${formattedText[0]}`)
         .then(response => {
+            console.log(response);
             let searchResults = response.data.sort((a,b) => b.likes - a.likes).map(val => {
                 return (
                     <MiniRoute likes={val.likes} place1={val.place1} place2={val.place2} place3={val.place3} routeID={val.routeID} user_id={val.userID}/>
@@ -68,22 +68,25 @@ const Search = (props) => {
         })
     }
 
-    const animateWide = () => {
-        TweenMax.to('.search-container', 1, { ease: Power3.easeOut, y: -200})
-        TweenMax.to('.search-bar', 1, { width: 300, x: -7})
-        TweenMax.to('.search-results', 1, { ease: Power3.easeOut, y: -200})
+    const animateUpAndWide = () => {
+        TweenMax.to('.search-container', .7, { ease: Power3.easeOut, y: -200})
+        TweenMax.to('.search-bar', .7, { width: 300, x: -7, height: 25})
+        TweenMax.to('.search-results', .7, { ease: Power3.easeOut, y: -200})
+        TweenMax.to('.results', .7, {height:1, ease: Power3.easeOut, y: -200})
     }
 
     return(
         <>
             <Nav />
             <div className='search-container'>
-                <input className='search-bar' value={inputText[0]} onChange={handleChange} onClick={animateWide} placeholder='Search' onKeyPress={e => e.key === 'Enter' && handleSearchResult()} />
+                <input className='search-bar' value={inputText[0]} onChange={handleChange} onClick={animateUpAndWide} placeholder='Search' onKeyPress={e => e.key === 'Enter' && handleSearchResult()} />
             </div>
             <div className={'search-results'} style={searchResultStyle}>
                 {autoSuggestions}
             </div>
-            {searchResults}
+            <div className='results'>
+                {searchResults}
+            </div>
         </>
     )
 }
