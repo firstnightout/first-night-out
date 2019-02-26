@@ -1,157 +1,344 @@
-.navBarMain {
-    width: 100vw;
-    height: 7vh;
-    background: #4527a0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-.fa-bars {
-    z-index: 3
-}
-.no-scroll {
-    position: fixed;
-    overflow: hidden;
-}
-.usernameNav {
-    width: 30vw;
-    height: 5vh;
-    margin-top: 2.5vh;
-    margin-right: 1vw;
-    color: white;
-    text-align: center;
-    font-size: .6em;
-}
-
-.fa-bars {
-    font-size: 1.8em;
-    font-weight: bold;
-    width: 10vw;
-    height: 5vh;
-    margin-top: 1vh;
-    margin-left: 2vw;
-    color: white;
-    z-index: 3;
-}
-
-.fa-search, .fa-home {
-    display: flex;
-    color: rgb(153, 152, 152);
-    margin-right: 16vw;
-    margin-left: -8vw;
-}
-
-.fa-user-alt {
-    display: flex;
-    color: rgb(153, 152, 152);
-    margin-right: 15vw;
-    margin-left: -5vw;
-}
-
-.navLogo {
-    width: 70vw;
-    height: 10vh;
-    margin-top: 3vh;
-    margin-bottom: 3vh;
-}
-
-.navPopOutHeader {
-    display: flex;  
-    justify-content: flex-end;
-    width: 90vw;
-    height: 7vh;
-    background: #4527A0;
-}
-
-.exitButton {
-    border: none;
-    color: white;
-    background: #4527A0;
-    font-size: 1em;
-}
-
-.navDropDownMenu {
-    position: absolute;
-    top: 0;
-    height: 100vh;
-    width: 90vw;
-    background: white;
-    transition: .5s;
-    z-index: 400;
-}
-
-.navDropDownMenuText {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.logoutButton {
-    background: #4527a0;
-    min-width: 40vw;
-    min-height: 6vh;
-    border: none;
-    font-size: 1em;
-    color: white;
-    margin-top: 5vh;
-    border-radius: 5px;
-}
-
-.hideNavDropDownMenu {
-    position: absolute;
-    top: 0;
-    height: 100vh;
-    width: 0vw;
-    background: #d9d9d9;
-    transition: .5s;
-    z-index: 40;
-}
-
-.navLog {
-    display: flex;
-    align-items: center;
-}
-
-.accountImgDiv, .searchImgDiv, .homeImgDiv, .createDiv { 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 90vw;
-    height: 10vh;
-    border-top: 1px solid #d9d9d9; 
-}
-
-.fa-plus {
-    display: flex;
-    color: rgb(153, 152, 152);
-}
-
-.accountLink, .homeLink, .searchLink, .createLink {
-    text-decoration: none;
-    color: black;
-}
-
-.createLink {
-    margin-left: 11vw;
-}
-
-.homeImgDiv {
-    border-bottom: 1px solid #d9d9d9; 
-}
-
-.opacBar {
-    top: 0;
-    right: -10vw;
-    position: absolute;
-    width: 10vw;
-    height: 100vh;
-    background: black;
-    opacity: .7;
-    animation: opacity .4s linear;
-}
-
 @keyframes opacity {
     from {opacity: 0;}
     to {opacity: .7;}
+}
+
+    .navBarMain {
+        width: 100vw;
+        height: 7vh;
+        background: #4527a0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .no-scroll {
+        position: fixed;
+        overflow: hidden;
+    }
+
+    .usernameNav {
+        width: 30vw;
+        height: 5vh;
+        margin-top: 2.5vh;
+        margin-right: 1vw;
+        color: white;
+        text-align: center;
+        font-size: .6em;
+    }
+    
+    .fa-bars {
+        font-size: 1.8em;
+        font-weight: bold;
+        width: 10vw;
+        height: 5vh;
+        margin-top: 1vh;
+        margin-left: 2vw;
+        color: white;
+        z-index: 3;
+    }
+    
+    .fa-search, .fa-home {
+        display: flex;
+        color: rgb(153, 152, 152);
+        margin-right: 16vw;
+        margin-left: -8.75vw;
+        font-size: 2em;
+    }
+    
+    .fa-user-alt {
+        display: flex;
+        color: rgb(153, 152, 152);
+        margin-right: 15vw;
+        margin-left: -7.5vw;
+        font-size: 2em;
+    }
+    
+    .navLogo {
+        width: 40vw;
+        height: 10vh;
+        margin-top: 3vh;
+        margin-bottom: 3vh;
+    }
+    
+    .navPopOutHeader {
+        display: flex;  
+        justify-content: flex-end;
+        width: 90vw;
+        height: 7vh;
+        background: #4527A0;
+    }
+    
+    .exitButton {
+        border: none;
+        color: white;
+        background: #4527A0;
+        font-size: 2em;
+    }
+    
+    .navDropDownMenu {
+        position: absolute;
+        top: 0;
+        height: 100vh;
+        width: 90vw;
+        background: white;
+        transition: .5s;
+        z-index: 400;
+    }
+    
+    .navDropDownMenuText {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .logoutButton {
+        background: #4527a0;
+        min-width: 20vw;
+        min-height: 6vh;
+        border: none;
+        font-size: 1.2em;
+        color: white;
+        margin-top: 5vh;
+        border-radius: 5px;
+    }
+    
+    .hideNavDropDownMenu {
+        position: absolute;
+        top: 0;
+        height: 100vh;
+        width: 0vw;
+        background: #d9d9d9;
+        transition: .5s;
+        z-index: 40;
+    }
+    
+    .navLog {
+        display: flex;
+        align-items: center;
+    }
+    
+    .accountImgDiv, .searchImgDiv, .homeImgDiv, .createDiv { 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90vw;
+        height: 10vh;
+        border-top: 1px solid #d9d9d9;
+    }
+    
+    .fa-plus {
+        display: flex;
+        color: rgb(153, 152, 152);
+        font-size: 2em;
+        margin-left: -5vw;
+    }
+    
+    .accountLink, .homeLink, .searchLink, .createLink {
+        text-decoration: none;
+        color: black;
+        font-size: 2em;
+    }
+    
+    .createLink {
+        margin-left: 13vw;
+    }
+
+    .fa-user-alt {
+
+    }
+    
+    .homeImgDiv {
+        border-bottom: 1px solid #d9d9d9; 
+    }
+    
+    .opacBar {
+        top: 0;
+        right: -10vw;
+        position: absolute;
+        width: 10vw;
+        height: 100vh;
+        background: black;
+        opacity: .7;
+        animation: opacity .4s linear;
+    }
+
+@media (max-width: 1024px) {
+
+    .accountLink, .homeLink, .searchLink, .createLink {
+        font-size: 2em;
+    }
+
+    .fa-search, .fa-home, .fa-plus, .fa-user-alt {
+        font-size: 2em;
+    }
+
+    .fa-plus {
+        margin-left: -5vw;
+    }
+
+    .createLink {
+        margin-left: 12vw;
+    }
+
+    .exitButton {
+        font-size: 2em;
+    }
+
+    .logoutButton {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .accountLink, .homeLink, .searchLink, .createLink {
+        font-size: 2em;
+    }
+
+    .fa-search, .fa-home, .fa-plus, .fa-user-alt {
+        font-size: 2em;
+    }
+
+    .createLink {
+        margin-left: 11vw;
+    }
+
+    .fa-plus {
+        margin-left: -3vw;
+    }
+
+    .exitButton {
+        font-size: 2em;
+    }
+
+    .logoutButton {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 414px) {
+    
+    .fa-bars {
+        font-size: 1.8em;
+        font-weight: bold;
+        width: 10vw;
+        height: 5vh;
+        margin-top: 1vh;
+        margin-left: 2vw;
+    }
+    
+    .fa-search, .fa-home, .fa-user-alt {
+        margin-right: 16vw;
+        margin-left: -8vw;
+        font-size: 1em;
+    }
+
+    .fa-plus {
+        margin-right: 1vw;
+        margin-left: 8vw;
+        font-size: 1em;
+    }
+
+    .createLink {
+        margin-right: 9vw;
+    }
+    
+    .fa-user-alt {
+        display: flex;
+        color: rgb(153, 152, 152);
+        margin-right: 15vw;
+        margin-left: -5vw;
+    }
+    
+    .navLogo {
+        width: 70vw;
+        height: 10vh;
+        margin-top: 3vh;
+        margin-bottom: 3vh;
+    }
+    
+    .navPopOutHeader {
+        display: flex;  
+        justify-content: flex-end;
+        width: 90vw;
+        height: 7vh;
+        background: #4527A0;
+    }
+    
+    .exitButton {
+        border: none;
+        color: white;
+        background: #4527A0;
+        font-size: 1em;
+    }
+    
+    .navDropDownMenu {
+        position: absolute;
+        top: 0;
+        height: 100vh;
+        width: 90vw;
+        background: white;
+        transition: .5s;
+        z-index: 400;
+    }
+    
+    .navDropDownMenuText {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .logoutButton {
+        background: #4527a0;
+        min-width: 40vw;
+        min-height: 6vh;
+        border: none;
+        font-size: 1em;
+        color: white;
+        margin-top: 5vh;
+        border-radius: 5px;
+    }
+    
+    .hideNavDropDownMenu {
+        position: absolute;
+        top: 0;
+        height: 100vh;
+        width: 0vw;
+        background: #d9d9d9;
+        transition: .5s;
+        z-index: 40;
+    }
+        
+    .accountLink, .homeLink, .searchLink, .createLink {
+        font-size: 1em;
+    }
+    
+    .homeImgDiv {
+        border-bottom: 1px solid #d9d9d9; 
+    }
+}
+
+@media (max-width: 375px) {
+
+    .createLink {
+
+    }
+
+    .fa-plus {
+        margin-left: 10vw;
+    }
+}
+
+@media (max-width: 320px) {
+
+    .createLink {
+        margin-right: 12vw;
+        margin-left: 9vw;
+    }
+
+    .fa-plus {
+        margin-left: 11vw;
+    }
 }
 
