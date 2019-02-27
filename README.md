@@ -16,7 +16,7 @@ For our technologies, we planned on using React, Firebase, Express, and Node.js.
 
 ![Login Screen](https://firebasestorage.googleapis.com/v0/b/this-is-just-for-my-github.appspot.com/o/first-night-out%2Flogin_screen_fno.png?alt=media&token=f35d562d-b329-4583-80e5-798d976c79e9)
 
-Users can create accounts and login allowing them to have unique, tailored experiences to them.
+Users can create accounts and login allowing them to have unique experiences tailored to them.
 
 ![Home Screen](https://firebasestorage.googleapis.com/v0/b/this-is-just-for-my-github.appspot.com/o/first-night-out%2Fhome_screen_fno.png?alt=media&token=aaf0cc82-88ce-4f7a-88ce-d34491fe99fa)
 
