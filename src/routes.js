@@ -28,7 +28,7 @@ export default (
         <Route path="/auth/register-1" component={ Register } />
         <Route path="/auth/register-2" component={ Register2 } />
         <Route path="/home" component={ Home } />
-        <Route path="/venue/details/:id" component={ VenueCard } />
+        <Route path="/venue/details/:id/:cameFromCategory" component={ VenueCard } />
         {/* Route creation routes */}
         <Route path="/food" component={ Food } />
         <Route path="/shopping" component={ Shopping } />

@@ -15,6 +15,7 @@ const initialState = {
     places: [],
     user: {},
     directionRoutes: [],
+    venueCardFoundViaCategories: false
 }
 
 // action types
@@ -34,8 +35,16 @@ const RESET_PLACES = 'RESET_PLACES';
 const RESET_USER = 'RESET_USER';
 const GET_USER = 'GET_USER'
 const UPDATE_DIRECTION_ROUTES = 'UPDATE_DIRECTION_ROUTES';
+const UPDATE_VENUE_CARD = 'UPDATE_VENUE_CARD';
 
 // action creators
+export function updateVenueCard(bool) {
+    return {
+        type: UPDATE_VENUE_CARD,
+        payload: bool
+    }
+}
+
 export function updateDirectionRoutes(info) {
     return {
         type: UPDATE_DIRECTION_ROUTES,
@@ -133,6 +142,11 @@ export function login(username,password) {
 // reducer function
 function reducer(state=initialState, action) {
     switch(action.type) {
+        case UPDATE_VENUE_CARD:
+            return {
+                ...state,
+                venueCardFoundViaCategories: action.payload
+            }
         case RESET_PLACES: 
             return {
                 ...state,

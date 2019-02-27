@@ -42,6 +42,7 @@ const Search = (props) => {
         setInputText([description])
         setResultStyle(null)
         setAutoSuggestions(null)
+        handleSearchResult(description)
     }
 
     const handleChange = async (e) => {
@@ -53,9 +54,9 @@ const Search = (props) => {
             await setInputText( [e.target.value] )
     }
 
-    const handleSearchResult = () => {
+    const handleSearchResult = (searchText) => {
         setAutoSuggestions(null)
-        const formattedText = inputText[0].split(',')
+        const formattedText = searchText.split(',')
         axios.get(`/api/getcity/${formattedText[0]}`)
         .then(response => {
             console.log(response);
@@ -69,17 +70,17 @@ const Search = (props) => {
     }
 
     const animateUpAndWide = () => {
-        TweenMax.to('.search-container', .7, { ease: Power3.easeOut, y: -200})
+        TweenMax.to('.search-container', .7, { ease: Power3.easeOut, y: -220})
         TweenMax.to('.search-bar', .7, { width: 300, x: -7, height: 25})
-        TweenMax.to('.search-results', .7, { ease: Power3.easeOut, y: -200})
-        TweenMax.to('.results', .7, {height:1, ease: Power3.easeOut, y: -200})
+        TweenMax.to('.search-results', .7, { ease: Power3.easeOut, y: -220})
+        TweenMax.to('.results', .7, {height:1, ease: Power3.easeOut, y: -220})
     }
 
     return(
         <>
             <Nav />
             <div className='search-container'>
-                <input className='search-bar' value={inputText[0]} onChange={handleChange} onClick={animateUpAndWide} placeholder='Search' onKeyPress={e => e.key === 'Enter' && handleSearchResult()} />
+                <input className='search-bar' value={inputText[0]} onChange={handleChange} onClick={animateUpAndWide} placeholder='Search Routes' onKeyPress={e => e.key === 'Enter' && handleSearchResult(inputText[0])} />
             </div>
             <div className={'search-results'} style={searchResultStyle}>
                 {autoSuggestions}

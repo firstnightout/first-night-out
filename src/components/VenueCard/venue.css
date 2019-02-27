@@ -8,13 +8,16 @@
     height: 40vh;
 }
 .info-container{
-   text-align: center;
-   line-height: .8;
+    text-align: center;
+    line-height: .8;
+    background: white;
+    min-height: 53vh;
 }
 
 .venue-container{
     display: flex;
     flex-direction: column;
+    font-family: 'Lato', sans-serif;
 }
 
 span{
