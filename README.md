@@ -1,68 +1,42 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+First Night Out
+=======
 
-## Available Scripts
+## Purpose
 
-In the project directory, you can run:
+The purpose of this project was to approach building a product in a new way. We strove out to build a website mobile-first, with React Hooks (which came out the week of the inception of this project), and learn several components of the Google Maps APIs.
 
-### `npm start`
+## About the Site
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+First Night Out was inspired by DevMountain. We noticed that there were a lot of people who had come from so many different places and were experiencing the city for the first time. We aimed to create a product that would help people get to truly know and hopefully appreciate the experiences that new places get to offer. Out of this came First Night Out.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Technologies Used
+For our technologies, we planned on using React, Firebase, Express, and Node.js. However, we also wanted to try something new with this project. Firstly we understood that our idea's primary platform should be mobile. It makes much more sense for users to be able to move around while using our product since the goal is to get users to go out and try new places. Thus we went mobile first with the project when it came to design and UX. In addition, a couple days before we started on this, Facebook released a big new update for React: Hooks. Hooks allow us to store state in functional components. We saw this and challenged ourselves to build the entire project using just functional components with hooks. Lastly, due to how many places, restaurants, shops, music venues, etc. there are in the world, we quickly realized we were going to need to bring in a lot of external data to help us. We deferred this duty to the Google Maps APIs. We had never used the APIs before and it became clear that this data was going to be such a huge chunk of our project. Nevertheless, we proceeded to learn how to use these APIs as we went.
 
-### `npm test`
+## Pictures
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Login Screen](https://firebasestorage.googleapis.com/v0/b/this-is-just-for-my-github.appspot.com/o/first-night-out%2Flogin_screen_fno.png?alt=media&token=f35d562d-b329-4583-80e5-798d976c79e9)
 
-### `npm run build`
+Users can create accounts and login allowing them to have unique experiences tailored to them.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Home Screen](https://firebasestorage.googleapis.com/v0/b/this-is-just-for-my-github.appspot.com/o/first-night-out%2Fhome_screen_fno.png?alt=media&token=aaf0cc82-88ce-4f7a-88ce-d34491fe99fa)
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+On the home screen they are presented with suggestions for nights out based on their current location. We used to Geolocation and Geocoding API for this.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Side Menu](https://firebasestorage.googleapis.com/v0/b/this-is-just-for-my-github.appspot.com/o/first-night-out%2Fside_menu_fno.png?alt=media&token=85b54d28-9fe0-49ae-948b-129ac416ebc6)
 
-### `npm run eject`
+As part of our adherence to mobile-first, we went ahead and built this sweet side menu.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![Venue Card](https://firebasestorage.googleapis.com/v0/b/this-is-just-for-my-github.appspot.com/o/first-night-out%2Fvenue_card_fno.png?alt=media&token=ead0d5d4-a071-4580-868b-2eabf447b444)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Data in the project is typically comprised of either places or routes. Routes are collections of places, the main meat of the project. Places are the actual stops along the routes which we created using the Places API from Google. The above is an example of a place.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![Big Route](https://firebasestorage.googleapis.com/v0/b/this-is-just-for-my-github.appspot.com/o/first-night-out%2Fbig_route_fno.png?alt=media&token=df366735-6700-4ee9-8885-37a514e8de93)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+And here is an example of a route.
 
-## Learn More
+![Map](https://firebasestorage.googleapis.com/v0/b/this-is-just-for-my-github.appspot.com/o/first-night-out%2Fmap_fno.png?alt=media&token=2533f3de-49fe-43c7-899b-66bf82b53178)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Once selecting a route, a user can bring up a display of what the route would actually look like, so that they can get an idea of where they would have to go.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Contact
+This project was built by Daniel Dominguez, Jeremy Scott and Mykenzie Rogers. If you have questions, advice, suggestions, or would like to reach out to us our emails are ddominguez20.dd@gmail.com, jeremylscott@gmail.com, and mykenzierogers@gmail.com respectively.
