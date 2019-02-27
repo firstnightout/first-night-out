@@ -75,8 +75,8 @@
     }
 
     .mini-place-photo {
-        width: 35vw;
-        height: 35vw;
+        min-width: 35vw;
+        min-height: 35vw;
         border-radius: 50%;
         margin-left: 4vw;
     }
