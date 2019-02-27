@@ -9,6 +9,7 @@ import {connect} from 'react-redux';
 import Nav from '../Nav/Nav';
 import swal from 'sweetalert';
 
+
 const VenueCard = (props) => {
     const [restaurantName, setRestaurantName] = useState(null)
     const [phoneNumber, setPhoneNumber] = useState(null)

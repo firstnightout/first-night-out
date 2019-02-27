@@ -10,8 +10,8 @@
     height: 3vh;
     font-size: 1.3em;
     left: 0;
-    margin: auto;
-    background:#d9d9d9;
+    margin: 1vh auto;
+    background: whitesmoke;
 }
 
 @media (max-width: 1024px) {

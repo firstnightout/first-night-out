@@ -196,8 +196,16 @@ const setProfLink = async (req, res) => {
 
 const getProfLink = async (req, res) => {
     let userInfo = await firebase.database().ref(`users/${req.params.id}`).once('value')
+    let routes = await firebase.database().ref('routes').once('value');
+    console.log(routes.val());
+    let returnArr = [];
+    for(let prop in routes.val()) {
+        if(+routes.val()[prop].userID === +req.params.id) {
+            returnArr.push(routes.val()[prop]);
+        }
+    }
     if(userInfo.val().profilePic) {
-        res.status(200).json(userInfo.val().profilePic);
+        res.status(200).json({profilePicture: userInfo.val().profilePic, routes: returnArr});
     } else {
         res.status(404).json({error: 'USER_NOT_FOUND'});
     }

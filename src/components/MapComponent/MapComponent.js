@@ -11,7 +11,7 @@ const MapComponent = (props) => {
   const mapStyle = {
     'width': '100%',
     'height': '100%',
-    'z-index': '10'
+    'zIndex': '10'
   }
 
   // const [map, setMap] = useState(null);
