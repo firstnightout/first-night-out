@@ -1,0 +1,10 @@
+.submitRouteButton {
+    margin-left: 30vw;
+    width: 40vw;
+    background: #69a535;
+    border: none;
+    color: white;
+    line-height: 2.2em;
+    border-radius: 5px;
+    font-size: 1em;
+}

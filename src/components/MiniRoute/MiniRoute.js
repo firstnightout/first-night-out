@@ -6,13 +6,13 @@ import {not_found} from '../../images/not_found.png'
 const MiniRoute = (props) => {
     const [username, setUsername] = useState(null);
     const [redirectToggle, setRedirectToggle] = useState(false);
-    const doubleDigitStyle = {
-        color: 'white',
-        position:'absolute',
-        left: '42px',
-        marginTop: '17vw',
-        fontSize: '12px'
-    }
+    const doubleDigitStyle = {}
+    //     color: 'white',
+    //     position:'absolute',
+    //     left: '42px',
+    //     marginTop: '17vw',
+    //     fontSize: '12px'
+    
     axios.get(`/api/users/${props.user_id}`)
     .then( response => {
         setUsername(response.data.username);

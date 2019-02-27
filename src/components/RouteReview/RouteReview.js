@@ -6,6 +6,8 @@ import axios from 'axios';
 import moment from 'moment'
 import {resetPlaces} from '../../ducks/reducer'
 import Nav from '../Nav/Nav';
+import './RouteReview.css'
+
 const RouteReview = (props) => {
     const [routes, setRoutes] = useState(null);
     const [isPublic, setPublic] = useState(true);
@@ -64,7 +66,7 @@ const RouteReview = (props) => {
                 <option value={false}>Private</option>
             </select>
             <br />
-            <button onClick={handleClick}>Create Route</button>
+            <button onClick={handleClick} className='submitRouteButton'>Create Route</button>
         </div>
     )
 }
