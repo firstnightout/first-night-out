@@ -39,4 +39,4 @@ And here is an example of a route.
 Once selecting a route, a user can bring up a display of what the route would actually look like, so that they can get an idea of where they would have to go.
 
 ## Contact
-This project was built by Daniel Dominguez and Mykenzie Rogers. If you have questions, advice, suggestions, or would like to reach out to us our emails are ddominguez20.dd@gmail.com and mykenzierogers@gmail.com respectively.
+This project was built by Daniel Dominguez, Jeremy Scott and Mykenzie Rogers. If you have questions, advice, suggestions, or would like to reach out to us our emails are ddominguez20.dd@gmail.com, jeremylscott@gmail.com, and mykenzierogers@gmail.com respectively.
