@@ -1,7 +1,5 @@
 import React, {useEffect, useState} from 'react';
-// import SmilingMan from '../../images/smiling_man.png'
 import './Account.css'
-// import MiniRoute from '../MiniRoute/MiniRoute'
 import {Link} from 'react-router-dom'
 import Nav from '../Nav/Nav';
 import axios from 'axios';
@@ -10,11 +8,13 @@ import MiniRoute from '../MiniRoute/MiniRoute'
 const Account = (props) => {
     const [profPicLink, setLink] = useState(null)
     const [userRoutes, setUserRoutes] = useState([]);
+    //WE MAKE A REQUEST TO THE BACK END SENDING THE LOGGED IN USERS ID TO GET THEIR PROFILE PICTURE AS WELL AS ROUTES THEY HAVE POSTED
     useEffect(() => {
         axios.get('/auth/profile/' + props.user.userId).then(response => {
-            setLink(response.data.profilePicture)
-            console.log(response.data);
+            setLink(response.data.profilePicture) //SET THE PROFILE PICTURE TO RENDER
+            //WE SORT THE ROUTES THAT WERE SENT BACK BASED ON NUMBER OF LIKES
             setUserRoutes(response.data.routes.sort((a,b) => b.likes - a.likes).map(route => {
+                //FOR EACH OF THE ROUTES THAT WERE SENT BACK WE RENDER A MINIROUTE COMPONENT
                 return <MiniRoute likes={route.likes} user_id={route.userID} place1={route.place1} place2={route.place2} place3={route.place3} routeID={route.routeID}/>
             }))
         }).catch(err => console.log(err))

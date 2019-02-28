@@ -12,10 +12,11 @@ const Route = (props) => {
     const [routeData, setRouteData] = useState(null);
     const [voteToggle, setVoteToggle] = useState(true);
     // const [mapAddresses, setMapAddresses] = useState('');
-
     useEffect(() => {
+        //HERE WE GET THE DETAILS OF THE ROUTE BASED ON THE ROUTE ID
         axios(`/api/routes/${props.match.params.routeid}`).then(response => {
             setRouteData(response.data);
+            //WHEN A ROUTE IS MOUNTED WE SET THE LOCATION INFORMATION IN REDUX THAT WAY WHEN WE GO TO THE MAP COMPONENT WE CAN ACCESS THE INFORMATION FROM THERE
             props.updateDirectionRoutes({
                 address1: {
                     lat: response.data.place1.geometry.location.lat,
@@ -34,13 +35,14 @@ const Route = (props) => {
         })
     }, []);
 
+    //HERE WE RUN AN ANIMATION AND HIT THE DATABASE IF THE LIKE A ROUTE
     const upVote = () => {
         let t1 = new TimelineMax({onComplete: () => setVoteToggle(false)});
         t1.to('.fa-thumbs-up', .7, {x: 70, y: -260, scale: 2})
         t1.to('.fa-thumbs-up', .3, {x: 70});
         axios.post(`/api/vote`, {vote: 1, routeID: props.match.params.routeid } )
     }
-
+    //AND HERE WE DO THE SAME IF THEY DISLIKE
     const downVote = () => {
         let t1 = new TimelineMax({onComplete: () => setVoteToggle(false)});
         t1.to('.fa-thumbs-down', .7, {x: -70, y: -260, scale: 2})
@@ -57,19 +59,19 @@ const Route = (props) => {
             </div>
             <div className='routeDisplay'>
                 {routeData && <MiniPlace
-                    photo={routeData.place1.photos[0].photo_reference} place_id={routeData.place1.place_id}
+                    cameFromCategories={0} photo={routeData.place3.photos[0].photo_reference} place_id={routeData.place3.place_id}
                 /> }
             </div>
             <div className='spacerRoute'></div>
             <div>
                 { routeData && <MiniPlace
-                        photo={routeData.place2.photos[0].photo_reference} place_id={routeData.place2.place_id}
+                        cameFromCategories={0} photo={routeData.place2.photos[0].photo_reference} place_id={routeData.place2.place_id}
                 /> }
             </div>
             <div className='spacerRoute'></div>
             <div>
                 { routeData && <MiniPlace
-                        photo={routeData.place3.photos[0].photo_reference} place_id={routeData.place3.place_id}
+                        cameFromCategories={0} photo={routeData.place1.photos[0].photo_reference} place_id={routeData.place1.place_id}
                 /> }
             </div>
             <div>

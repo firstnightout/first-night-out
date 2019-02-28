@@ -17,7 +17,7 @@ const Spa = (props) => {
             .then(response => {
                 setPlaces(null)
                 setPlaces(response.data.results.map(val => {
-                    return val.photos ? <MiniPlace key={val.place_id} place_id={val.place_id} photo={val.photos[0].photo_reference}/> : <MiniPlace key={val.place_id} place_id={val.place_id}/>
+                    return val.photos ? <MiniPlace cameFromCategories={1} key={val.place_id} place_id={val.place_id} photo={val.photos[0].photo_reference}/> : <MiniPlace cameFromCategories={1} key={val.place_id} place_id={val.place_id}/>
                 }))
             }).catch(err => setPlaces(null))
         })

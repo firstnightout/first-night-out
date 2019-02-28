@@ -23,11 +23,13 @@ const AccountSettings = props => {
 
     const handleClick = () => {
         let username = props.user.username;
+        //GET THE FILE CURRENTLY IN STATE
+        //IT UPLOADS THE PHOTO AND OVERWRITES WHAT WAS PREVIOUSLY STORED IN THE DATABASE
         const update = storage.ref(`profile-pictures/${username}`).put(profilePic);
         update.on("state_changed", () => null, (err) => console.log(err), ()=> {
             storage.ref(`profile-pictures/${username}`).getDownloadURL().then( downLoadURL => {
                 axios.post(`/auth/set/profile`, { downloadURL: downLoadURL , userID: props.user.userId }).then(()=>{
-                    // redirect
+                    //THEN IT REDIRECT BACK TO ACCOUNT
                     setRedir(true);
                 })
             })
@@ -36,12 +38,7 @@ const AccountSettings = props => {
     return(
         <>  
             <Nav />
-            {/* <div className='preferences-back-button'>
-                <Link to='/account'><button>Back</button></Link>
-            </div> */}
             <div className='account-settings'>
-                {/* <span className='preference'><input type='checkbox' />Non-Alcoholic Filtering</span>
-                <span className='preference'><input type='checkbox' />Family Friendly Filtering<br /></span><br /> */}
                 <span className=''>Change Profile Picture</span>
                 <span className='change-profile-pic'><input type='file' onChange={ handleChange } /></span><br />
                 <span className='save-preferences'><button onClick={handleClick} >Save Changes</button></span>

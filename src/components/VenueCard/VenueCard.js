@@ -38,7 +38,7 @@ const VenueCard = (props) => {
             if(response.data.result.photos) {
                 setPhotoRef(response.data.result.photos[0].photo_reference);
                 setCarouselImages(response.data.result.photos.map(val => {
-                    return <img className='img-dimensions' alt={""} src={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${val.photo_reference}&maxheight=200&key=${process.env.REACT_APP_GCLOUD_PLACES_API}`}/>
+                    return <img className='img-dimensions' alt={""} src={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${val.photo_reference}&maxheight=200&key=AIzaSyA0dEOfis7q8Pl8_MM5uhen6ustyIGwCvQ`}/>
                 }))
             } else {
                 setNotFound(<img className='img-dimensions' alt={""} src='https://s3.us-east-2.amazonaws.com/first-night-out/placeholder_img.png' />)
@@ -90,7 +90,7 @@ const VenueCard = (props) => {
                 <p>{price}</p>
                 <p><span>Hours: </span>{openStatus}</p>
                 <p><span>Phone: </span>{phoneNumber}</p>
-                <button className="add-btn" onClick={doReduxStuff}>Add to route</button>
+                {props.match.params.cameFromCategories!== '0' && <button className="add-btn" onClick={doReduxStuff}>Add to route</button>}
                 <br />
                 <br />
                 <br />

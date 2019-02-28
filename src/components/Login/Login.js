@@ -7,6 +7,7 @@ import swal from 'sweetalert'
 
 
 //ONLY MOBILE VIEW COMPATIBLE
+//CHECKS TO SEE IF THERE IS A USER THAT CORRESPONDS WITH THE INPUTTED DATA
 const Login = (props) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -24,6 +25,7 @@ const Login = (props) => {
     }
 
     if (props.user.username) {
+        //PROMPTS THE USER WITH A WELCOME MESSAGE ON A SUCCESSFUL LOGIN
         swal({
             title: 'Welcome',
             text: 'Successfully logged in',
@@ -41,37 +43,25 @@ const Login = (props) => {
                     src="https://s3.us-east-2.amazonaws.com/first-night-out/FNO-main-logo.png" className='login-logo' 
                     alt='first night out logo'
                 />
-            {/* <div className='buttonCont'>
-                <button className='login-button' onClick={handleLogin}>Login</button>
-                <Link to='/auth/register'><button className='register-button'>Register</button></Link> 
-            </div>
-            <div className='buttonCont2'>
-                <button className='passportButton'>Login with Passport</button>
-                <button className='googleButton'>Login with Google</button>
-
-            </div> */}
-                    <input  
+                    <input  //USERNAME
                         onChange={handleUpdates} 
                         placeholder=' username' 
                         name='username'
                         className="login-input"
                     />
-                    <input  
+                    <input  //PASSWORD
                         onChange={handleUpdates} 
                         placeholder=' password' 
                         type='password' 
                         name='password'
                         className="login-input"
                     />
-                    {/* <Link to="/home"> */}
                     <button 
                     className="main-btn" 
                     onClick={ handleLogin}>
                     Login
                     </button>
-                    {/* </Link> */}
-
-                    <Link to="/auth/register-1"><button className="sign-up-btn">Sign Up</button></Link>
+                    <Link to="/auth/register-1"><button className="sign-up-btn">Sign Up</button></Link> 
         </div>
     )
 }
