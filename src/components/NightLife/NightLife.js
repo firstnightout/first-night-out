@@ -17,7 +17,7 @@ const NightLife = (props) => {
             .then(response => {
                 setPlaces(null);
                 let newPlaces = response.data.results.map(val => {
-                    return <MiniPlace place_id={val.place_id} photo={ val.photos[0].photo_reference }/>
+                    return <MiniPlace cameFromCategories={1} place_id={val.place_id} photo={ val.photos[0].photo_reference }/>
                 })
                 setPlaces(newPlaces);
             }).catch(err => setPlaces(null))

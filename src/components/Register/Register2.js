@@ -8,32 +8,25 @@ import {storage} from '../../firebase'
 import swal from 'sweetalert'
 
 
-
+//REGISTER FIELDS
 const Register2 = (props) => {
     const [toggle, setToggle] = useState(false);
     const handleUpdate = (e) =>{
-        console.log('these are the props right here',props)
         switch (e.target.name) {
             case 'address':
                 props.updateAddress(e.target.value);
-                console.log('address')
                 break
             case 'city':
                 props.updateCity(e.target.value);
-                console.log('city')
                 break
             case 'state':
                 props.updateState(e.target.value);
-                console.log('state')
                 break
             case 'zip':
                 props.updateZip(e.target.value);
-                console.log('zip')
                 break
             case 'file':
-                console.log(e.target.files[0])
                 props.updateProfilePic(e.target.files[0]);
-                console.log('prof')
                 break
             default:
                 break;
@@ -41,18 +34,17 @@ const Register2 = (props) => {
     }
 
 
-
+    //GRAB ALL THE DATA FROM THE REGISTRATION AND CREATE A NEW USER IN THE DATABASE WITH THE DATA
+    //THEN REDIRECT TO HOME
     const submitRegister = () => {
         const { firstName, lastName, username, password, address, city, st, zip, profilePic } = props;
-        console.log('destructured')
             axios.post("/api/auth/register",{firstName, lastName, username, password, address, city, state: st, zip})
                 .then( response => {
-                    console.log(response)
                     const upload = storage.ref(`profile-pictures/${username}`).put(profilePic);
                     upload.on('state_changed', () => null, (err) => console.log(err), () => {
                         storage.ref(`profile-pictures/${username}`).getDownloadURL().then(downloadURL => {
                             axios.post('/auth/set/profile', {userID: response.data.userId, downloadURL}).then(() => {
-                               setToggle(true) 
+                                setToggle(true) 
                             })
                         })
                     })

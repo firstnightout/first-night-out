@@ -20,7 +20,7 @@
     .usernameNav {
         width: 30vw;
         height: 5vh;
-        margin-top: 1.5vh;
+        margin-top: 2.5vh;
         margin-right: 1vw;
         color: white;
         text-align: center;
@@ -240,8 +240,8 @@
         font-weight: bold;
         width: 10vw;
         height: 5vh;
-        margin-top: 1vh;
-        margin-left: 2vw;
+        margin-top: 1.8vh;
+        margin-left: 3vw;
     }
     
     .fa-search, .fa-home, .fa-user-alt {

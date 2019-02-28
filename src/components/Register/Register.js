@@ -9,7 +9,7 @@ import './register.css'
 
 const Register = (props) => {
    
-
+    //UPDATES THE VALUES IN REDUX
     const handleUpdate = (e) => {
     switch(e.target.name){
         case 'firstName': 
@@ -39,18 +39,18 @@ const Register = (props) => {
                     alt="first-night-out-logo" 
                     className="reg-logo"
                 />
-
-                <input value={props.firstName} name='firstName' onChange={ handleUpdate } placeholder=' first Name' className='reg-input' />
-                <input value={props.lastName} name='lastName' onChange={ handleUpdate } placeholder=' last Name' className='reg-input' />
-                <input value={props.username} name='username' onChange={ handleUpdate } placeholder=' username' className='reg-input' />
-                <input value={props.password} name='password' onChange={ handleUpdate } placeholder=' password' className='reg-input' type='password' />
+                {/* REGISTER INPUT FIELDS */}
+                <input value={props.firstName} name='firstName' onChange={ handleUpdate } placeholder='First Name' className='reg-input' />
+                <input value={props.lastName} name='lastName' onChange={ handleUpdate } placeholder='Last Name' className='reg-input' />
+                <input value={props.username} name='username' onChange={ handleUpdate } placeholder='Username' className='reg-input' />
+                <input value={props.password} name='password' onChange={ handleUpdate } placeholder='Password' className='reg-input' type='password' />
 
                 <div>
-                    <Link to="/auth/register-2"><button className="reg-button">continue</button></Link>
+                    <Link to="/auth/register-2"><button className="reg-button">continue</button></Link> {/*TAKES USER TO PAGE 2 OF REGISTER */}
                 </div>
 
                 
-                <Link to="/"><button className="cancel-btn">cancel</button></Link>                 
+                <Link to="/"><button className="cancel-btn">Cancel</button></Link>                 
         </div>
     ) 
 }

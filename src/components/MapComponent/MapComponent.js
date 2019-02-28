@@ -14,12 +14,10 @@ const MapComponent = (props) => {
     'zIndex': '10'
   }
 
-  // const [map, setMap] = useState(null);
 
   useEffect(() => {
     let directionsService = new props.google.maps.DirectionsService()
     let directionsDisplay = new props.google.maps.DirectionsRenderer()
-    // let DevMountain = new props.google.maps.LatLng(32.777599, -96.795403)
     axios.post('https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyA0dEOfis7q8Pl8_MM5uhen6ustyIGwCvQ').then(currLocation => {
       const {lat, lng} = currLocation.data.location;
       let currentPlace = new props.google.maps.LatLng(lat, lng);
@@ -27,7 +25,10 @@ const MapComponent = (props) => {
           zoom: 5,
           center: currentPlace
         }
+
+        //WE SELECT AN ELEMENT FROM OUR RETURN AND ATTACH THE MAP TO IT.
         var map = new props.google.maps.Map(document.getElementById('mapTag'), mapOptions);
+        //WE SET THE PLACES IN THE SELECTED ROUTE AS WAYPOINTS
         let waypoints = [ {
           location: new props.google.maps.LatLng(props.directionRoutes[0].lat, props.directionRoutes[0].lng),
           stopover: true
@@ -47,10 +48,11 @@ const MapComponent = (props) => {
         };
 
         directionsService.route(request, (result, status) => {
+          //IF EVERYTHING WORKED OK WE DISPLAY THE DIRECTIONS ON THE MAP
           if (status === 'OK') {
             directionsDisplay.setDirections(result);
-            // var route = result.routes[0]
           } else {
+          //IF NOT WE ALERT OOPS
             alert('oops')
           }
         })

@@ -14,7 +14,7 @@ const Categories = (props) => {
     const [suggestedPlaces, setSuggestedPlaces] = useState([]);
 
     useEffect(() => {
-        // let num = props.routeCreationStep;
+        //HERE WE CREATE A RANDOM STRING OF NUMBERS FOR A SESSION TOKEN
         if(props.places.length >= 3) {
             setToggle(true);
         }
@@ -28,12 +28,13 @@ const Categories = (props) => {
     }, []);
 
     useEffect(() => {
+        //TAKES WHAT IS CURRENTLY IN THE INPUT FIELD AND HITS THE AUTOCOMPLETE API AND USES THE RETURNED SUGGESTIONS TO RENDER MINIPLACES.
         if(searchText[0]) {
             axios.post('/api/autocomplete', {input: searchText[0], sessiontoken: sessionToken}).then(suggestions => {
                 setSuggestedPlaces(null);
                 axios.post('/api/photos/places', {predictions: suggestions.data.predictions}).then(placesPhoto => {
                     setSuggestedPlaces(suggestions.data.predictions.map((val, i) => {
-                        return <MiniPlace place_id={val.place_id} photo={placesPhoto.data[i].result.photos ? placesPhoto.data[i].result.photos[0].photo_reference : null} />
+                        return <MiniPlace cameFromCategories={1} place_id={val.place_id} photo={placesPhoto.data[i].result.photos ? placesPhoto.data[i].result.photos[0].photo_reference : null} />
                     }))
                 }).catch(err => console.log(err))
             })
@@ -44,6 +45,7 @@ const Categories = (props) => {
     if(toggle) {
         return <Redirect to='/review' />
     }
+    //SET THE INPUT TEXT IN STATE
     const handleSearch = e => {
         setSearchText([e.target.value])
     }
@@ -54,6 +56,7 @@ const Categories = (props) => {
             <div className='category-search-container'>
                 <input className='category-search' placeholder='Search' onChange={handleSearch}/>
             </div>
+            {/* IF THERE IS SOMETHING IN THE INPUT FIELD, WE DONT RENDER THE CATEGORIES */}
             {!searchText[0] ? <div className='categoriesWrapper'>
                 <Link to='/food'><div title='Food' className='foodPic'/>
                     <span className='foodLabel'>Food</span></Link>

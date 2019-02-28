@@ -10,10 +10,13 @@ const Nav = (props) => {
     const [toggle, setToggle] = useState([false])
     const [toggleLinks, setToggleLinks] = useState(false)
     const [toggleOpacity, setToggleOpacity] = useState(false)
-    
+    //USING THE NAV COMPONENT WE GET THE USERS INFO ON REFRESH
     useEffect (() => {
         props.getUser()
     },[])
+
+    //WHEN THE NAV COMPONENT IS OPENED WE SELECT THE BODY TAG AND WE APPLY THE no-scroll CLASS, MAKING USERS UNABLE TO SCROLL WHILE THE MENU IS OPEN
+    //THIS CLASS IS REMOVED ONCE THE MENU CLOSES.
     useEffect(() => {
         if(toggle[0]) {
             document.getElementsByTagName('body')[0].classList.add('no-scroll')
@@ -21,6 +24,7 @@ const Nav = (props) => {
             document.getElementsByTagName('body')[0].classList.remove('no-scroll')
         }
     }, toggle)
+    //HERE WE DELAY DISPLAYING THE DATA IN THE NAV SO THAT IT DOESNT POP UP UNTIL THE NAV IS FULLY OPENED
     const handleToggle = (e) => {
         setToggle([!toggle[0]])
         if(e.target.value === 'logout') {
@@ -43,7 +47,7 @@ const Nav = (props) => {
                 <i className="fas fa-bars" onClick={handleToggle}></i>
                 <span className='usernameNav'>{props.user.username}</span>
             </div>
-
+            {/* HERE WE RENDER THE NAV */}
             {toggle[0] ? 
                 <nav className='navDropDownMenu'>
                     {toggleOpacity &&

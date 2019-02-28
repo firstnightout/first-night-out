@@ -10,20 +10,17 @@ import './RouteReview.css'
 
 const RouteReview = (props) => {
     const [routes, setRoutes] = useState(null);
-    const [isPublic, setPublic] = useState(true);
     const [redirect, setRedirect] = useState(false);
+    //WHEN THE ROUTEREVIEW COMPONENT MOUNTS WE RENDER MINIPLACES FOR EACH STOP ON THE ROUTE
     useEffect(() => {
         setRoutes(props.places.map(val => {
             return <MiniPlace place_id={val.id} photo={val.photo} />
         }))
     }, []);
-
-    const handleChange = e => {
-        setPublic(e.target.value);
-    }
-
+    //WHEN THEY CONFIRM THE ROUTE, WE STORE ALL THE DATA IN THE DATABASE
     const handleClick = () => {
         axios.post('/api/places/details', {placeid: props.places[0].id}).then(place1 => {
+            //HERE WE LOOK AT THE FIRST PLACE, AND WE GET THE CITY OFF OF THAT TO INDEX THE ROUTE UNDER THAT CITY.
             let city = null;
             let addressParts = place1.data.result.address_components
             for(let i = 0; i < addressParts.length; i++) {
@@ -36,6 +33,7 @@ const RouteReview = (props) => {
                     break;
                 }
             }
+            //HERE WE ACTUALLY PUT THE DATA IN THE DATABASE
             axios.post('/api/places/details', {placeid: props.places[1].id}).then(place2 => {
                 axios.post('/api/places/details', {placeid: props.places[2].id}).then(place3 => {
                     axios.post('/api/create/route', {
@@ -44,7 +42,7 @@ const RouteReview = (props) => {
                         place3: place3.data.result,
                         userID: 4, //FIX THIS TO BE THE USER ON SESSION
                         creationDate: moment().format('l'),
-                        isPublic,
+                        isPublic: true,
                         city //FIX THIS TO PRIORITIZE THE CITY THAT WAS SEARCHED
                     }).then(() => {
                         props.resetPlaces();
@@ -61,10 +59,6 @@ const RouteReview = (props) => {
         <div>
         <Nav />
             {routes}
-            <select onChange={handleChange}>
-                <option value={true}>Public</option>
-                <option value={false}>Private</option>
-            </select>
             <br />
             <button onClick={handleClick} className='submitRouteButton'>Create Route</button>
         </div>

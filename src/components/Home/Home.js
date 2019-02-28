@@ -13,15 +13,20 @@ const Home = (props) => {
     const [nearbyRoutes, setNearbyRoutes] = useState([]);
     //COMMENTED TO SAVE API REQUESTS
     useEffect(() => {
+        //HIT THE GEOLOCATION API TO GET CURRENT LAT AND LONG
         axios.post('https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyA0dEOfis7q8Pl8_MM5uhen6ustyIGwCvQ').then(currLocation => {
             const {lat, lng} = currLocation.data.location;
+            //USING REVERSE GEOCODING WE GET THE CURRENT ADDRESS OF THE USER.
             axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyA0dEOfis7q8Pl8_MM5uhen6ustyIGwCvQ`).then(currPlace => {
+                //WE LOOK THROUGH THE ADDRESS COMPONENTS AND FIND THE COMPONENT THAT HAS A TYPE OF EITHER LOCALITY OR SUBLOCALITY. THIS GIVES US THE CITY.
                 let cityNameIndex = currPlace.data.results[0].address_components.findIndex(val => val.types.includes('locality') || val.types.includes('sublocality'));
                 let city = currPlace.data.results[0].address_components[cityNameIndex].long_name
+                //WITH THAT CITY WE MAKE A REQUEST TO GET ROUTES FOR THAT CITY.
                 axios.get('/api/routes/city/' + city)
                 .then( response => {
+                    //RENDER A MINIROUE FOR EACH ROUTE WE GET BACK
                     let routes = response.data.sort((a, b) => b.likes - a.likes).map( route =>  <MiniRoute likes={route.likes} user_id={route.userID} place1={route.place1} place2={route.place2} place3={route.place3} routeID={route.routeID}/>)
-                    setNearbyRoutes(routes);
+                    setNearbyRoutes(routes); //WE DISPLAY THESE ROUTES ON THE SCREEN.
                 })
             })
         })
@@ -30,6 +35,7 @@ const Home = (props) => {
     return(
         <>
         <Nav />
+        {/* CAROUSEL IMAGES */}
         <div className='home'>
             <Carousel
             animationSpeed={2000}
@@ -37,7 +43,7 @@ const Home = (props) => {
             stopAutoPlayOnHover
             centered
             infinite>
-                <img className='carousel-img' alt='' src={`https://firebasestorage.googleapis.com/v0/b/first-night-out.appspot.com/o/restaurant-picture-1.jpg?alt=media&token=140b8892-a6e0-4b55-9b79-ac1585e98cb9`} />
+                {/* <img className='carousel-img' alt='' src={`https://firebasestorage.googleapis.com/v0/b/first-night-out.appspot.com/o/restaurant-picture-1.jpg?alt=media&token=140b8892-a6e0-4b55-9b79-ac1585e98cb9`} /> */}
                 <img className='carousel-img' alt='' src={`https://firebasestorage.googleapis.com/v0/b/first-night-out.appspot.com/o/bar-1.jpg?alt=media&token=337920c8-9353-4914-b56d-b8259c5e3020`} />
                 <img className='carousel-img' alt='' src={`https://firebasestorage.googleapis.com/v0/b/first-night-out.appspot.com/o/zoo-1.jpg?alt=media&token=af6666a2-a219-4ae2-9da2-9225200f0d48`} />
                 <img className='carousel-img' alt='' src={`https://firebasestorage.googleapis.com/v0/b/first-night-out.appspot.com/o/restaurant-2.jpg?alt=media&token=d12a1d52-1a26-4a82-b988-8ca54d90e9b4`} />
