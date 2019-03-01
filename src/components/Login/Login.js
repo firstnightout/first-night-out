@@ -26,13 +26,23 @@ const Login = (props) => {
 
     if (props.user.username) {
         //PROMPTS THE USER WITH A WELCOME MESSAGE ON A SUCCESSFUL LOGIN
-        swal({
-            title: 'Welcome',
-            text: 'Successfully logged in',
+        if(props.createdRoute) {
+            swal({
+            title: 'Yay!',
+            text: 'Route Successfully Created!',
             icon: 'success',
             timer: 1500,
             button: null
         })
+        } else {
+            swal({
+                title: 'Welcome',
+                text: 'Successfully logged in',
+                icon: 'success',
+                timer: 1500,
+                button: null
+            })
+        }
         return <Redirect to='/home' />
     }
     
