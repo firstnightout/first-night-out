@@ -15,7 +15,8 @@ const initialState = {
     places: [],
     user: {},
     directionRoutes: [],
-    venueCardFoundViaCategories: false
+    venueCardFoundViaCategories: false,
+    createdRoute: false
 }
 
 // action types
@@ -150,7 +151,9 @@ function reducer(state=initialState, action) {
         case RESET_PLACES: 
             return {
                 ...state,
-                places: []
+                places: [],
+                createdRoute: true
+                
             }
         case `${LOGIN}_FULFILLED`:
             return {
