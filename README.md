@@ -14,29 +14,29 @@ For our technologies, we planned on using React, Firebase, Express, and Node.js.
 
 ## Pictures
 
+Users can create accounts and login allowing them to have unique experiences tailored to them.
+
 ![Login Screen](https://firebasestorage.googleapis.com/v0/b/this-is-just-for-my-github.appspot.com/o/first-night-out%2Flogin_screen_fno.png?alt=media&token=f35d562d-b329-4583-80e5-798d976c79e9)
 
-Users can create accounts and login allowing them to have unique experiences tailored to them.
+On the home screen they are presented with suggestions for nights out based on their current location. We used Google's Geolocation and Geocoding API for this.
 
 ![Home Screen](https://firebasestorage.googleapis.com/v0/b/this-is-just-for-my-github.appspot.com/o/first-night-out%2Fhome_screen_fno.png?alt=media&token=aaf0cc82-88ce-4f7a-88ce-d34491fe99fa)
 
-On the home screen they are presented with suggestions for nights out based on their current location. We used to Geolocation and Geocoding API for this.
+As part of our adherence to mobile-first, we went ahead and built this sweet side menu.
 
 ![Side Menu](https://firebasestorage.googleapis.com/v0/b/this-is-just-for-my-github.appspot.com/o/first-night-out%2Fside_menu_fno.png?alt=media&token=85b54d28-9fe0-49ae-948b-129ac416ebc6)
 
-As part of our adherence to mobile-first, we went ahead and built this sweet side menu.
+Data in the project is typically comprised of either places or routes. Routes are collections of places, the main meat of the project. Places are the actual stops along the routes which we created using the Places API from Google. The above is an example of a place.
 
 ![Venue Card](https://firebasestorage.googleapis.com/v0/b/this-is-just-for-my-github.appspot.com/o/first-night-out%2Fvenue_card_fno.png?alt=media&token=ead0d5d4-a071-4580-868b-2eabf447b444)
 
-Data in the project is typically comprised of either places or routes. Routes are collections of places, the main meat of the project. Places are the actual stops along the routes which we created using the Places API from Google. The above is an example of a place.
+And here is an example of a route.
 
 ![Big Route](https://firebasestorage.googleapis.com/v0/b/this-is-just-for-my-github.appspot.com/o/first-night-out%2Fbig_route_fno.png?alt=media&token=df366735-6700-4ee9-8885-37a514e8de93)
 
-And here is an example of a route.
+Once selecting a route, a user can bring up a display of what the route would actually look like, so that they can get an idea of where they would have to go.
 
 ![Map](https://firebasestorage.googleapis.com/v0/b/this-is-just-for-my-github.appspot.com/o/first-night-out%2Fmap_fno.png?alt=media&token=2533f3de-49fe-43c7-899b-66bf82b53178)
-
-Once selecting a route, a user can bring up a display of what the route would actually look like, so that they can get an idea of where they would have to go.
 
 ## Contact
 This project was built by Daniel Dominguez, Jeremy Scott and Mykenzie Rogers. If you have questions, advice, suggestions, or would like to reach out to us our emails are ddominguez20.dd@gmail.com, jeremylscott@gmail.com, and mykenzierogers@gmail.com respectively.
